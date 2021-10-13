@@ -1,3 +1,4 @@
+package command;
 import java.util.Scanner;
 
 public class MilitaryDriver {
