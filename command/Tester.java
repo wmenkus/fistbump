@@ -5,5 +5,4 @@ public class Tester {
         MilitaryCadence myCadence = new MilitaryCadence();
         myCadence.singIDontKnow();
     }
-
 }

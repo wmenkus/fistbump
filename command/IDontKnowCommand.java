@@ -2,6 +2,9 @@
  * The command that sings "I Don't Know"
  * @author: Cameron Delk
  */
+
+package command; //I added this
+
 public class IDontKnowCommand implements Command{
     private MilitaryCadence cadence;
     
