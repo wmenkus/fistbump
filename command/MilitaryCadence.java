@@ -25,6 +25,8 @@ public class MilitaryCadence {
      */
     public void singIDontKnow() {
         try{
+            //If this doesn't work, remove "team-last-minute/" from the file name
+            //or change working directory
             File file = new File("team-last-minute/command/idontknow.txt");
             reader = new Scanner(file);
             while (reader.hasNextLine()) {
@@ -51,8 +53,6 @@ public class MilitaryCadence {
      */
     public void singEverywhereWeGo() {
         try{
-            //If this doesn't work, remove "team-last-minute/" from the file name
-            //or change working directory
             File file = new File("team-last-minute/command/everywhere.txt");
             reader = new Scanner(file);
             while (reader.hasNextLine()) {
