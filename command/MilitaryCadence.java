@@ -25,7 +25,7 @@ public class MilitaryCadence {
      */
     public void singIDontKnow() {
         try{
-            File file = new File("command/idontknow.txt");
+            File file = new File("team-last-minute/command/idontknow.txt");
             reader = new Scanner(file);
             while (reader.hasNextLine()) {
                 System.out.println(reader.nextLine());
@@ -51,7 +51,7 @@ public class MilitaryCadence {
      */
     public void singEverywhereWeGo() {
         try{
-            File file = new File("command/everywhere.txt");
+            File file = new File("team-last-minute/command/everywhere.txt");
             reader = new Scanner(file);
             while (reader.hasNextLine()) {
                 System.out.println(reader.nextLine());
@@ -77,7 +77,7 @@ public class MilitaryCadence {
      */
     public void singInArmy() {
         try{
-            File file = new File("command/inarmy.txt");
+            File file = new File("team-last-minute/command/inarmy.txt");
             reader = new Scanner(file);
             while (reader.hasNextLine()) {
                 System.out.println(reader.nextLine());

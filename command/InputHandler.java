@@ -1,26 +1,33 @@
 package command;
-import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
+import java.util.ArrayList;
 // Written By: Jaden Heinle
 
 public class InputHandler {
-private ArrayList<Commands> command = new ArrayList<Commands>();
+    private ArrayList<Command> commands = new ArrayList<Command>();
 
+    /**
+     * @param MilitaryCadence
+     * Sets up command arraylist
+     */
     public InputHandler(MilitaryCadence cadence){
-        command[0] = new IDontKnowCommand(cadence);
-        command[1] = new InArmyCommand(cadence);
-        command[2] = new EverywhereCommand(cadence);
+        commands.add(new IDontKnowCommand(cadence));
+        commands.add(new InArmyCommand(cadence));
+        commands.add(new EverywhereCommand(cadence));
     }
 
+    /**
+     * @param int num
+     * executes the desired 
+     */
     public boolean playCadence(int num){
         if(num == 0){
-            command[0].execute();
+            commands.get(0).execute();
             return true;
         } else if(num == 1){
-            command[1].execute();
+            commands.get(1).execute();
             return true;
         }else if(num == 2){
-            command[2].execute();
+            commands.get(2).execute();
             return true;
         }
         return false;
