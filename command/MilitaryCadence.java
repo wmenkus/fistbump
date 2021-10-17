@@ -27,7 +27,7 @@ public class MilitaryCadence {
         try{
             //If this doesn't work, remove "team-last-minute/" from the file name
             //or change working directory
-            File file = new File("team-last-minute/command/idontknow.txt");
+            File file = new File("command/idontknow.txt");
             reader = new Scanner(file);
             while (reader.hasNextLine()) {
                 System.out.println(reader.nextLine());
@@ -53,7 +53,7 @@ public class MilitaryCadence {
      */
     public void singEverywhereWeGo() {
         try{
-            File file = new File("team-last-minute/command/everywhere.txt");
+            File file = new File("command/everywhere.txt");
             reader = new Scanner(file);
             while (reader.hasNextLine()) {
                 System.out.println(reader.nextLine());
@@ -79,7 +79,7 @@ public class MilitaryCadence {
      */
     public void singInArmy() {
         try{
-            File file = new File("team-last-minute/command/inarmy.txt");
+            File file = new File("command/inarmy.txt");
             reader = new Scanner(file);
             while (reader.hasNextLine()) {
                 System.out.println(reader.nextLine());

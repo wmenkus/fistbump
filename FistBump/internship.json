@@ -1,0 +1,29 @@
+[
+  {
+    "id":1,
+    "poster":"Advantage Finance Corporation",
+    "name":"Accountant",
+    "description":"Assist and learn from senior level accountants",
+    "pay":7.25,
+    "timePeriod":16,
+    "skillRequirements":"Advanced math and Excel skills",
+    "onSite":true,
+    "available":true,
+    "startDate":"05/01/2022",
+    "applications":[1, 3, 7],
+    "sortBehavior":"GpaSort"
+  },{
+    "id":43,
+    "poster":"NASA",
+    "name":"Rocket Scientists",
+    "description":"Build a rocket in 4 weeks",
+    "pay":17,
+    "timePeriod":16,
+    "skillRequirements":"Advanced knowledge in aerospace engineering",
+    "onSite":true,
+    "available":true,
+    "startDate":"08/07/2022",
+    "applications":[1, 2, 5],
+    "sortBehavior":"ratingSort"
+  }
+]
