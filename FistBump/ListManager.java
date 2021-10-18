@@ -9,8 +9,8 @@ public class ListManager {
     private ListManager() {
 
     }
-    public static getInstance() {
-
+    public static ListManager getInstance() {
+        return null;
     }
     public void displayInternships() {
 

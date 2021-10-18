@@ -30,7 +30,7 @@ public class Facade {
     }
 
     public Account createAccount(){
-
+        return null;
     }
 
     public void login(String email, String password){
@@ -63,7 +63,7 @@ public class Facade {
     }
 
     public Internship createInternship(){
-
+        return null;
     }
 
     public void removeAccount(int accountId){
@@ -83,7 +83,7 @@ public class Facade {
     }
 
     public Admin createAdminAccount(){
-
+        return null;
     }
 
     public void logout(){
