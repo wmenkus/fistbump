@@ -5,9 +5,10 @@
 package FistBump;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Internship {
-    private ArrayList<Integer> applications; // TODO this may be changed to UUID instead of Integer
+    private ArrayList<Student> applications;
     private Employer poster;
     private String company;
     private String name;
@@ -18,7 +19,7 @@ public class Internship {
     private boolean onSite;
     private boolean available;
     private SortBehavior sortBehavior;
-    private int id; // TODO this may be changed to a UUID instead of int
+    private UUID id;
     private String startDate;
 
     public Internship() {
@@ -103,14 +104,6 @@ public class Internship {
 
     public void setAvailable(boolean available) {
         this.available = available;
-    }
-
-    public int getId() {
-        return this.id;
-    }
-        //TODO The way these are used may change as id should potentially be constant
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getStartDate() {
