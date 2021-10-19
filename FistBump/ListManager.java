@@ -21,7 +21,7 @@ public class ListManager {
     public void sort() {
 
     }
-    public Internship getInternship(int id) {
+    public Internship getInternship(Internship internship) {
         return null;
     }
     public void hideInternship(Internship internship) {
