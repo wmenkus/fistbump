@@ -6,9 +6,9 @@ package FistBump;
 
 import java.util.ArrayList;
 
-public class LengthSort implements SortBehavior {
+public class LengthSort implements InternshipSortBehavior {
 
-    public void sort(ArrayList<Internship> data) {
-        //TODO parameter conflict, how do we resolve it?
+    public void sort(ArrayList<Internship> internships) {
+        
     }
 }

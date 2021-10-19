@@ -1,15 +1,15 @@
 package FistBump;
 import java.util.ArrayList;
 
-public class ListManager {
+public class InternshipManager {
     private ArrayList<Internship> internships;
-    private static ListManager listManager;
-    private SortBehavior sortBehavior;
+    private static InternshipManager listManager;
+    private InternshipSortBehavior internSortBehavior;
 
-    private ListManager() {
+    private InternshipManager() {
 
     }
-    public static ListManager getInstance() {
+    public static InternshipManager getInstance() {
         return null;
     }
     public void displayInternships() {

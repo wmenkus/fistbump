@@ -5,7 +5,7 @@ package FistBump;
 
 public class Facade {
     private AccountManager accountManager;
-    private ListManager listManager;
+    private InternshipManager internshipManager;
     private Account user;
 
     public Facade(){

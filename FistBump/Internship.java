@@ -18,7 +18,6 @@ public class Internship {
     private String skillRequirements;
     private boolean onSite;
     private boolean available;
-    private SortBehavior sortBehavior;
     private UUID id;
     private String startDate;
 
