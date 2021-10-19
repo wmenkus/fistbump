@@ -13,9 +13,9 @@ public class Student extends Account {
     private int ratingTotal;
 
     public Student(String name, String email, String password) {
-        super.name = name;
+        this.name = name;
         this.email = email;
-        this.password = password; //TODO fields are not visible, do they need to be protected in Account?
+        this.password = password;
     }
 
     public void calcRating(ArrayList<Rating> ratings) {
