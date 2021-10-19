@@ -10,7 +10,7 @@ public class ListManager {
 
     }
     public static ListManager getInstance() {
-        return null;
+        return listManager;
     }
     public void displayInternships() {
 

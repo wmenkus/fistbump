@@ -3,11 +3,11 @@ package FistBump;
 public class Admin extends Account{
     
     public Admin(String name, String email, String password){
-
+        super();
     }
 
     public void removeAccount(Account account){
-
+        account = null;
     }
 
     public void hideRating(Rating rating){
