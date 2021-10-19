@@ -1,3 +1,6 @@
+/**
+ * @author Brian White
+ */
 package FistBump;
 import java.util.ArrayList;
 public class AccountManager{

@@ -1,7 +1,10 @@
+/**
+ * @author Brian White
+ */
 package FistBump;
 
 public class Account {
-    private String name;
+    protected String name;
     private String email;
     private String password;
     private int permissions;
