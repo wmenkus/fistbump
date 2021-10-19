@@ -4,7 +4,7 @@
 
 package FistBump;
 
-public class Employment extends Resume{
+public class Employment {
     private String jobTitle;
     private String companyName;
     private String startDate;
