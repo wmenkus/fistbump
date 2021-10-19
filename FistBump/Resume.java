@@ -4,41 +4,37 @@
 
 package FistBump;
 
-public class Resume{
-    private ArrayList<UUID> skills;
-    private ArrayList<UUID> reference;
-    private double GPA;
+import java.util.ArrayList;
+
+public class Resume {
+    private String skills;
+    private String references;
+    private double gpa;
     private ArrayList<Employment> pastEmployment;
-    private ArrayList<education> education;
-    private UUID studentID;
-    private UUID ID;
+    private ArrayList<Education> education;
 
     public Resume(Student student){
 
     }
 
-    public ArrayList<String> getSkills(){
-
+    public String getSkills(){
+        return this.skills;
     }
 
-    public  ArrayList<String> getReferences(){
-
+    public String getReferences(){
+        return this.references;
     }
 
     public double getGpa(){
-
+        return this.gpa;
     }
 
     public ArrayList<Employment> getPastEmployment(){
-
+        return this.pastEmployment;
     }
 
-    public ArrayList<String> getEducation(){
-
-    }
-    
-    public Student getStudent(){
-
+    public ArrayList<Education> getEducation(){
+        return this.education;
     }
 
     public void setSkills(){
