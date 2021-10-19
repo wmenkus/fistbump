@@ -28,6 +28,12 @@ public class Facade {
 
     }
 
+    /**
+     * Changes the type of sort for internships or students based on the type
+     * of account calling the method. For admins, gives them an option of which
+     * one to change.
+     * @param sortMode "GPA" "Length" "Rating" "Pay"
+     */
     public void changeSortMode(String sortMode){
 
     }
