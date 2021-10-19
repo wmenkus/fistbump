@@ -1,3 +1,6 @@
+/**
+ * @author Brian White
+ */
 package FistBump;
 
 public class Admin extends Account{
