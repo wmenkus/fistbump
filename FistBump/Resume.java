@@ -4,7 +4,7 @@
 
 package FistBump;
 
-public class Resume extends Student{
+public class Resume{
     private ArrayList<UUID> skills;
     private ArrayList<UUID> reference;
     private double GPA;
