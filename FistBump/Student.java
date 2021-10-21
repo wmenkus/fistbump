@@ -11,9 +11,7 @@ public class Student extends Account {
     private ArrayList<Resume> resumes;
 
     public Student(String name, String email, String password) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
+        super(name, email, password);
         this.ratings = new ArrayList<Rating>();
         this.resumes = new ArrayList<Resume>();
     }
