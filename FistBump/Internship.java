@@ -18,6 +18,7 @@ public class Internship {
     private String skillRequirements;
     private boolean onSite;
     private boolean available;
+    private StudentSortBehavior sortBehavior;
     private UUID id;
     private String startDate;
 
@@ -25,8 +26,11 @@ public class Internship {
         //TODO
     }
 
+    //TODO check if this is correct from strategy design pattern
     public void setSortMode(String sortMode) {
-        //TODO
+        if(sortMode.equalsIgnoreCase("GPA")) {
+            sortBehavior = new GPASort();
+        }
     }
 
     public void sort() {
