@@ -8,13 +8,11 @@ public abstract class Account {
     protected String name;
     protected String email;
     protected String password;
-    protected int permissions;
 
     public Account(){
 
     }
-    public int getPermissions(){
-        return permissions;
-    }
+
+    public abstract int getPermissions();
     
 }

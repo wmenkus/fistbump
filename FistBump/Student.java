@@ -5,12 +5,10 @@
 package FistBump;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class Student extends Account {
     private ArrayList<Rating> ratings;
     private ArrayList<Resume> resumes;
-    private static final int permissions = 0;
 
     public Student(String name, String email, String password) {
         this.name = name;
@@ -40,11 +38,15 @@ public class Student extends Account {
         return result;
     }
 
-    public void addResume(Resume resume) { //Removed Student parameter that was listed on the UML
-        
+    public void addResume(Resume resume) {
+        resumes.add(resume);
+    }
+
+    public int getPermissions() {
+        return 0;
     }
 
     public void apply(Internship internship) {
-        //TODO adds self to the list of Students on that internship
+        internship.addStudent(this);
     }
 }

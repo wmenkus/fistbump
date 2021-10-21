@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Internship {
-    private ArrayList<Student> applications;
+    private ArrayList<Student> applicants;
     private Employer poster;
     private String company;
     private String name;
@@ -31,6 +31,10 @@ public class Internship {
 
     public void sort() {
         //TODO
+    }
+
+    public void addStudent(Student student) {
+        applicants.add(student);
     }
 
     public Employer getPoster() {
