@@ -8,22 +8,40 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Student extends Account {
-    private double rating;
-    private ArrayList<UUID> resumes; //TODO discuss with team how we will implement UUIDs
-    private int ratingTotal;
+    private ArrayList<Rating> ratings;
+    private ArrayList<Resume> resumes;
+    private static final int permissions = 0;
 
     public Student(String name, String email, String password) {
         this.name = name;
         this.email = email;
         this.password = password;
+        this.ratings = new ArrayList<Rating>();
+        this.resumes = new ArrayList<Resume>();
     }
 
-    public void calcRating(ArrayList<Rating> ratings) {
-        //TODO average the ratings
+    public ArrayList<Rating> getRatings() {
+        return ratings;
     }
 
-    public void createResume() { //Removed Student parameter that was listed on the UML
-        //TODO construct a Resume, I'm not sure if the UI stuff will go here or somewhere else?
+    public double calcRating() {
+        double result = 0;
+        int total = 0;
+
+        for(Rating rating : ratings) {
+            if(rating.isValid()) {
+                result += rating.getRating();
+                total++;
+            }
+        }
+
+        result /= total;
+
+        return result;
+    }
+
+    public void addResume(Resume resume) { //Removed Student parameter that was listed on the UML
+        
     }
 
     public void apply(Internship internship) {

@@ -13,8 +13,12 @@ public class Resume {
     private ArrayList<Employment> pastEmployment;
     private ArrayList<Education> education;
 
-    public Resume(Student student){
-
+    public Resume(){
+        skills = "";
+        references = "";
+        gpa = 0;
+        pastEmployment = new ArrayList<Employment>();
+        education = new ArrayList<Education>();
     }
 
     public String getSkills(){
@@ -49,15 +53,12 @@ public class Resume {
 
     }
 
-    public void setPastEmployment(){
+    public void addPastEmployment(){
 
     }
 
-    public void setEducation(){
+    public void addEducation(){
 
     }
 
-    public void setStudent(){
-
-    }
 }
