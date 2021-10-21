@@ -9,10 +9,6 @@ public abstract class Account {
     protected String email;
     protected String password;
 
-    public Account(){
-
-    }
-
     public abstract int getPermissions();
     
 }
