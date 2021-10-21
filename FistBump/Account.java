@@ -2,14 +2,13 @@
  * @author Brian White
  */
 package FistBump;
-
-public class Account {
-    
+import java.util.UUID;
+public abstract class Account {
+    protected UUID id;
     protected String name;
     protected String email;
     protected String password;
-    private int permissions;
-    private int id;
+    protected int permissions;
 
     public Account(){
 
