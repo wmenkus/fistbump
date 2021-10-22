@@ -34,6 +34,13 @@ public class Student extends Account {
     }
 
     /**
+     * Adds a rating to the ratings away
+     */
+    public void addRating(Rating rating) {
+        ratings.add(rating);
+    }
+
+    /**
      * Calculates and returns the student's mean average rating, only taking into
      * account the VISIBLE ratings. This value is never stored; this prevents
      * potential desynchronization at the cost of the program calculating the

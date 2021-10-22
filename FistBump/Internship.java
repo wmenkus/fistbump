@@ -4,6 +4,7 @@
 
 package FistBump;
 
+import java.beans.Visibility;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -21,6 +22,7 @@ public class Internship {
     private StudentSortBehavior sortBehavior;
     private UUID id;
     private String startDate;
+    private boolean visibility;
 
     public Internship() {
         //TODO
@@ -121,5 +123,12 @@ public class Internship {
         this.startDate = startDate;
     }
 
+    public boolean getVisibility() {
+        return this.visibility;
+    }
+
+    public void setVisibility(boolean visibility) {
+        this.visibility = visibility;
+    }
 
 }
