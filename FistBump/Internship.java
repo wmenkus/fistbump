@@ -4,7 +4,6 @@
 
 package FistBump;
 
-import java.beans.Visibility;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -36,7 +35,6 @@ public class Internship {
         this.id = UUID.randomUUID();
         setStartDate("");
         setVisibility(true);
-
     }
 
     //TODO check if this is correct from strategy design pattern
