@@ -71,8 +71,8 @@ public class Facade {
 
     }
 
-    public Internship createInternship(Employer poster){
-        return null;
+    public static Internship createInternship(Employer poster){
+        return Internship(poster);
     }
 
     public void removeAccount(int accountId){

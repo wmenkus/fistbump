@@ -10,7 +10,7 @@
     "onSite":true,
     "available":true,
     "startDate":"05/01/2022",
-    "applications":[1, 3, 7],
+    "applications":[""],
     "sortBehavior":"GpaSort"
   },{
     "id":"451647a1-966e-4d7f-871b-ea984c8116df",
@@ -23,7 +23,7 @@
     "onSite":true,
     "available":true,
     "startDate":"08/07/2022",
-    "applications":[1, 2, 5],
+    "applications":[""],
     "sortBehavior":"ratingSort"
   }
 ]
