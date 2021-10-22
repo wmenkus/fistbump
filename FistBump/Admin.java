@@ -14,18 +14,22 @@ public class Admin extends Account{
     }
 
     public void hideRating(Rating rating){
-        rating.hide();
+        rating.setValid(false);
     }
 
-    public void reviseInternship(Internship old, Internship newInternship){
-        
+    public void revealRating(Rating rating){
+        rating.setValid(true);
+    }
+
+    public void reviseInternship(Internship oldInternship, Internship newInternship){
+        oldInternship = newInternship;
     }
 
     public void removeInternship(Internship internship){
-
+        internship = null;
     }
 
-    public void createAdminAccount(String name, String email, String password){
+    public static void createAdminAccount(String name, String email, String password){
 
     }
 

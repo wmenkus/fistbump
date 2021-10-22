@@ -22,11 +22,7 @@ public class Rating {
         return this.valid;
     }
 
-    public void hide(){
-        valid = false;
-    }
-
-    public void reveal(){
-        valid = true;
+    public void setValid(boolean valid){
+        this.valid = valid;
     }
 }
