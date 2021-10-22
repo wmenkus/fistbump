@@ -55,4 +55,8 @@ public class Employment {
     public void setContactInfo(String contactInfo) {
         this.contactInfo = contactInfo;
     }
+    /**
+     * Last Updated: October 22, 2021
+     * By: Cameron Delk
+     */
 }
