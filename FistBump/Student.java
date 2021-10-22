@@ -67,6 +67,10 @@ public class Student extends Account {
         resumes.add(resume);
     }
 
+    public ArrayList<Resume> getResumes() {
+        return this.resumes;
+    }
+
     /**
      * The permission value for Student is 0.
      */
