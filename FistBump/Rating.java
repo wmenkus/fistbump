@@ -4,12 +4,14 @@ import java.util.UUID;
 
 public class Rating {
     private double rating;
-    private UUID raterID;
-    private UUID ratedID;
+    private Account rater;
+    private Account rated;
     private boolean valid;
 
     public Rating(double rating, Account rater, Account rated) {
-        
+        this.rater = rater;
+        this.rated = rated;
+        this.rating = rating;
     }
 
     public double getRating() {
@@ -20,5 +22,11 @@ public class Rating {
         return this.valid;
     }
 
+    public void hide(){
+        valid = false;
+    }
 
+    public void reveal(){
+        valid = true;
+    }
 }
