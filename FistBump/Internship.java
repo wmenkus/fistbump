@@ -24,8 +24,19 @@ public class Internship {
     private String startDate;
     private boolean visibility;
 
-    public Internship() {
-        //TODO
+    public Internship(Employer poster) {
+        this.applicants = new ArrayList<Student>();
+        setPoster(poster);
+        setCompany("");
+        setName("");
+        setDescription("");
+        setPay(0);
+        setTimePeriod(0);
+        setSkillRequirements("");
+        this.id = UUID.randomUUID();
+        setStartDate("");
+        setVisibility(true);
+
     }
 
     //TODO check if this is correct from strategy design pattern

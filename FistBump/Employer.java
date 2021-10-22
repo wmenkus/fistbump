@@ -2,7 +2,7 @@ package FistBump;
 import java.util.ArrayList;
 
 public class Employer extends Account{
-    private String business;
+    private String company;
     private String bio;
     private ArrayList<Internship> internships;
     private ArrayList<Rating> ratings;
@@ -11,20 +11,44 @@ public class Employer extends Account{
      * Parameterized constructor for Employer. Passes name, email,
      * and password to the constructor for Account. Initializes Internships,
      * rating, business, bio, and ratingTotal
-     * @param name The name (or username?) of the emplloyer
+     * @param name The name (or username?) of the employer
      * @param email The employer's email
      * @param password The employer's password
      */
     public Employer(String name, String email, String password) {
         super(name, email, password);
-        this.internships = new ArrayList<Internship>();
+        this.setInternships(new ArrayList<Internship>());
         this.ratings = new ArrayList<Rating>();  
-        business = "";
-        bio = "";
+        setCompany("");
+        setBio("");
     }
 
-    public void rate(Student student, double rating) {
-        
+    public ArrayList<Internship> getInternships() {
+        return internships;
+    }
+
+    public void setInternships(ArrayList<Internship> internships) {
+        this.internships = internships;
+    }
+
+    public String getBio() {
+        return bio;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getCompany() {
+        return company;
+    }
+
+    public void setCompany(String company) {
+        this.company = company;
+    }
+
+    public void rate(Student student, Rating rating) {
+        student.addRating(rating);
     }
 
     public double calcRating() {
@@ -44,10 +68,18 @@ public class Employer extends Account{
     }
 
     public void hideInternship(Internship internship) {
-        internship.setVisibility(false);
+        if(internship.getPoster() == this)
+            internship.setVisibility(false);
     }
 
     public void createInternship() {
-        
+        createInternship(this);
+    }
+
+       /**
+     * The permission value for Employer is 1.
+     */
+    public int getPermissions() {
+        return 1;
     }
 }
