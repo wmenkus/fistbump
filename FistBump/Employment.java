@@ -4,7 +4,7 @@
 
 package FistBump;
 
-public class Employment extends Resume{
+public class Employment {
     private String jobTitle;
     private String companyName;
     private String startDate;
@@ -12,6 +12,6 @@ public class Employment extends Resume{
     private String contactInfo;
 
     public Employment(){
-
+        
     }
 }

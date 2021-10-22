@@ -5,8 +5,8 @@ package FistBump;
 
 public class Account {
     protected String name;
-    private String email;
-    private String password;
+    protected String email;
+    protected String password;
     private int permissions;
     private int id;
 

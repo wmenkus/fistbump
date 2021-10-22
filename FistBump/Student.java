@@ -9,13 +9,15 @@ import java.util.UUID;
 
 public class Student extends Account {
     private double rating;
-    private ArrayList<UUID> resumes; //TODO discuss with team how we will implement UUIDs
+    private ArrayList<Resume> resumes; //TODO discuss with team how we will implement UUIDs
+    private ArrayList<Rating> ratings;
     private int ratingTotal;
 
     public Student(String name, String email, String password) {
-        super.name = name;
+        this.name = name;
         this.email = email;
-        this.password = password; //TODO fields are not visible, do they need to be protected in Account?
+        this.password = password;
+        this.rating = 0; //TODO fields are not visible, do they need to be protected in Account?
     }
 
     public void calcRating(ArrayList<Rating> ratings) {

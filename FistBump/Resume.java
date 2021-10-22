@@ -4,17 +4,17 @@
 
 package FistBump;
 
-public class Resume extends Student{
+public class Resume {
     private ArrayList<UUID> skills;
     private ArrayList<UUID> reference;
-    private double GPA;
+    private double gpa;
     private ArrayList<Employment> pastEmployment;
-    private ArrayList<education> education;
+    private ArrayList<Education> education;
     private UUID studentID;
     private UUID ID;
 
     public Resume(Student student){
-
+        
     }
 
     public ArrayList<String> getSkills(){
