@@ -1,8 +1,10 @@
 package FistBump;
+
 import java.util.ArrayList;
 
 public class ListManager {
     private ArrayList<Internship> internships;
+<<<<<<< HEAD
     private static ListManager listManager;
     private SortBehavior sortBehavior;
 
@@ -17,14 +19,13 @@ public class ListManager {
     }
     public void addInternship(Employer employer) {
 
+=======
+    ListManager() {
+        internships = new ArrayList<Internship>();
+>>>>>>> 86297744fb9e6bc8151e69693b409e963cc25f06
     }
-    public void sort() {
 
-    }
-    public Internship getInternship(Internship internship) {
-        return null;
-    }
-    public void hideInternship(Internship internship) {
-        
+    public void addInternship(Internship internship) {
+        internships.add(internship);
     }
 }

@@ -5,9 +5,9 @@
 package FistBump;
 
 import java.util.ArrayList;
-import java.util.UUID;
 
 public class Student extends Account {
+<<<<<<< HEAD
     private double rating;
     private ArrayList<Resume> resumes; //TODO discuss with team how we will implement UUIDs
     private ArrayList<Rating> ratings;
@@ -18,17 +18,94 @@ public class Student extends Account {
         this.email = email;
         this.password = password;
         this.rating = 0; //TODO fields are not visible, do they need to be protected in Account?
+=======
+    private ArrayList<Rating> ratings;
+    private ArrayList<Resume> resumes;
+
+    /**
+     * Parameterized constructor for Student. Passes name, email,
+     * and password to the constructor for Account, and constructs two
+     * empty ArrayLists to store the Student's resumes and ratings.
+     * @param name The name (or username?) of the Student
+     * @param email The student's email
+     * @param password The student's password
+     */
+    
+    public Student(String name, String email, String password, ArrayList<Resume> resumes) {
+        super(name, email, password);
+        this.resumes = resumes;
+        this.ratings = new ArrayList<Rating>();
+>>>>>>> 86297744fb9e6bc8151e69693b409e963cc25f06
     }
 
-    public void calcRating(ArrayList<Rating> ratings) {
-        //TODO average the ratings
+    /**
+     * Accessor for the Student's ratings. Returns all ratings,
+     * even those that are hidden.
+     * @return The list of all ratings
+     */
+    public ArrayList<Rating> getRatings() {
+        return ratings;
     }
 
-    public void createResume() { //Removed Student parameter that was listed on the UML
-        //TODO construct a Resume, I'm not sure if the UI stuff will go here or somewhere else?
+    /**
+     * Adds a rating to the ratings away
+     */
+    public void addRating(Rating rating) {
+        ratings.add(rating);
     }
 
+    /**
+     * Calculates and returns the student's mean average rating, only taking into
+     * account the VISIBLE ratings. This value is never stored; this prevents
+     * potential desynchronization at the cost of the program calculating the
+     * rating any time it will be used. The rating is easily calculable,
+     * so the cost is negligible.
+     * @return
+     */
+    public double calcRating() {
+        double result = 0;
+        int total = 0;
+
+        for(Rating rating : ratings) {
+            if(rating.isValid()) {
+                result += rating.getRating();
+                total++;
+            }
+        }
+
+        result /= total;
+
+        return result;
+    }
+
+    /**
+     * Adds a resume to the Student's list of resumes. Since
+     * resumes are stored within the Student's JSON file, resumes
+     * will not be saved until they are added to a Student's resume list.
+     * @param resume The resume to be added/saved
+     */
+    public void addResume(Resume resume) {
+        resumes.add(resume);
+    }
+
+    public ArrayList<Resume> getResumes() {
+        return this.resumes;
+    }
+
+    /**
+     * The permission value for Student is 0.
+     */
+    public int getPermissions() {
+        return 0;
+    }
+
+    /**
+     * Not entirely sure how this method will end up being used, the Facade
+     * could potentially add students directly without having to call an apply method
+     * from the Student class.
+     * @param internship The internship the student is applying to
+     */
     public void apply(Internship internship) {
-        //TODO adds self to the list of Students on that internship
+        internship.addStudent(this);
     }
 }

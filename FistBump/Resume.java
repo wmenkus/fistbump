@@ -4,6 +4,7 @@
 
 package FistBump;
 
+<<<<<<< HEAD
 public class Resume {
     private ArrayList<UUID> skills;
     private ArrayList<UUID> reference;
@@ -15,30 +16,43 @@ public class Resume {
 
     public Resume(Student student){
         
+=======
+import java.util.ArrayList;
+
+public class Resume {
+    private String skills;
+    private String references;
+    private double gpa;
+    private ArrayList<Employment> pastEmployment;
+    private ArrayList<Education> education;
+
+    public Resume(double gpa){
+        skills = "";
+        references = "";
+        this.gpa = gpa;
+        pastEmployment = new ArrayList<Employment>();
+        education = new ArrayList<Education>();
+>>>>>>> 86297744fb9e6bc8151e69693b409e963cc25f06
     }
 
-    public ArrayList<String> getSkills(){
-
+    public String getSkills(){
+        return this.skills;
     }
 
-    public  ArrayList<String> getReferences(){
-
+    public String getReferences(){
+        return this.references;
     }
 
     public double getGpa(){
-
+        return this.gpa;
     }
 
     public ArrayList<Employment> getPastEmployment(){
-
+        return this.pastEmployment;
     }
 
-    public ArrayList<String> getEducation(){
-
-    }
-    
-    public Student getStudent(){
-
+    public ArrayList<Education> getEducation(){
+        return this.education;
     }
 
     public void setSkills(){
@@ -53,15 +67,12 @@ public class Resume {
 
     }
 
-    public void setPastEmployment(){
+    public void addPastEmployment(){
 
     }
 
-    public void setEducation(){
+    public void addEducation(){
 
     }
 
-    public void setStudent(){
-
-    }
 }

@@ -1,18 +1,38 @@
 package FistBump;
 
+import java.util.UUID;
+
 public class Rating {
-    private String id;
-    private int rating;
-    private int raterID;
-    private int ratedID;
+    private double rating;
+    private Account rater;
+    private Account rated;
     private boolean valid;
 
+<<<<<<< HEAD
     public Rating() {
         id = "";
         rating = 0;
         raterID = 0;
         ratedID = 0;
         valid = true;
+=======
+    public Rating(double rating, Account rater, Account rated) {
+        this.rater = rater;
+        this.rated = rated;
+        this.rating = rating;
+    }
+
+    public double getRating() {
+        return this.rating;
+    }
+
+    public boolean isValid() {
+        return this.valid;
+    }
+
+    public void setValid(boolean valid){
+        this.valid = valid;
+>>>>>>> 86297744fb9e6bc8151e69693b409e963cc25f06
     }
     public Rating(String id, int rating, int raterID, int ratedID, boolean valid, Account rater, Account rated) {
         this.id = id;

@@ -5,9 +5,10 @@
 package FistBump;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Internship {
-    private ArrayList<Integer> applications; // TODO this may be changed to UUID instead of Integer
+    private ArrayList<Student> applicants;
     private Employer poster;
     private String company;
     private String name;
@@ -17,20 +18,32 @@ public class Internship {
     private String skillRequirements;
     private boolean onSite;
     private boolean available;
-    private SortBehavior sortBehavior;
-    private int id; // TODO this may be changed to a UUID instead of int
+    private StudentSortBehavior sortBehavior;
+    private UUID id;
     private String startDate;
+    private boolean visibility;
 
-    public Internship() {
-        //TODO
-    }
-
-    public void setSortMode(String sortMode) {
-        //TODO
+    public Internship(Employer poster) {
+        this.applicants = new ArrayList<Student>();
+        setPoster(poster);
+        setCompany("");
+        setName("");
+        setDescription("");
+        setPay(0);
+        setTimePeriod(0);
+        setSkillRequirements("");
+        this.id = UUID.randomUUID();
+        setStartDate("");
+        setVisibility(true);
+        sortBehavior = new GPASort();
     }
 
     public void sort() {
-        //TODO
+        sortBehavior.sort(applicants);
+    }
+
+    public void addStudent(Student student) {
+        applicants.add(student);
     }
 
     public Employer getPoster() {
@@ -105,12 +118,8 @@ public class Internship {
         this.available = available;
     }
 
-    public int getId() {
-        return this.id;
-    }
-        //TODO The way these are used may change as id should potentially be constant
-    public void setId(int id) {
-        this.id = id;
+    public void setSortBehavior(StudentSortBehavior sortBehavior) {
+        this.sortBehavior = sortBehavior;
     }
 
     public String getStartDate() {
@@ -121,5 +130,12 @@ public class Internship {
         this.startDate = startDate;
     }
 
+    public boolean isVisible() {
+        return this.visibility;
+    }
+
+    public void setVisibility(boolean visibility) {
+        this.visibility = visibility;
+    }
 
 }
