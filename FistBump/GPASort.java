@@ -3,11 +3,23 @@ import java.util.ArrayList;
 
 public class GPASort implements StudentSortBehavior {
     public void sort(ArrayList<Student> students) {
-
+        quickSort(students, 0, students.size() - 1);
     }
+
+    private void quickSort(ArrayList<Student> students, int low, int high) {
+        if (low < high)
+        {
+            /* pi is partitioning index, arr[pi] is now
+            at right place */
+            int pi = partition(students, low, high);
+
+            quickSort(students, low, pi - 1);  // Before pi
+            quickSort(students, pi + 1, high); // After pi
+        }
+    }
+
     private int partition (ArrayList<Student> students, int low, int high) {
         // pivot (Element to be placed at right position)
-        //I am so sorry.
         double pivot = getGpa(students.get(high));
         int i = (low - 1);  // Index of smaller element and indicates the 
                     // right position of pivot found so far
@@ -32,11 +44,7 @@ public class GPASort implements StudentSortBehavior {
     }
 
     private double getGpa(Student student) {
-        return student.getResumes().get(student.getResumes().size() - 1).getGpa();
+        int index = student.getResumes().size() - 1;
+        return student.getResumes().get(index).getGpa();
     }
-
-    public static void main(String[] args) {
-        
-    }
-
 }

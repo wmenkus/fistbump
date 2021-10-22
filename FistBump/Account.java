@@ -26,6 +26,11 @@ public abstract class Account {
         this.password = password;
     }
 
+    //TODO delete this
+    public Account() {
+        
+    }
+
     /**
      * Abstract method getPermissions is how the permission level of
      * each class is defined. Each class will return a different value for
