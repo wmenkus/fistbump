@@ -13,10 +13,10 @@ public class Resume {
     private ArrayList<Employment> pastEmployment;
     private ArrayList<Education> education;
 
-    public Resume(){
+    public Resume(double gpa){
         skills = "";
         references = "";
-        gpa = 0;
+        this.gpa = gpa;
         pastEmployment = new ArrayList<Employment>();
         education = new ArrayList<Education>();
     }

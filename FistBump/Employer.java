@@ -73,10 +73,10 @@ public class Employer extends Account{
     }
 
     public void createInternship() {
-        createInternship(this);
+        
     }
 
-       /**
+    /**
      * The permission value for Employer is 1.
      */
     public int getPermissions() {
