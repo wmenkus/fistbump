@@ -6,8 +6,10 @@ package FistBump;
 
 import java.util.ArrayList;
 
+/**
+ * Uses an implementation of QuickSort pulled from the internet https://www.geeksforgeeks.org/quick-sort/
+ */
 public class LengthSort implements InternshipSortBehavior {
-
     public void sort(ArrayList<Internship> internships) {
         quickSort(internships, 0, internships.size() - 1);
     }
@@ -26,31 +28,30 @@ public class LengthSort implements InternshipSortBehavior {
 
     private int partition (ArrayList<Internship> internships, int low, int high) {
         // pivot (Element to be placed at right position)
-        double pivot = getGpa(students.get(high));
+        double pivot = getLength(internships.get(high));
         int i = (low - 1);  // Index of smaller element and indicates the 
                     // right position of pivot found so far
 
         for (int j = low; j <= high - 1; j++)
         {
             // If current element is smaller than the pivot
-            if (getGpa(students.get(j)) < pivot)
+            if (getLength(internships.get(j)) < pivot)
             {
                 i++;    // increment index of smaller element
                 //swap arr[i] and arr[j]
-                Student temp = students.get(j);
-                students.set(j, students.get(i));
-                students.set(i, temp);
+                Internship temp = internships.get(j);
+                internships.set(j, internships.get(i));
+                internships.set(i, temp);
             }
         }
         //swap arr[i + 1] and arr[high])
-        Student temp = students.get(i + 1);
-        students.set(i + 1, students.get(high));
-        students.set(high, temp);
+        Internship temp = internships.get(i + 1);
+        internships.set(i + 1, internships.get(high));
+        internships.set(high, temp);
         return i + 1;
     }
 
-    private double getGpa(Student student) {
-        int index = student.getResumes().size() - 1;
-        return student.getResumes().get(index).getGpa();
+    private double getLength(Internship internship) {
+        return internship.getTimePeriod();
     }
 }

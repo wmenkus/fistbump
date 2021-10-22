@@ -1,6 +1,9 @@
 package FistBump;
 import java.util.ArrayList;
 
+/**
+ * Uses an implementation of QuickSort pulled from the internet https://www.geeksforgeeks.org/quick-sort/
+ */
 public class RatingSort implements StudentSortBehavior {
     public void sort(ArrayList<Student> students) {
         quickSort(students, 0, students.size() - 1);
