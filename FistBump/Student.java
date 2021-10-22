@@ -18,10 +18,10 @@ public class Student extends Account {
      * @param email The student's email
      * @param password The student's password
      */
-    public Student(String name, String email, String password) {
+    public Student(String name, String email, String password, ArrayList<Resume> resumes) {
         super(name, email, password);
+        this.resumes = resumes;
         this.ratings = new ArrayList<Rating>();
-        this.resumes = new ArrayList<Resume>();
     }
 
     /**
@@ -31,6 +31,13 @@ public class Student extends Account {
      */
     public ArrayList<Rating> getRatings() {
         return ratings;
+    }
+
+    /**
+     * Adds a rating to the ratings away
+     */
+    public void addRating(Rating rating) {
+        ratings.add(rating);
     }
 
     /**

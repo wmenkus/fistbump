@@ -21,9 +21,20 @@ public class Internship {
     private StudentSortBehavior sortBehavior;
     private UUID id;
     private String startDate;
+    private boolean visibility;
 
-    public Internship() {
-        //TODO
+    public Internship(Employer poster) {
+        this.applicants = new ArrayList<Student>();
+        setPoster(poster);
+        setCompany("");
+        setName("");
+        setDescription("");
+        setPay(0);
+        setTimePeriod(0);
+        setSkillRequirements("");
+        this.id = UUID.randomUUID();
+        setStartDate("");
+        setVisibility(true);
     }
 
     //TODO check if this is correct from strategy design pattern
@@ -121,5 +132,12 @@ public class Internship {
         this.startDate = startDate;
     }
 
+    public boolean getVisibility() {
+        return this.visibility;
+    }
+
+    public void setVisibility(boolean visibility) {
+        this.visibility = visibility;
+    }
 
 }

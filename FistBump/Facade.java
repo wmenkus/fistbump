@@ -71,7 +71,7 @@ public class Facade {
 
     }
 
-    public Internship createInternship(){
+    public Internship createInternship(Employer poster){
         return null;
     }
 
