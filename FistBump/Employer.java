@@ -61,9 +61,7 @@ public class Employer extends Account{
                 total++;
             }
         }
-
         result /= total;
-
         return result;
     }
 
@@ -72,8 +70,9 @@ public class Employer extends Account{
             internship.setVisibility(false);
     }
 
+    //TODO make this worky
     public void createInternship() {
-        
+        Facade.createInternship(this);
     }
 
     /**
