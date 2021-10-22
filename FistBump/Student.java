@@ -25,11 +25,6 @@ public class Student extends Account {
         this.ratings = new ArrayList<Rating>();
     }
 
-    //TODO delete this
-    public Student(ArrayList<Resume> resumes) {
-        this.resumes = resumes;
-    }
-
     /**
      * Accessor for the Student's ratings. Returns all ratings,
      * even those that are hidden.

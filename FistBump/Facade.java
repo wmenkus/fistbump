@@ -71,8 +71,10 @@ public class Facade {
 
     }
 
-    public static Internship createInternship(Employer poster){
-        return Internship(poster);
+    public void createInternship(Employer poster){
+        if(user.getPermissions() == 1) {
+            Internship internship = new Internship((Employer)user); //fuck it, typecast
+        }
     }
 
     public void removeAccount(int accountId){

@@ -35,17 +35,11 @@ public class Internship {
         this.id = UUID.randomUUID();
         setStartDate("");
         setVisibility(true);
-    }
-
-    //TODO check if this is correct from strategy design pattern
-    public void setSortMode(String sortMode) {
-        if(sortMode.equalsIgnoreCase("GPA")) {
-            sortBehavior = new GPASort();
-        }
+        sortBehavior = new GPASort();
     }
 
     public void sort() {
-        //TODO
+        sortBehavior.sort(applicants);
     }
 
     public void addStudent(Student student) {
@@ -124,6 +118,10 @@ public class Internship {
         this.available = available;
     }
 
+    public void setSortBehavior(StudentSortBehavior sortBehavior) {
+        this.sortBehavior = sortBehavior;
+    }
+
     public String getStartDate() {
         return this.startDate;
     }
@@ -132,7 +130,7 @@ public class Internship {
         this.startDate = startDate;
     }
 
-    public boolean getVisibility() {
+    public boolean isVisible() {
         return this.visibility;
     }
 

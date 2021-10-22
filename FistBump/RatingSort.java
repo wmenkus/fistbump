@@ -1,4 +1,9 @@
+/**
+ * @author Walker Menkus
+ */
+
 package FistBump;
+
 import java.util.ArrayList;
 
 /**
