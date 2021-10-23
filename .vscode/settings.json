@@ -2,6 +2,7 @@
     "java.project.referencedLibraries": [
         "lib/**/*.jar",
         "json-simple-1.1.1.jar",
-        "FistBump/json-simple-1.1.1.jar"
+        "FistBump/json-simple-1.1.1.jar",
+        "FistBump/lib/json-simple-1.1.1.jar"
     ]
 }

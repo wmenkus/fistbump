@@ -62,6 +62,32 @@ public class DataWriter {
         System.out.println(obj);
     }
 
+    public static JSONObject createSutdent(String name, String email, String password){
+        Student student = new Student(name, email, password);
+        HashMap<String,Object> map = new HashMap<String,Object>();
+        map.put("id", student.id);
+        map.put("name", student.name);
+        map.put("email", student.email);
+        map.put("password", student.password);
+
+        JSONArray resumes = new JSONArray();
+        resumes = (JSONArray)student.getResumes();
+        map.put("resumes", resumes);
+
+        JSONObject obj = new JSONObject(map);
+        return obj;
+    }
+
+    public static void writeStudent(JSONArray obj){
+        try(FileWriter file = new FileWriter("FistBump\\Student.json")){
+            
+            file.write(obj.toJSONString());
+            file.flush();
+        }
+        catch(IOException e){e.printStackTrace();}
+        System.out.println(obj);
+    }
+
     public static JSONObject createInternship(){
         //TODO fix this shit with employer
         Employer employer = new Employer("", "", "");
