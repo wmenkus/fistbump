@@ -6,11 +6,7 @@ import java.util.UUID;
 public class Admin extends Account{
     
     public Admin(String name, String email, String password){
-<<<<<<< HEAD
-        super();
-=======
         super(name, email, password);
->>>>>>> 86297744fb9e6bc8151e69693b409e963cc25f06
     }
 
     public void removeAccount(Account account){
