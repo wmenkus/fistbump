@@ -7,10 +7,8 @@ package FistBump;
 import java.util.ArrayList;
 
 public class Student extends Account {
-<<<<<<< HEAD
     private double rating;
     private ArrayList<Resume> resumes; //TODO discuss with team how we will implement UUIDs
-    private ArrayList<Rating> ratings;
     private int ratingTotal;
 
     public Student(String name, String email, String password) {
@@ -18,9 +16,7 @@ public class Student extends Account {
         this.email = email;
         this.password = password;
         this.rating = 0; //TODO fields are not visible, do they need to be protected in Account?
-=======
     private ArrayList<Rating> ratings;
-    private ArrayList<Resume> resumes;
 
     /**
      * Parameterized constructor for Student. Passes name, email,
@@ -35,7 +31,6 @@ public class Student extends Account {
         super(name, email, password);
         this.resumes = resumes;
         this.ratings = new ArrayList<Rating>();
->>>>>>> 86297744fb9e6bc8151e69693b409e963cc25f06
     }
 
     /**
