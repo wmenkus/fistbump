@@ -81,4 +81,8 @@ public class Employer extends Account{
     public int getPermissions() {
         return 1;
     }
+
+    public ArrayList<Rating> getRatings() {
+        return ratings;
+    }
 }

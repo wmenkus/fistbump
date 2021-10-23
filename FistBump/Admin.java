@@ -2,7 +2,7 @@
  * @author Brian White
  */
 package FistBump;
-
+import java.util.UUID;
 public class Admin extends Account{
     
     public Admin(String name, String email, String password){

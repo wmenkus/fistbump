@@ -19,7 +19,7 @@ public class Internship {
     private boolean onSite;
     private boolean available;
     private StudentSortBehavior sortBehavior;
-    private UUID id;
+    protected String id;
     private String startDate;
     private boolean visibility;
 
@@ -32,7 +32,7 @@ public class Internship {
         setPay(0);
         setTimePeriod(0);
         setSkillRequirements("");
-        this.id = UUID.randomUUID();
+        this.id = UUID.randomUUID().toString();
         setStartDate("");
         setVisibility(true);
     }
