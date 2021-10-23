@@ -1,4 +1,5 @@
 package FistBump;
+
 import java.util.ArrayList;
 
 public class Employer extends Account{
@@ -68,11 +69,6 @@ public class Employer extends Account{
     public void hideInternship(Internship internship) {
         if(internship.getPoster() == this)
             internship.setVisibility(false);
-    }
-
-    //TODO make this worky
-    public void createInternship() {
-        Facade.createInternship(this);
     }
 
     /**

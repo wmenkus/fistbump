@@ -4,6 +4,21 @@
  */
 package FistBump;
 
+<<<<<<< HEAD
+public class Account {
+    protected String name;
+    protected String email;
+    protected String password;
+    private int permissions;
+    private int id;
+
+    public Account(){
+        name = "";
+        email = "";
+        password = "";
+        permissions = 0;
+        id = 0;
+=======
 import java.util.UUID;
 
 /**
@@ -24,6 +39,7 @@ public abstract class Account {
         this.name = name;
         this.email = email;
         this.password = password;
+>>>>>>> 86297744fb9e6bc8151e69693b409e963cc25f06
     }
 
     /**
