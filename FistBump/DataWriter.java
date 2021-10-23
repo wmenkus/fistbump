@@ -10,10 +10,9 @@ import java.io.IOException;
 import java.util.HashMap;
 public class DataWriter {
     
-    public static JSONObject createAdmin(String name, String email, String password){
-        Admin admin = new Admin(name, email, password);
+    public static JSONObject createAdmin(Admin admin){
         HashMap<String,String> map = new HashMap<String,String>();
-        map.put("id", admin.id);
+        map.put("id", admin.id.toString());
         map.put("name", admin.name);
         map.put("email", admin.email);
         map.put("password", admin.password);
@@ -21,21 +20,19 @@ public class DataWriter {
         JSONObject obj = new JSONObject(map);
         return obj;
     }
-//TODO Fix how JSONs are formatted into one line
-    public static void writeAdmin(JSONArray obj){
+
+    public static void saveAdmin(JSONArray obj){
         try(FileWriter file = new FileWriter("FistBump\\Admin.json")){
             
             file.write(obj.toJSONString());
             file.flush();
         }
         catch(IOException e){e.printStackTrace();}
-        System.out.println(obj);
     }
 
-    public static JSONObject createEmployer(String name, String email, String password){
-        Employer employer = new Employer(name, email, password);
+    public static JSONObject createEmployer(Employer employer){
         HashMap<String,Object> map = new HashMap<String,Object>();
-        map.put("id", employer.id);
+        map.put("id", employer.id.toString());
         map.put("name", employer.name);
         map.put("email", employer.email);
         map.put("password", employer.password);
@@ -53,19 +50,17 @@ public class DataWriter {
         return obj;
     }
 
-    public static void writeEmployer(JSONArray obj){
+    public static void saveEmployer(JSONArray obj){
         try(FileWriter file = new FileWriter("FistBump\\Employer.json")){
             file.write(obj.toJSONString());
             file.flush();
         }
         catch(IOException e){e.printStackTrace();}
-        System.out.println(obj);
     }
 
-    public static JSONObject createSutdent(String name, String email, String password){
-        Student student = new Student(name, email, password);
+    public static JSONObject createSutdent(Student student){
         HashMap<String,Object> map = new HashMap<String,Object>();
-        map.put("id", student.id);
+        map.put("id", student.id.toString());
         map.put("name", student.name);
         map.put("email", student.email);
         map.put("password", student.password);
@@ -78,22 +73,18 @@ public class DataWriter {
         return obj;
     }
 
-    public static void writeStudent(JSONArray obj){
+    public static void saveStudent(JSONArray obj){
         try(FileWriter file = new FileWriter("FistBump\\Student.json")){
             
             file.write(obj.toJSONString());
             file.flush();
         }
         catch(IOException e){e.printStackTrace();}
-        System.out.println(obj);
     }
 
-    public static JSONObject createInternship(){
-        //TODO fix this shit with employer
-        Employer employer = new Employer("", "", "");
-        Internship internship = new Internship(employer);
+    public static JSONObject createInternship(Internship internship){
         HashMap<String,Object> map = new HashMap<String,Object>();
-        map.put("id", internship.id);
+        map.put("id", internship.id.toString());
         map.put("poster", internship.getPoster());
         map.put("company", internship.getCompany());
         map.put("name", internship.getName());
@@ -116,26 +107,26 @@ public class DataWriter {
         return obj;
     }
 
-    public static void writeInternship(JSONArray obj){
+    public static void saInternship(JSONArray obj){
         try(FileWriter file = new FileWriter("FistBump\\Internship.json")){
             file.write(obj.toJSONString());
             file.flush();
         }
         catch(IOException e){e.printStackTrace();}
-        System.out.println(obj);
     }
 
 //TODO delete main
     public static void main(String[] args){
         JSONArray array = new JSONArray();
-
-        JSONObject obj1 = createAdmin("Brian", "brian01white@gmail.com", "password");
-        JSONObject obj2 = createAdmin("Kyle", "betteremail@mspaint.gov", "betterPassword");
+        Admin admin1 = new Admin("Brian", "brian01white@gmail.com", "password");
+        Admin admin2 = new Admin("Kyle", "betteremail@mspaint.gov", "betterPassword");
+        JSONObject obj1 = createAdmin(admin1);
+        JSONObject obj2 = createAdmin(admin2);
 
         array.add(array.size(), obj1);
         array.add(array.size(), obj2);
         
-        writeAdmin(array);
+        saveAdmin(array);
 //To get a key value from an object in the JSON Array, you mush typecast the array to a hashmap
         System.out.println(((HashMap) array.get(0)).get("name"));
     }

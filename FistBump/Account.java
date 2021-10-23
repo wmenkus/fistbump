@@ -14,13 +14,13 @@ import java.util.UUID;
  * defined in their inherited abstract method getPermissions().
  */
 public abstract class Account {
-    protected String id;
+    protected UUID id;
     protected String name;
     protected String email;
     protected String password;
 
     public Account(String name, String email, String password){
-        id = UUID.randomUUID().toString();
+        id = UUID.randomUUID();
         this.name = name;
         this.email = email;
         this.password = password;

@@ -35,7 +35,7 @@ public class Rating {
     public void setRated(Account rated) {
         this.rated = rated;
     }
-    public boolean getValid() {
+    public boolean isValid() {
         return this.valid;
     }
     public void setValid(boolean valid) {

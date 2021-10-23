@@ -12,7 +12,7 @@ public class Resume {
     private double gpa;
     private ArrayList<Employment> pastEmployment;
     private ArrayList<Education> education;
-    private ArrayList<UUID> skills;
+    //private ArrayList<UUID> skills;  ??
     private ArrayList<UUID> reference;
     private UUID studentID;
     private UUID ID;

@@ -11,11 +11,6 @@ public class Student extends Account {
     private ArrayList<Resume> resumes; //TODO discuss with team how we will implement UUIDs
     private int ratingTotal;
 
-    public Student(String name, String email, String password) {
-        this.name = name;
-        this.email = email;
-        this.password = password;
-        this.rating = 0; //TODO fields are not visible, do they need to be protected in Account?
     private ArrayList<Rating> ratings;
 
     /**

@@ -19,7 +19,7 @@ public class Internship {
     private boolean onSite;
     private boolean available;
     private StudentSortBehavior sortBehavior;
-    protected String id;
+    protected UUID id;
     private String startDate;
     private boolean visibility;
 
@@ -32,7 +32,7 @@ public class Internship {
         setPay(0);
         setTimePeriod(0);
         setSkillRequirements("");
-        this.id = UUID.randomUUID().toString();
+        this.id = UUID.randomUUID();
         setStartDate("");
         setVisibility(true);
         sortBehavior = new GPASort();
