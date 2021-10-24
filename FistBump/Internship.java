@@ -138,4 +138,12 @@ public class Internship {
         this.visibility = visibility;
     }
 
+    public ArrayList<Student> getApplicants() {
+        return applicants;
+    }
+
+    public StudentSortBehavior getSortBehavior() {
+        return sortBehavior;
+    }
+
 }

@@ -19,8 +19,15 @@ public abstract class Account {
     protected String email;
     protected String password;
 
-    public Account(String name, String email, String password){
+    public Account(String name, String email, String password) {
         id = UUID.randomUUID();
+        this.name = name;
+        this.email = email;
+        this.password = password;
+    }
+    
+    public Account(UUID id, String name, String email, String password){
+        this.id = id;
         this.name = name;
         this.email = email;
         this.password = password;

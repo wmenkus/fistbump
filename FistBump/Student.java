@@ -5,6 +5,7 @@
 package FistBump;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 public class Student extends Account {
     private double rating;
@@ -26,6 +27,12 @@ public class Student extends Account {
         super(name, email, password);
         this.resumes = resumes;
         this.ratings = new ArrayList<Rating>();
+    }
+
+    public Student( UUID id, String name, String email, String password, ArrayList<Resume> resumes, ArrayList<Rating> ratings){
+        super(id, name, email, password);
+        this.resumes = resumes;
+        this.ratings = ratings;
     }
 
     /**

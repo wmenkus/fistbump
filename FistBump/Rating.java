@@ -8,12 +8,6 @@ public class Rating {
     private Account rated;
     private boolean valid;
 
-    public Rating() {
-        rating = 0.0;
-        rater = new Account();
-        rated = new Account();
-        valid = true;
-    }
     public Rating(double rating, Account rater, Account rated, boolean valid) {
         this.rating = rating;
         this.rater = rater;

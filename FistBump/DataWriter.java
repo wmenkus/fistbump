@@ -8,6 +8,7 @@ import org.json.simple.JSONArray;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
+
 public class DataWriter {
     
     public static JSONObject createAdmin(Admin admin){
@@ -23,7 +24,6 @@ public class DataWriter {
 
     public static void saveAdmin(JSONArray obj){
         try(FileWriter file = new FileWriter("FistBump\\Admin.json")){
-            
             file.write(obj.toJSONString());
             file.flush();
         }
@@ -83,7 +83,8 @@ public class DataWriter {
     }
 
     public static JSONObject createInternship(Internship internship){
-        HashMap<String,Object> map = new HashMap<String,Object>();
+        HashMap<String, Object> map = new HashMap<String, Object>();
+        
         map.put("id", internship.id.toString());
         map.put("poster", internship.getPoster());
         map.put("company", internship.getCompany());
@@ -95,15 +96,14 @@ public class DataWriter {
         map.put("onSite", internship.isOnSite());
         map.put("available", internship.isAvailable());
         map.put("startDate", internship.getStartDate());
-        //map.put("visibility", internship.isVisible())//TODO Add isVisible
+        map.put("visibility", internship.isVisible());
+        map.put("sortBehavior", internship.getSortBehavior());
+
         JSONArray applicants = new JSONArray();
-        //applicants = (JSONArray)internship.getApplcants();//TODO Add getApplicants
+        applicants = (JSONArray)internship.getApplicants();
         map.put("applicants", applicants);
 
-    //private StudentSortBehavior sortBehavior;
-    
         JSONObject obj = new JSONObject(map);
-
         return obj;
     }
 
@@ -127,7 +127,7 @@ public class DataWriter {
         array.add(array.size(), obj2);
         
         saveAdmin(array);
-//To get a key value from an object in the JSON Array, you mush typecast the array to a hashmap
+//To get a key value from an object in the JSON Array, you mush typecast the array to a hashmap (maybe)
         System.out.println(((HashMap) array.get(0)).get("name"));
     }
 

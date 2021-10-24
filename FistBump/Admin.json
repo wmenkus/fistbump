@@ -1,1 +1,14 @@
-[{"name":"Brian","password":"password","id":"c244c283-a585-43f4-8c91-485d73e826cb","email":"brian01white@gmail.com"},{"name":"Kyle","password":"betterPassword","id":"7adf500d-708c-4f94-9278-0d54694dd9bf","email":"betteremail@mspaint.gov"}]
+[
+  {
+    "name": "Brian",
+    "password": "password",
+    "id": "eafa2cc8-ac8c-48bd-8c78-731dda03d9c8",
+    "email": "brian01white@gmail.com"
+  },
+  {
+    "name": "Kyle",
+    "password": "betterPassword",
+    "id": "8735c836-518a-4718-8707-7b369b2099d3",
+    "email": "betteremail@mspaint.gov"
+  }
+]
