@@ -114,6 +114,44 @@ public class DataReader {
     }
     
     public ArrayList<Internship> loadInternships(){
-        return null;
+
+        ArrayList<Internship> internships = new ArrayList<Internship>();
+
+        JSONParser parser = new JSONParser();
+    
+    try{
+
+        JSONArray array = (JSONArray) parser.parse(new FileReader("FistBump\\Internship.json"));
+
+        for (Object obj : array)
+        {
+            JSONObject internshipObj = (JSONObject) obj;
+
+            ArrayList<Student> applicants = (ArrayList<Student>) internshipObj.get("applicants");
+            Employer poster = (Employer) internshipObj.get("poster");
+            String company = (String) internshipObj.get("company");
+            String name = (String) internshipObj.get("name");
+            String description = (String) internshipObj.get("description");
+            double pay = (double) internshipObj.get("pay");
+            int timePeriod = (int) internshipObj.get("timePeriod");
+            String skillRequirements = (String) internshipObj.get("skillRequirements");
+            boolean onSite = (boolean) internshipObj.get("onSite");
+            boolean available = (boolean) internshipObj.get("available");
+            StudentSortBehavior sortBehavior = (StudentSortBehavior) internshipObj.get("sortBehavior");
+            UUID id = (UUID) internshipObj.get("id");
+            String startDate = (String) internshipObj.get("startDate");
+            boolean visibility = (boolean) internshipObj.get("visibility");
+
+            Internship internship = new Internship(applicants, poster, company, name, description, pay, timePeriod, skillRequirements, onSite, available, sortBehavior, id, startDate, visibility);
+
+            internships.add(internship);
+        }
+    }
+    catch (FileNotFoundException e) {e.printStackTrace();}
+    catch (IOException e) {e.printStackTrace();}
+    catch (ParseException e) {e.printStackTrace();}
+    catch (Exception e) {e.printStackTrace();}
+    
+    return internships;
     }
 }

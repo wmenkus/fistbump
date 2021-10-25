@@ -38,6 +38,23 @@ public class Internship {
         sortBehavior = new GPASort();
     }
 
+    public Internship(ArrayList<Student> applicants, Employer poster, String company, String name, String description, double pay, int timePeriod, String skillRequirements, boolean onSite, boolean available, StudentSortBehavior sortBehavior, UUID id, String startDate, boolean visibility) {
+        this.applicants = applicants;
+        this.poster = poster;
+        this.company = company;
+        this.name = name;
+        this.description = description;
+        this.pay = pay;
+        this.timePeriod = timePeriod;
+        this.skillRequirements = skillRequirements;
+        this.onSite = onSite;
+        this.available = available;
+        this.sortBehavior = sortBehavior;
+        this.id = id;
+        this.startDate = startDate;
+        this.visibility = visibility;
+    }
+
     public void sort() {
         sortBehavior.sort(applicants);
     }
