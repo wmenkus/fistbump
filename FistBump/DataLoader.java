@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class DataReader {
+public class DataLoader {
 
     public ArrayList<Admin> loadAdmins() {
 
