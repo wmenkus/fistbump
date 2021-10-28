@@ -23,16 +23,24 @@ public class Student extends Account {
      * @param password The student's password
      */
     
+    public Student(String name, String email, String password) {
+        super(name, email, password);
+        this.resumes = new ArrayList<Resume>();
+        this.ratings = new ArrayList<Rating>();
+    }
+
+    public Student(UUID id, String name, String email, String password, ArrayList<Resume> resumes,
+            ArrayList<Rating> ratings) {
+        super(id, name, email, password);
+        this.resumes = resumes;
+        this.ratings = ratings;
+    }
+    
+    //TODO delete this
     public Student(String name, String email, String password, ArrayList<Resume> resumes) {
         super(name, email, password);
         this.resumes = resumes;
         this.ratings = new ArrayList<Rating>();
-    }
-
-    public Student( UUID id, String name, String email, String password, ArrayList<Resume> resumes, ArrayList<Rating> ratings){
-        super(id, name, email, password);
-        this.resumes = resumes;
-        this.ratings = ratings;
     }
 
     /**

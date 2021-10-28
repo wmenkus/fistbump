@@ -5,11 +5,11 @@
 package FistBump;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.HashMap;
 
 public class DataWriter {
     
@@ -76,8 +76,17 @@ public class DataWriter {
             map.put("email", student.email);
             map.put("password", student.password);
 
-            JSONArray resumes = new JSONArray();
-            resumes = (JSONArray) student.getResumes();
+            JSONArray resumeArray = new JSONArray(); 
+            ArrayList<Resume> resumes = student.getResumes();
+            for (Resume resume : resumes) {
+                HashMap<String, String> map2 = new HashMap<String, String>();
+
+                map2.put("resume", resume.toString());
+                JSONObject resumeObj = new JSONObject(map);
+                resumeArray.add(resumeObj);
+            }
+
+
             map.put("resumes", resumes);
 
             JSONObject obj = new JSONObject(map);
@@ -132,15 +141,35 @@ public class DataWriter {
 //TODO delete main
 public static void main(String[] args) {
         
-        Admin admin1 = new Admin("Brian", "brian01white@gmail.com", "password");
-        Admin admin2 = new Admin("Kyle", "betteremail@mspaint.gov", "betterPassword");
+        Employment employment1 = new Employment("jobTitle", "companyName", "startDate", "endDate", "contactInfo");
+
+        ArrayList<Employment> employmentList = new ArrayList<Employment>();
+        employmentList.add(employment1);
+
+        Education education1 = new Education("institution", "location", "degree", "graduationDate");
+
+        ArrayList<Education> educationList = new ArrayList<Education>();
+        educationList.add(education1);
+
+        Resume resume1 = new Resume("skills", "references", 2.5, employmentList, educationList);
+        Resume resume2 = new Resume("skills", "references", 2.5, employmentList, educationList);
+
+        ArrayList<Resume> resumeList = new ArrayList<Resume>();
+        resumeList.add(resume1);
+        resumeList.add(resume2);
         
-        ArrayList<Admin> admins = new ArrayList<Admin>();
 
-        admins.add(admin1);
-        admins.add(admin2);
+        Student student1 = new Student("Brian", "brian01white@gmail.com", "password", resumeList);
+        Student student2 = new Student("Kyle", "betteremail@mspaint.gov", "betterPassword", resumeList);
 
-        saveAdmin(admins);
+        ArrayList<Student> students = new ArrayList<Student>();
+
+        students.add(student1);
+        students.add(student2);
+
+        saveStudent(students);
+
+        System.out.println(resume1.toString());
     }
 
 }

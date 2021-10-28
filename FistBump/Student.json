@@ -1,10 +1,1 @@
-[
-    {
-        "id":"67c53147-429a-4003-8dad-91d8a96cd707",
-        "name":"Freddie McIntosh",
-        "email":"Freddie123123@yahoo.com",
-        "password":"",
-        "resumes":[""],
-        "ratings":["", "", ""]
-    }
-]
+[{"name":"Brian","password":"password","id":"aefda401-fee7-4b6b-8b65-4b23282b140b","resumes":[FistBump.Resume@31221be2,FistBump.Resume@6433a2],"email":"brian01white@gmail.com"},{"name":"Kyle","password":"betterPassword","id":"4ae7db5d-95ff-481b-998a-ad0a2928e054","resumes":[FistBump.Resume@31221be2,FistBump.Resume@6433a2],"email":"betteremail@mspaint.gov"}]

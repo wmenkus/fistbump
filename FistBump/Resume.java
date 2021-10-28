@@ -5,20 +5,28 @@
 package FistBump;
         
 import java.util.ArrayList;
-import java.util.UUID;
+
 public class Resume {
     private String skills;
     private String references;
     private double gpa;
     private ArrayList<Employment> pastEmployment;
     private ArrayList<Education> education;
-    //private ArrayList<UUID> skills;  ??
-    private ArrayList<UUID> reference;
-    private UUID studentID;
-    private UUID ID;
 
-    public Resume(Student student){
-        
+    public Resume(Student student) {
+        skills = "none";
+        references = "none";
+        gpa = 0;
+        pastEmployment = new ArrayList<Employment>();
+        education = new ArrayList<Education>();
+    }
+    
+    public Resume(String skills, String references, double gpa, ArrayList<Employment> pastEmployment, ArrayList<Education> education) {
+        this.skills = skills;
+        this.references = references;
+        this.gpa = gpa;
+        this.pastEmployment = pastEmployment;
+        this.education = education;
     }
 
     public Resume(double gpa){

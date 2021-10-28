@@ -1,3 +1,7 @@
+/**
+ * @author Brian White
+ */
+
 package FistBump;
 
 import java.util.ArrayList;
@@ -137,7 +141,7 @@ public class DataLoader {
             String skillRequirements = (String) internshipObj.get("skillRequirements");
             boolean onSite = (boolean) internshipObj.get("onSite");
             boolean available = (boolean) internshipObj.get("available");
-            StudentSortBehavior sortBehavior = (StudentSortBehavior) internshipObj.get("sortBehavior");
+            StudentSortBehavior sortBehavior = (StudentSortBehavior) internshipObj.get("sortBehavior"); //Do we need this?
             UUID id = (UUID) internshipObj.get("id");
             String startDate = (String) internshipObj.get("startDate");
             boolean visibility = (boolean) internshipObj.get("visibility");
