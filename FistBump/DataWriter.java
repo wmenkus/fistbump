@@ -47,11 +47,27 @@ public class DataWriter {
             map.put("password", employer.password);
             map.put("company", employer.getCompany());
             map.put("bio", employer.getBio());
-            JSONArray internships = new JSONArray();
-            internships = (JSONArray) employer.getInternships();
-            map.put("internships", internships);
-            JSONArray ratings = new JSONArray();
-            ratings = (JSONArray) employer.getRatings();
+
+            JSONArray internshipArray = new JSONArray(); 
+            ArrayList<Internship> internships = employer.getInternships();
+            for (Internship internship : internships) {
+                HashMap<String, String> map2 = new HashMap<String, String>();
+
+                map2.put("internship", internship.toString());
+                JSONObject internshipObj = new JSONObject(map);
+                internshipArray.add(internshipObj);
+            }
+            map.put("internships", internshipArray);
+
+            JSONArray ratingArray = new JSONArray(); 
+            ArrayList<Rating> ratings = employer.getRatings();
+            for (Rating rating : ratings) {
+                HashMap<String, String> map2 = new HashMap<String, String>();
+
+                map2.put("rating", rating.toString());
+                JSONObject ratingObj = new JSONObject(map);
+                ratingArray.add(ratingObj);
+            }
             map.put("ratings", ratings);
 
             JSONObject obj = new JSONObject(map);
@@ -85,9 +101,18 @@ public class DataWriter {
                 JSONObject resumeObj = new JSONObject(map);
                 resumeArray.add(resumeObj);
             }
-
-
             map.put("resumes", resumes);
+
+            JSONArray ratingArray = new JSONArray(); 
+            ArrayList<Rating> ratings = student.getRatings();
+            for (Rating rating : ratings) {
+                HashMap<String, String> map2 = new HashMap<String, String>();
+
+                map2.put("rating", rating.toString());
+                JSONObject ratingObj = new JSONObject(map);
+                ratingArray.add(ratingObj);
+            }
+            map.put("ratings", ratings);
 
             JSONObject obj = new JSONObject(map);
             array.add(array.size(), obj);
@@ -122,8 +147,15 @@ public class DataWriter {
             map.put("visibility", internship.isVisible());
             map.put("sortBehavior", internship.getSortBehavior());
 
-            JSONArray applicants = new JSONArray();
-            applicants = (JSONArray) internship.getApplicants();
+            JSONArray ratingArray = new JSONArray(); 
+            ArrayList<Student> applicants = internship.getApplicants();
+            for (Student applicant : applicants) {
+                HashMap<String, String> map2 = new HashMap<String, String>();
+
+                map2.put("applicant", applicant.toString());
+                JSONObject applicantObj = new JSONObject(map);
+                ratingArray.add(applicantObj);
+            }
             map.put("applicants", applicants);
 
             JSONObject obj = new JSONObject(map);
