@@ -165,4 +165,7 @@ public class Internship {
         return sortBehavior;
     }
 
+    public UUID getId() {
+        return id;
+    }
 }

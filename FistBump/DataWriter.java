@@ -19,10 +19,10 @@ public class DataWriter {
 
         for (Admin admin : admins) {
             HashMap<String, String> map = new HashMap<String, String>();
-            map.put("id", admin.id.toString());
-            map.put("name", admin.name);
-            map.put("email", admin.email);
-            map.put("password", admin.password);
+            map.put("id", admin.getId().toString());
+            map.put("name", admin.getName());
+            map.put("email", admin.getEmail());
+            map.put("password", admin.getPassword());
 
             JSONObject obj = new JSONObject(map);
             array.add(array.size(), obj);
@@ -51,9 +51,10 @@ public class DataWriter {
             JSONArray internshipArray = new JSONArray(); 
             ArrayList<Internship> internships = employer.getInternships();
             for (Internship internship : internships) {
-                HashMap<String, String> map2 = new HashMap<String, String>();
+                HashMap<String, String> internshipMap = new HashMap<String, String>();
 
-                map2.put("internship", internship.toString());
+                internshipMap.put("internshipId", internship.getId().toString());
+
                 JSONObject internshipObj = new JSONObject(map);
                 internshipArray.add(internshipObj);
             }
@@ -96,8 +97,6 @@ public class DataWriter {
             map.put("email", student.email);
             map.put("password", student.password);
 
-
-
             JSONArray resumeArray = new JSONArray(); 
             ArrayList<Resume> resumes = student.getResumes();
 
@@ -116,7 +115,7 @@ public class DataWriter {
 
                     employmentMap.put("jobTitle", employment.getJobTitle());
                     employmentMap.put("companyName", employment.getCompanyName());
-                    employmentMap.put("roll", employment.getRoll());
+                    employmentMap.put("jobType", employment.getJobType());
                     employmentMap.put("startDate", employment.getStartDate());
                     employmentMap.put("endDate", employment.getEndDate());
                     employmentMap.put("jobDescription", employment.getJobDescription());
@@ -141,8 +140,6 @@ public class DataWriter {
                     educationArray.add(educationObj);
                 }
                 resumeMap.put("education", educationArray);
-
-
 
                 JSONObject resumeObj = new JSONObject(resumeMap);
                 resumeArray.add(resumeObj);
@@ -201,10 +198,10 @@ public class DataWriter {
             JSONArray ratingArray = new JSONArray(); 
             ArrayList<Student> applicants = internship.getApplicants();
             for (Student applicant : applicants) {
-                HashMap<String, String> map2 = new HashMap<String, String>();
+                HashMap<String, String> applicantMap = new HashMap<String, String>();
 
-                map2.put("applicant", applicant.toString());
-                JSONObject applicantObj = new JSONObject(map);
+                applicantMap.put("applicantId", applicant.getId().toString());
+                JSONObject applicantObj = new JSONObject(applicantMap);
                 ratingArray.add(applicantObj);
             }
             map.put("applicants", applicants);
@@ -228,7 +225,7 @@ public class DataWriter {
 //TODO delete main
 public static void main(String[] args) {
         
-        Employment employment1 = new Employment("jobTitle", "companyName", "startDate", "endDate", "contactInfo");
+        Employment employment1 = new Employment("jobTitle", "companyName", "jobType", "startDate", "endDate", "jobDescription");
 
         ArrayList<Employment> employmentList = new ArrayList<Employment>();
         employmentList.add(employment1);

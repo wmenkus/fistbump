@@ -7,7 +7,7 @@ package FistBump;
 public class Employment {
     private String jobTitle;
     private String companyName;
-    private String roll; //TODO Job type? Refer to scenarios for clarification
+    private String jobType; 
     private String startDate;
     private String endDate;
     //private String contactInfo; //TODO This may not be needed
@@ -16,7 +16,7 @@ public class Employment {
     public Employment() {
         jobTitle = "";
         companyName = "";
-        roll = "";
+        jobType = "";
         startDate = "";
         endDate = "";
         //contactInfo = "";
@@ -24,9 +24,10 @@ public class Employment {
         
     }
 
-    public Employment(String jobTitle, String companyName, String startDate, String endDate/*, String contactInfo*/, String jobDescription) {
+    public Employment(String jobTitle, String companyName,String jobType, String startDate, String endDate/*, String contactInfo*/, String jobDescription) {
         this.jobTitle = jobTitle;
         this.companyName = companyName;
+        this.jobType = jobType;
         this.startDate = startDate;
         this.endDate = endDate;
         //this.contactInfo = contactInfo;
@@ -65,8 +66,8 @@ public class Employment {
         this.endDate = endDate;
     }
 
-    public String getRoll() {
-        return roll;
+    public String getJobType() {
+        return jobType;
     }
 
     public String getJobDescription() {

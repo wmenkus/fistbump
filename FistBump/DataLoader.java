@@ -67,8 +67,20 @@ public class DataLoader {
                 String password = (String) employerObj.get("password");
                 String company = (String) employerObj.get("company");
                 String bio = (String) employerObj.get("bio");
-                ArrayList<Internship> internships = (ArrayList<Internship>) employerObj.get("internships");
-                ArrayList<Rating> ratings = (ArrayList<Rating>) employerObj.get("ratings");
+
+                ArrayList<Internship> allInternships = loadInternships();
+                ArrayList<Internship> internships = new ArrayList<Internship>();
+                ArrayList<String> internshipIds = (ArrayList<String>) employerObj.get("internships");
+                
+                for (String internshipId : internshipIds) {
+                    for (Internship internship : allInternships) {
+                        if (internshipId == internship.id.toString()) {
+                            internships.add(internship);
+                        }
+                    }
+                }
+
+                ArrayList<Rating> ratings = (ArrayList<Rating>) employerObj.get("ratings");  //TODO fix
 
                 Employer employer = new Employer(id, name, email, password, company, bio, internships, ratings);
 
@@ -101,8 +113,8 @@ public class DataLoader {
             String name = (String) studentObj.get("name");
             String email = (String) studentObj.get("email");
             String password = (String) studentObj.get("password");
-            ArrayList<Resume> resumes = (ArrayList<Resume>) studentObj.get("resumes");
-            ArrayList<Rating> ratings = (ArrayList<Rating>) studentObj.get("ratings");
+            ArrayList<Resume> resumes = (ArrayList<Resume>) studentObj.get("resumes"); //TODO fix
+            ArrayList<Rating> ratings = (ArrayList<Rating>) studentObj.get("ratings"); //TODO fix
 
             Student student = new Student(id, name, email, password, resumes, ratings);
 
@@ -131,7 +143,7 @@ public class DataLoader {
         {
             JSONObject internshipObj = (JSONObject) obj;
 
-            ArrayList<Student> applicants = (ArrayList<Student>) internshipObj.get("applicants");
+            ArrayList<Student> applicants = (ArrayList<Student>) internshipObj.get("applicants"); //TODO fix
             Employer poster = (Employer) internshipObj.get("poster");
             String company = (String) internshipObj.get("company");
             String name = (String) internshipObj.get("name");
@@ -141,7 +153,7 @@ public class DataLoader {
             String skillRequirements = (String) internshipObj.get("skillRequirements");
             boolean onSite = (boolean) internshipObj.get("onSite");
             boolean available = (boolean) internshipObj.get("available");
-            StudentSortBehavior sortBehavior = (StudentSortBehavior) internshipObj.get("sortBehavior"); //Do we need this?
+            StudentSortBehavior sortBehavior = (StudentSortBehavior) internshipObj.get("sortBehavior"); //TODO Do we need this?
             UUID id = (UUID) internshipObj.get("id");
             String startDate = (String) internshipObj.get("startDate");
             boolean visibility = (boolean) internshipObj.get("visibility");

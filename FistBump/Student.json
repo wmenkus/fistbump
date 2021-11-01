@@ -3,7 +3,7 @@
     "password": "password",
     "ratings": [],
     "name": "Brian",
-    "id": "bc6b0d14-c2c0-4fff-bab7-253c4659e700",
+    "id": "78f92e3b-d787-4b51-bda5-a1ee514132d5",
     "resumes": [
       {
         "skills": "skills",
@@ -21,8 +21,8 @@
             "endDate": "endDate",
             "jobTitle": "jobTitle",
             "companyName": "companyName",
-            "roll": null,
-            "jobDescription": "contactInfo",
+            "jobDescription": "jobDescription",
+            "jobType": "jobType",
             "startDate": "startDate"
           }
         ],
@@ -44,8 +44,8 @@
             "endDate": "endDate",
             "jobTitle": "jobTitle",
             "companyName": "companyName",
-            "roll": null,
-            "jobDescription": "contactInfo",
+            "jobDescription": "jobDescription",
+            "jobType": "jobType",
             "startDate": "startDate"
           }
         ],
@@ -58,7 +58,7 @@
     "password": "betterPassword",
     "ratings": [],
     "name": "Kyle",
-    "id": "b2c5a0fa-e4bb-424f-83f9-11d72db6c439",
+    "id": "767a5600-3bf4-4ebe-a400-6abbdbd27686",
     "resumes": [
       {
         "skills": "skills",
@@ -76,8 +76,8 @@
             "endDate": "endDate",
             "jobTitle": "jobTitle",
             "companyName": "companyName",
-            "roll": null,
-            "jobDescription": "contactInfo",
+            "jobDescription": "jobDescription",
+            "jobType": "jobType",
             "startDate": "startDate"
           }
         ],
@@ -99,8 +99,8 @@
             "endDate": "endDate",
             "jobTitle": "jobTitle",
             "companyName": "companyName",
-            "roll": null,
-            "jobDescription": "contactInfo",
+            "jobDescription": "jobDescription",
+            "jobType": "jobType",
             "startDate": "startDate"
           }
         ],
