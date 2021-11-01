@@ -400,5 +400,5 @@ public class UI {
         rated.addRating(newRating);
     }
 
-
+    
 }
