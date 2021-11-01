@@ -50,23 +50,23 @@ public class Resume {
     }
 
     public void setSkills(String skills){
-
+        this.skills = skills;
     }
 
-    public void setReferences(){
-        
+    public void setReferences(String references){
+        this.references = references;
     }
 
-    public void setGpa(){
-
+    public void setGpa(double gpa){
+        this.gpa = gpa;
     }
 
-    public void addPastEmployment(){
-
+    public void addPastEmployment(Employment pe){
+        pastEmployment.add(pe);
     }
 
-    public void addEducation(){
-
+    public void addEducation(Education ed){
+        education.add(ed);
     }
 
 }

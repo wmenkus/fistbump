@@ -7,7 +7,8 @@ public class InternshipManager {
     private InternshipSortBehavior internSortBehavior;
 
     private InternshipManager() {
-
+        internships = new ArrayList<Internship>();
+        listManager = new InternshipManager();
     }
     public static InternshipManager getInstance() {
         return null;
