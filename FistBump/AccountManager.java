@@ -13,9 +13,23 @@ public class AccountManager{
 
     }
 
+    public Account search(String email) {
+        for(Account account : accounts) {
+            if(account.getEmail().equals(email)) {
+                return account;
+            }
+        }
+        return null;
+    }
+
     public static void getInstance(){
 
     }
+
+    public void addAccount(Account account) {
+        accounts.add(account);
+    }
+
     public void addRating(Account rater, Account rated, int rating){
 
     }

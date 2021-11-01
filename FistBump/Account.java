@@ -33,6 +33,18 @@ public abstract class Account {
         this.password = password;
     }
 
+    public String getName() {
+        return this.name;
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getPassword() {
+        return this.password;
+    }
+
     /**
      * Abstract method getPermissions is how the permission level of
      * each class is defined. Each class will return a different value for

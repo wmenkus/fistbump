@@ -12,6 +12,31 @@ public class Facade {
 
     }
 
+    public boolean verify(String email, String password) {
+        Account inspected = accountManager.search(email); //This should return null if the account DNE
+        if(inspected == null) {
+            return false;
+        }
+        else {
+            return inspected.getPassword().equals(password);
+        }
+    }
+
+    //TODO is checking for the account type here going to make debugging harder?
+    public void addResume(Resume resume) {
+        if(user.getPermissions() == 0) {
+            ((Student)user).addResume(resume);
+        }
+    }
+
+    public int getPermissions() {
+        return user.getPermissions();
+    }
+
+    public void addAccount(Account account) {
+        accountManager.addAccount(account);
+    }
+
     public void displayMenu(){
 
     }
@@ -71,10 +96,9 @@ public class Facade {
 
     }
 
-    //TODO temporary thing to see if a thing works and it does pog
     public void createInternship(Employer poster){
         if(user.getPermissions() == 1) {
-            Internship internship = new Internship((Employer)user); //fuck it, typecast
+            Internship internship = new Internship((Employer)user);
         }
     }
 

@@ -29,14 +29,6 @@ public class Resume {
         this.education = education;
     }
 
-    public Resume(double gpa){
-        skills = "";
-        references = "";
-        this.gpa = gpa;
-        pastEmployment = new ArrayList<Employment>();
-        education = new ArrayList<Education>();
-    }
-
     public String getSkills(){
         return this.skills;
     }
@@ -57,7 +49,7 @@ public class Resume {
         return this.education;
     }
 
-    public void setSkills(){
+    public void setSkills(String skills){
 
     }
 
