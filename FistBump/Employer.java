@@ -61,6 +61,10 @@ public class Employer extends Account{
         student.addRating(rating);
     }
 
+    public void addRating(Rating rating) {
+        ratings.add(rating);
+    }
+
     public double calcRating() {
         double result = 0;
         int total = 0;

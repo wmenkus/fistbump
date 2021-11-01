@@ -13,7 +13,7 @@ public class AccountManager{
 
     }
 
-    public Account search(String email) {
+    public Account searchByEmail(String email) {
         for(Account account : accounts) {
             if(account.getEmail().equals(email)) {
                 return account;
@@ -22,8 +22,17 @@ public class AccountManager{
         return null;
     }
 
-    public static void getInstance(){
+    public Account searchByName(String name) {
+        for(Account account : accounts) {
+            if(account.getName().equalsIgnoreCase(name)) {
+                return account;
+            }
+        }
+        return null;
+    }
 
+    public static AccountManager getInstance(){
+        return null; //TODO this is wrong
     }
 
     public void addAccount(Account account) {

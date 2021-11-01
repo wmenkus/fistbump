@@ -8,14 +8,19 @@ public class InternshipManager {
 
     private InternshipManager() {
         internships = new ArrayList<Internship>();
-        listManager = new InternshipManager();
+        listManager = new InternshipManager(); //TODO this may be wrong, does this create an infinite loop of creating InternshipManagers?
     }
     public static InternshipManager getInstance() {
-        return null;
+        return null; //TODO This is definitely wrong
     }
     public void displayInternships() {
 
     }
+
+    public ArrayList<Internship> getInternships() {
+        return this.internships;
+    }
+
     public void addInternship(Employer employer) {
 
     }

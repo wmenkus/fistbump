@@ -3,23 +3,35 @@
  */
 package FistBump;
 
+import java.util.ArrayList;
+
 public class Facade {
     private AccountManager accountManager;
     private InternshipManager internshipManager;
     private Account user;
+    private String internshipSortString;
+    private String studentSortString;
 
     public Facade(){
-
+        accountManager = AccountManager.getInstance();
+        internshipManager = InternshipManager.getInstance();
+        user = null;
+        internshipSortString = "pay";
+        studentSortString = "rating";
     }
 
     public boolean verify(String email, String password) {
-        Account inspected = accountManager.search(email); //This should return null if the account DNE
+        Account inspected = accountManager.searchByEmail(email); //This should return null if the account DNE
         if(inspected == null) {
             return false;
         }
         else {
             return inspected.getPassword().equals(password);
         }
+    }
+
+    public Account searchAccount(String name) {
+        return accountManager.searchByName(name);
     }
 
     //TODO is checking for the account type here going to make debugging harder?
@@ -29,8 +41,20 @@ public class Facade {
         }
     }
 
+    public Account getUser() {
+        return this.user;
+    }
+
     public int getPermissions() {
         return user.getPermissions();
+    }
+
+    public String getInternshipSortString() {
+        return internshipSortString;
+    }
+
+    public ArrayList<Internship> getInternships() {
+        return internshipManager.getInternships();
     }
 
     public void addAccount(Account account) {
@@ -54,13 +78,20 @@ public class Facade {
     }
 
     /**
+     * This is all wrong
+     * 
      * Changes the type of sort for internships or students based on the type
      * of account calling the method. For admins, gives them an option of which
      * one to change.
      * @param sortMode "GPA" "Length" "Rating" "Pay"
      */
-    public void changeSortMode(String sortMode){
+    public void changeInternshipSortMode(String sortMode){
+        //if sortMode == pay, internshipSortMode = paySort; internshipSortString = pay;
+        //TODO
+    }
 
+    public void changeStudentSortMode(String sortMode) {
+        //TODO
     }
 
     public Account createAccount(){
@@ -88,8 +119,8 @@ public class Facade {
 
     }
 
-    public void addRating(int accountId){
-
+    public void rate(Account rated, Rating rating){
+        
     }
 
     public void hideInternship(int internshipId){

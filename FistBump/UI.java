@@ -156,7 +156,7 @@ public class UI {
                 displayInternships();
             }
             else if(input.equals("3")) {
-                changeSortMode();
+                changeInternshipSortMode();
             }
             else if(input.equals("4")) {
                 applyToInternship();
@@ -303,4 +303,102 @@ public class UI {
         graduationDate = keyboard.nextLine();
         return new Education(institution, location, degree, graduationDate);
     }
+
+    public void displayInternships() {
+        System.out.println("-------- Internships --------");
+        ArrayList<Internship> internships = app.getInternships();
+        for(Internship internship : internships) {
+            System.out.println(internship.toString() + "\n");
+        }
+        boolean exit = false;
+        while(!exit) {
+            System.out.println("Would you like to apply to an internship? (Y/N): ");
+            input = keyboard.nextLine();
+            if(input.equalsIgnoreCase("y")) {
+                applyToInternship();
+                exit = true;
+            }
+            else if(input.equalsIgnoreCase("n")) {
+                exit = true;
+            }
+            else {
+                inputError();
+            }
+        }
+    }
+
+    public void changeInternshipSortMode() {
+        boolean exit = false;
+        while(!exit) {
+            System.out.println(
+                "-------- Change Sort Mode --------\n" +
+                "Your current sort mode is: " + app.getInternshipSortString() +
+                "1. Sort by pay\n" +
+                "2. Sort by length of employment\n" +
+                "3. Cancel"
+            );
+            input = keyboard.nextLine();
+            if(input.equals("1")) {
+                app.changeStudentSortMode("pay");
+                exit = true;
+            }
+            else if(input.equals("2")) {
+                app.changeStudentSortMode("length");
+                exit = true;
+            }
+            else if(input.equals("3")) {
+                exit = true;
+            }
+            else {
+                inputError();
+            }
+        }
+    }
+
+    public void applyToInternship() {
+        //TODO how will we apply to internship? by name? company? both? id? index?
+    }
+
+    public void displayInternship() {
+        //TODO how we select internships to display is dependent on how we apply
+    }
+
+    public void rateEmployer() {
+        System.out.println("-------- Rating an Employer --------");
+        int rating = 0;
+        Employer rated = null;
+
+        boolean exit = false;
+        while(!exit) {
+            System.out.println("Which employer are you rating? Enter Q to cancel.");
+            input = keyboard.nextLine();
+            if(input.equalsIgnoreCase("q")) {
+                return;
+            }
+            Account temp = app.searchAccount(input);
+            if(temp.getPermissions() == 1) {
+                rated = (Employer)temp;
+                exit = true;
+            }
+            else {
+                System.out.println("Could not find an employer with that name.");
+            }
+        }
+        while(!exit) {
+            System.out.println("How would you rate this employer on a scale of 1 to 5?");
+            rating = keyboard.nextInt();
+            keyboard.nextLine();
+            if(0 < rating && rating <= 5) {
+                exit = true;
+            }
+            else {
+                inputError();
+            }
+        }
+
+        Rating newRating = new Rating(rating, app.getUser(), rated);
+        rated.addRating(newRating);
+    }
+
+
 }
