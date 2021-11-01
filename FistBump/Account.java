@@ -45,6 +45,10 @@ public abstract class Account {
         return this.password;
     }
 
+    public UUID getId() {
+        return id;
+    }
+
     /**
      * Abstract method getPermissions is how the permission level of
      * each class is defined. Each class will return a different value for

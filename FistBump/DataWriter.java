@@ -62,13 +62,17 @@ public class DataWriter {
             JSONArray ratingArray = new JSONArray(); 
             ArrayList<Rating> ratings = employer.getRatings();
             for (Rating rating : ratings) {
-                HashMap<String, String> map2 = new HashMap<String, String>();
+                HashMap<String, Object> ratingMap = new HashMap<String, Object>();
 
-                map2.put("rating", rating.toString());
+                ratingMap.put("raterId", rating.getRater().getId().toString());
+                ratingMap.put("ratedId", rating.getRated().getId().toString());
+                ratingMap.put("rating", rating.getRating());
+                ratingMap.put("valid", rating.isValid());
+
                 JSONObject ratingObj = new JSONObject(map);
                 ratingArray.add(ratingObj);
             }
-            map.put("ratings", ratings);
+            map.put("ratings", ratingArray);
 
             JSONObject obj = new JSONObject(map);
             array.add(array.size(), obj);
@@ -92,27 +96,74 @@ public class DataWriter {
             map.put("email", student.email);
             map.put("password", student.password);
 
+
+
             JSONArray resumeArray = new JSONArray(); 
             ArrayList<Resume> resumes = student.getResumes();
-            for (Resume resume : resumes) {
-                HashMap<String, String> map2 = new HashMap<String, String>();
 
-                map2.put("resume", resume.toString());
-                JSONObject resumeObj = new JSONObject(map);
+            for (Resume resume : resumes) {
+                HashMap<String, Object> resumeMap = new HashMap<String, Object>();
+
+                resumeMap.put("skills", resume.getSkills());
+                resumeMap.put("gpa", resume.getGpa());
+                resumeMap.put("references", resume.getReferences());
+
+                JSONArray employmentArray = new JSONArray();
+                ArrayList<Employment> pastEmployment = resume.getPastEmployment();
+
+                for (Employment employment : pastEmployment) {
+                    HashMap<String, Object> employmentMap = new HashMap<String, Object>();
+
+                    employmentMap.put("jobTitle", employment.getJobTitle());
+                    employmentMap.put("companyName", employment.getCompanyName());
+                    employmentMap.put("roll", employment.getRoll());
+                    employmentMap.put("startDate", employment.getStartDate());
+                    employmentMap.put("endDate", employment.getEndDate());
+                    employmentMap.put("jobDescription", employment.getJobDescription());
+
+                    JSONObject employmentObj = new JSONObject(employmentMap);
+                    employmentArray.add(employmentObj);
+                }
+                resumeMap.put("pastEmployment", employmentArray);
+                
+                JSONArray educationArray = new JSONArray();
+                ArrayList<Education> educationList = resume.getEducation();
+
+                for (Education education : educationList) {
+                    HashMap<String, Object> educationMap = new HashMap<String, Object>();
+
+                    educationMap.put("institution", education.getInstitution());
+                    educationMap.put("location", education.getLocation());
+                    educationMap.put("degree", education.getDegree());
+                    educationMap.put("graduationDate", education.getGraduationDate());
+
+                    JSONObject educationObj = new JSONObject(educationMap);
+                    educationArray.add(educationObj);
+                }
+                resumeMap.put("education", educationArray);
+
+
+
+                JSONObject resumeObj = new JSONObject(resumeMap);
                 resumeArray.add(resumeObj);
             }
-            map.put("resumes", resumes);
+            map.put("resumes", resumeArray);
+
 
             JSONArray ratingArray = new JSONArray(); 
             ArrayList<Rating> ratings = student.getRatings();
             for (Rating rating : ratings) {
-                HashMap<String, String> map2 = new HashMap<String, String>();
+                HashMap<String, Object> ratingMap = new HashMap<String, Object>();
 
-                map2.put("rating", rating.toString());
+                ratingMap.put("raterId", rating.getRater().getId().toString());
+                ratingMap.put("ratedId", rating.getRated().getId().toString());
+                ratingMap.put("rating", rating.getRating());
+                ratingMap.put("valid", rating.isValid());
+
                 JSONObject ratingObj = new JSONObject(map);
                 ratingArray.add(ratingObj);
             }
-            map.put("ratings", ratings);
+            map.put("ratings", ratingArray);
 
             JSONObject obj = new JSONObject(map);
             array.add(array.size(), obj);
@@ -167,6 +218,10 @@ public class DataWriter {
             file.flush();
         }
         catch(IOException e){e.printStackTrace();}
+    }
+    
+    public static void saveResume(Resume resume) {
+        
     }
 
 

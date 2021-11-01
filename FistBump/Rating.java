@@ -34,8 +34,4 @@ public class Rating {
     public void setValid(boolean valid) {
         this.valid = valid;
     }
-    /**
-     * Last Updated: October 22, 2021
-     * By: Cameron Delk
-     */
 }

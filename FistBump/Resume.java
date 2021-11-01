@@ -8,8 +8,8 @@ import java.util.ArrayList;
 
 public class Resume {
     private String skills;
-    private String references;
     private double gpa;
+    private String references;
     private ArrayList<Employment> pastEmployment;
     private ArrayList<Education> education;
 

@@ -46,8 +46,4 @@ public class Education {
     public void setGraduationDate(String graduationDate) {
         this.graduationDate = graduationDate;
     }
-    /**
-     * Last Updated: October 22, 2021
-     * By: Cameron Delk
-     */
 }
