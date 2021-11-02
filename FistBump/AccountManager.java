@@ -17,24 +17,9 @@ public class AccountManager {
         students = DataLoader.loadStudents();
         employers = DataLoader.loadEmployers();
 
-        ArrayList<Internship> internships = InternshipManager.getInstance().getInternships();
-
-        for (Employer employer : employers) {
-            for (String internshipId : employer.getInternshipIds()) {
-                for (Internship internship : internships) {
-                    if (internshipId.equals(internship.getId().toString())) {
-                        employer.addInternship(internship);
-                        internship.setPoster(employer);
-                    }
-                }
-            }
-        }
-
         accounts.addAll(admins);
         accounts.addAll(students);
-        accounts.addAll(employers);
-
-        
+        accounts.addAll(employers); 
     }
     
 
@@ -82,6 +67,10 @@ public class AccountManager {
         DataWriter.saveAdmin(admins);
         DataWriter.saveEmployer(employers);
         DataWriter.saveStudent(students);
+    }
+
+    public ArrayList<Employer> getEmployers(){
+        return employers;
     }
 
 }

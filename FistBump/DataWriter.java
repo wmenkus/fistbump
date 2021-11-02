@@ -59,7 +59,7 @@ public class DataWriter {
                 JSONObject internshipObj = new JSONObject(internshipMap);
                 internshipArray.add(internshipObj);
             }
-            map.put("internships", internshipArray);
+            map.put("internshipIds", internshipArray);
 
             JSONArray ratingArray = new JSONArray();
             ArrayList<Rating> ratings = employer.getRatings();

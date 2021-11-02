@@ -70,10 +70,12 @@ public class DataLoader {
                 String bio = (String) employerObj.get("bio");
 
                 ArrayList<String> internshipIds = new ArrayList<String>();
-                JSONArray internshipList = new JSONArray();
+                JSONArray internshipList = (JSONArray) employerObj.get("internshipIds");
 
-                for (Object internshipIdObj : internshipList) {
-                    String internshipId = (String) internshipIdObj;
+                for (Object obj2 : internshipList) {
+                    JSONObject internshipIdObj = (JSONObject) obj2;
+                    String internshipId = internshipIdObj.get("internshipId").toString();
+                    System.out.println("DataLoader: "+internshipId);
                     internshipIds.add(internshipId);
                 }
 

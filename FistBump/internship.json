@@ -1,1 +1,18 @@
-[]
+[
+  {
+    "visibility": false,
+    "sortBehavior": null,
+    "applicants": [],
+    "available": false,
+    "description": null,
+    "pay": 0.0,
+    "posterId": "fbc3d2b7-ba57-467e-bd75-93ab3b1c5195",
+    "name": "Title",
+    "timePeriod": 0,
+    "onSite": true,
+    "company": null,
+    "id": "70229f90-b335-481e-832e-eb3c2b9c5f4c",
+    "skillRequirements": "",
+    "startDate": ""
+  }
+]

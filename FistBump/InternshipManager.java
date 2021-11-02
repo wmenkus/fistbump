@@ -7,7 +7,7 @@ public class InternshipManager {
     private InternshipSortBehavior internSortBehavior;
 
     private InternshipManager() {
-        internships = new ArrayList<Internship>();
+        internships = DataLoader.loadInternships();
         internSortBehavior = new PaySort();
     }
 
