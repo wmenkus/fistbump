@@ -42,4 +42,12 @@ public class Admin extends Account{
     public int getPermissions() {
         return 2;
     }
+
+    public String toString() {
+        return name + "\nIs an Admin";
+    }
+
+    public String details() {
+        return toString();
+    }
 }

@@ -9,6 +9,7 @@ import java.util.UUID;
 
 public class Internship {
     private ArrayList<Student> applicants;
+    private ArrayList<String> applicantIds;
     private Employer poster;
     private String company;
     private String name;
@@ -21,25 +22,29 @@ public class Internship {
     private StudentSortBehavior sortBehavior;
     protected UUID id;
     private String startDate;
-    private boolean visibility;
 
-    public Internship(Employer poster, String name, double pay, int timePeriod, String skillRequirements, boolean onSite, String startDate) {
+    public Internship(Employer poster, String name, double pay, String description, int timePeriod, String skillRequirements, boolean onSite, String startDate) {
         this.id = UUID.randomUUID();
         this.poster = poster;
+        this.company = poster.getName();
         this.name = name;
         this.pay = pay;
+        this.description = description;
         this.timePeriod = timePeriod;
         this.skillRequirements = skillRequirements;
         this.onSite = onSite;
         this.startDate = startDate;
+        this.available = true;
+        this.sortBehavior = new RatingSort();
         applicants = new ArrayList<Student>();
+        applicantIds = new ArrayList<String>();
     }
 
-    public Internship(ArrayList<Student> applicants, String company, String name, String description,
+    public Internship(ArrayList<String> applicantIds, String company, String name, String description,
             double pay, int timePeriod, String skillRequirements, boolean onSite, boolean available,
-            /*StudentSortBehavior sortBehavior, */UUID id, String startDate, boolean visibility) {
-        this.applicants = applicants;
-        this.poster = poster;
+            /*StudentSortBehavior sortBehavior, */UUID id, String startDate) {
+        this.applicantIds = applicantIds;
+        this.applicants = new ArrayList<Student>();
         this.company = company;
         this.name = name;
         this.description = description;
@@ -51,7 +56,6 @@ public class Internship {
         //this.sortBehavior = sortBehavior;
         this.id = id;
         this.startDate = startDate;
-        this.visibility = visibility;
     }
 
     public void sort() {
@@ -149,14 +153,6 @@ public class Internship {
 
     public void setStartDate(String startDate) {
         this.startDate = startDate;
-    }
-
-    public boolean isVisible() {
-        return this.visibility;
-    }
-
-    public void setVisibility(boolean visibility) {
-        this.visibility = visibility;
     }
 
     public ArrayList<Student> getApplicants() {

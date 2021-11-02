@@ -89,6 +89,10 @@ public class Facade {
         return internshipManager.getInternships();
     }
 
+    public ArrayList<Account> getAccounts() {
+        return accountManager.getAccounts();
+    }
+
     public ArrayList<Internship> getMyInternships() {
         return ((Employer)user).getInternships();
     }
@@ -97,8 +101,16 @@ public class Facade {
         accountManager.addAccount(account);
     }
 
-    public void addInternship(Employer employer, Internship internship){
-        internshipManager.addInternship(employer, internship);
+    public void removeAccount(Account account) {
+        accountManager.removeAccount(account);
+    }
+
+    public void addInternship(Internship internship){
+        internshipManager.addInternship((Employer)user, internship);
+    }
+
+    public void removeInternship(Internship internship) {
+        internshipManager.removeInternship((Employer)user, internship);
     }
 
     /**
