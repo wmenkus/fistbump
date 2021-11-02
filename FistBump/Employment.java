@@ -1,4 +1,5 @@
 /**
+ * The applicant's past employment experience.
  * @author Jaden Heinle
  */
 
@@ -12,6 +13,10 @@ public class Employment {
     private String endDate;
     private String jobDescription;
 
+    /**
+     * The default constructor for Employment.
+     * All variables set to empty Strings.
+     */
     public Employment() {
         jobTitle = "";
         companyName = "";
@@ -22,6 +27,9 @@ public class Employment {
         
     }
 
+    /**
+     * The parameterized constructor for Employment.
+     */
     public Employment(String jobTitle, String companyName, String jobType, String startDate, String endDate, String jobDescription) {
         this.jobTitle = jobTitle;
         this.companyName = companyName;
@@ -31,54 +39,93 @@ public class Employment {
         this.jobDescription = jobDescription;
     }
 
+    /**
+     * The accessor for jobTitle.
+     */
     public String getJobTitle() {
         return this.jobTitle;
     }
 
+    /**
+     * The mutator for jobTitle.
+     */
     public void setJobTitle(String jobTitle) {
         this.jobTitle = jobTitle;
     }
 
+    /**
+     * The accessor for companyName.
+     */
     public String getCompanyName() {
         return this.companyName;
     }
 
+    /**
+     * The mutator for companyName.
+     */
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
 
+    /**
+     * The accessor for startDate
+     */
     public String getStartDate() {
         return this.startDate;
     }
 
+    /**
+     * The mutator for startDate.
+     */
     public void setStartDate(String startDate) {
         this.startDate = startDate;
     }
 
+    /**
+     * The accessor for endDate.
+     */
     public String getEndDate() {
         return this.endDate;
     }
 
+    /**
+     * The mutator for endDate.
+     */
     public void setEndDate(String endDate) {
         this.endDate = endDate;
     }
 
+    /**
+     * The accossor for jobType.
+     */
     public String getJobType() {
         return jobType;
     }
 
+    /**
+     * The mutator for jobType.
+     */
     public void setJobType(String jobType) {
         this.jobType = jobType;
     }
 
+    /**
+     * The accessor for jobDescription.
+     */
     public String getJobDescription() {
         return jobDescription;
     }
 
+    /**
+     * The mutator for jobDescription.
+     */
     public void setJobDescription(String jobDescription) {
         this.jobDescription = jobDescription;
     }
     
+    /**
+     * The method that returns a String with each variable concatenated to it.
+     */
     public String toString() {
         return (
             jobTitle + "\n" +
