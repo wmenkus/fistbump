@@ -192,9 +192,11 @@ public class DataLoader {
                     String jobType = (String) employmentObj.get("jobType");
                     String startDate = (String) employmentObj.get("startDate");
                     String endDate = (String) employmentObj.get("endDate");
+
+                    ArrayList<String> descriptions = new ArrayList<String>();
                     String jobDescription = (String) employmentObj.get("jobDescription");
                     
-                    pastEmployment.add(new Employment(jobTitle, companyName, jobType, startDate, endDate, jobDescription));
+                    pastEmployment.add(new Employment(jobTitle, companyName, jobType, startDate, endDate, descriptions));
                 }
                 
                 ArrayList<Education> educations = new ArrayList<Education>();

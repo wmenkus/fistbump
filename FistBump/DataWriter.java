@@ -119,7 +119,13 @@ public class DataWriter {
                     employmentMap.put("jobType", employment.getJobType());
                     employmentMap.put("startDate", employment.getStartDate());
                     employmentMap.put("endDate", employment.getEndDate());
-                    employmentMap.put("jobDescription", employment.getJobDescription());
+
+                    ArrayList<String> descriptions = employment.getDescriptions();
+                    JSONArray descriptionList = new JSONArray();
+                    for (String description : descriptions){
+                        descriptionList.add(description);
+                    }
+                    map.put("descriptions", descriptionList);
 
                     JSONObject employmentObj = new JSONObject(employmentMap);
                     employmentArray.add(employmentObj);
@@ -173,6 +179,11 @@ public class DataWriter {
         }
     }
 
+    /**
+     *@param internships
+     *
+     *
+     */
     public static void saveInternship(ArrayList<Internship> internships) {
 
         JSONArray array = new JSONArray();
@@ -216,10 +227,10 @@ public class DataWriter {
     }
 
     /**
-    *@param resume
-    *Takes in a resume object and prints it to a text file named Resume.txt
-    *
-    */
+     *@param resume
+     *Takes in a resume object and prints it to a text file named Resume.txt
+     *
+     */
     public static void saveResume(Resume resume) {
 
         File file = new File("FistBump\\Resume.txt");
