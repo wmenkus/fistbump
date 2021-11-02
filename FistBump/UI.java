@@ -486,6 +486,7 @@ public class UI {
         String description = "";
         int timePeriod = 0;
         String skillRequirements = "";
+        String onSiteString = "N/A";
 
 
 
@@ -499,7 +500,7 @@ public class UI {
                 "Description: " + description + "\n" +
                 "Length (in months): " + timePeriod + "\n" +
                 "Skill Requirements: " + skillRequirements + "\n" +
-                ""
+                "On Site: " + onSiteString
                 
             );
 
