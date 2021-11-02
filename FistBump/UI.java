@@ -43,7 +43,7 @@ public class UI {
 
     public void loginScreen() {
         System.out.println (
-            "======== FistBump ========\n" + 
+            "\n======== FistBump ========\n" + 
             "1. Log In \n" +
             "2. Create an Account\n" +
             "3. Exit\n"
@@ -51,13 +51,13 @@ public class UI {
     }
 
     public void verify() {
-        System.out.println("-------- Log In --------");
+        System.out.println("\n-------- Log In --------");
         boolean exit = false;
         while(!exit)
         {
-            System.out.println("Please enter your email: \n");
+            System.out.println("Please enter your email: ");
             String email = keyboard.nextLine();
-            System.out.println("Please enter your password: \n");
+            System.out.println("Please enter your password: ");
             String password = keyboard.nextLine();
             if(app.login(email, password)) {
                 exit = true;
@@ -79,11 +79,10 @@ public class UI {
 
     public void createAccount() {
         String input;
-        int accountType = -1; //Sentinel value
         boolean exit = false;
         while(!exit) {
             System.out.println(
-                "-------- Creating an Account --------\n" +
+                "\n-------- Creating an Account --------\n" +
                 "What kind of account are you creating?\n" +
                 "1. Student\n" +
                 "2. Employer\n" +
@@ -105,40 +104,6 @@ public class UI {
                 inputError();
             }
         }
-
-        String name = "";
-        String email = "";
-        String password = "";
-        System.out.println("Please enter your name: ");
-        name = keyboard.nextLine();
-        System.out.println("Please enter your email: ");
-        email = keyboard.nextLine();
-        boolean match = false;
-        while(!match) {
-            System.out.println("Please enter your password: ");
-            password = keyboard.nextLine();
-            System.out.println("Please confirm your password: ");
-            if(password.equals(keyboard.nextLine())) {
-                match = true;
-            }
-            else {
-                System.out.println("Password mismatch.");
-            }
-        }
-        if(accountType == 0) {
-            System.out.println("Please enter your phone number: ");
-            String phoneNumber = keyboard.nextLine();
-            Student student = new Student(name, email, password, phoneNumber);
-            app.addAccount(student);
-            app.login(email, password);
-            studentMenu();
-        }
-        else if(accountType == 1) {
-            Employer employer = new Employer(name, email, password);
-            app.addAccount(employer);
-            app.login(email, password);
-            employerMenu();
-        }
     }
 
     public void createStudentAccount() {
@@ -146,6 +111,7 @@ public class UI {
         String email = "";
         String phoneNumber = "";
         String password = "";
+        System.out.println("\n-------- Creating Student Account --------");
         System.out.println("Please enter your name: ");
         name = keyboard.nextLine();
         System.out.println("Please enter your email: ");
@@ -174,9 +140,10 @@ public class UI {
         String name = "";
         String email = "";
         String password = "";
-        System.out.println("Please enter your name: ");
+        System.out.println("\n-------- Creating Employer Account --------");
+        System.out.println("Please enter the name of your company: ");
         name = keyboard.nextLine();
-        System.out.println("Please enter your email: ");
+        System.out.println("Please enter your company email: ");
         email = keyboard.nextLine();
         boolean match = false;
         while(!match) {
@@ -201,7 +168,7 @@ public class UI {
         boolean exit = false;
         while (!exit) {
             System.out.println (
-                "======== Main Menu =========\n" +
+                "\n======== Main Menu =========\n" +
                 "1. Create Resume\n" +
                 "2. Display all Internships\n" +
                 "3. Change Sort Mode\n" +
@@ -251,15 +218,14 @@ public class UI {
         boolean exit = false;
         while (!exit) {
             System.out.println(
-                "-------- Create a Resume --------\n" +
+                "\n-------- Create a Resume --------\n" +
                 "GPA: " + gpa + "\n" +
                 "Skills: " + skills + "\n" +
                 "Past Employment: " + employmentString + "\n" +
-                "Education: " + educationString + "\n" +
-                "\n"
+                "Education: " + educationString
             );
             System.out.println(
-                "1. Enter GPA\n" +
+                "\n1. Enter GPA\n" +
                 "2. Add a Skill\n" +
                 "3. Add an Employment\n" +
                 "4. Add an Education\n" +
@@ -300,7 +266,7 @@ public class UI {
 
     private double enterGPA() {
         System.out.println(
-            "-------- Entering your GPA --------\n" +
+            "\n-------- Entering your GPA --------\n" +
             "Please enter your GPA: "
         );
         double result = keyboard.nextDouble();
@@ -310,7 +276,7 @@ public class UI {
 
     private String addSkill() {
         System.out.println(
-            "-------- Entering your Skills --------\n" +
+            "\n-------- Entering your Skills --------\n" +
             "Please enter a skill: "
         );
         return keyboard.nextLine();
@@ -323,7 +289,7 @@ public class UI {
         String startDate;
         String endDate;
         String jobDescription;
-        System.out.println("-------- Past Employment --------");
+        System.out.println("\n-------- Past Employment --------");
         System.out.println("Please enter your job title: ");
         jobTitle = keyboard.nextLine();
         System.out.println("Enter the company name: ");
@@ -343,7 +309,7 @@ public class UI {
         String institution;
         String degree;
         String graduationDate;
-        System.out.println("-------- Education --------");
+        System.out.println("\n-------- Education --------");
         System.out.println("Please enter the name of the institution: ");
         institution = keyboard.nextLine();
         System.out.println("Enter the name of your degree: ");
@@ -354,14 +320,14 @@ public class UI {
     }
 
     public void keywordSearch() {
-        System.out.println("-------- Keyword Search --------");
+        System.out.println("\n-------- Keyword Search --------");
         System.out.println("Please enter the keyword you would like to search for: ");
         displayInternships(keyboard.nextLine());
     }
 
     public void displayInternships(String keyword) {
         String input;
-        System.out.println("-------- Internships --------");
+        System.out.println("\n-------- Internships --------");
         app.sortInternships();
         ArrayList<Internship> internshipsAll = app.getInternships();
         ArrayList<Internship> internshipsShown = new ArrayList<Internship>();
@@ -378,7 +344,7 @@ public class UI {
         }
         boolean exit = false;
         while(!exit) {
-            System.out.println("Would you like to view internship details? (Y/N): ");
+            System.out.println("\nWould you like to view internship details? (Y/N): ");
             input = keyboard.nextLine();
             if(input.equalsIgnoreCase("y")) {
                 displayInternshipDetails(internshipsShown);
@@ -398,7 +364,7 @@ public class UI {
         boolean exit = false;
         while(!exit) {
             System.out.println(
-                "-------- Change Sort Mode --------\n" +
+                "\n-------- Change Sort Mode --------\n" +
                 "Your current sort mode is: " + app.getInternshipSortString() +
                 "1. Sort by pay\n" +
                 "2. Sort by length of employment\n" +
@@ -440,13 +406,13 @@ public class UI {
     public void applyToInternship(Internship internship) {
         String input;
         System.out.println(
-            "-------- Details --------\n" +
+            "\n-------- Details --------\n" +
             internship.details()
         );
 
         boolean exit = false;
         while(!exit) {
-            System.out.println("Would you like to apply to this internship? (Y/N): ");
+            System.out.println("\nWould you like to apply to this internship? (Y/N): ");
             input = keyboard.nextLine();
             if(input.equalsIgnoreCase("Y")) {
                 ((Student)app.getUser()).apply(internship);
@@ -463,7 +429,7 @@ public class UI {
 
     public void rateEmployer() {
         String input;
-        System.out.println("-------- Rating an Employer --------");
+        System.out.println("\n-------- Rating an Employer --------");
         int rating = 0;
         Employer rated = null;
 
@@ -474,7 +440,7 @@ public class UI {
             if(input.equalsIgnoreCase("q")) {
                 return;
             }
-            Account temp = app.searchAccount(input);
+            Account temp = app.searchAccount(input); //TODO this threw a null pointer i think
             if(temp.getPermissions() == 1) {
                 rated = (Employer)temp;
                 exit = true;
@@ -504,7 +470,7 @@ public class UI {
         boolean exit = false;
         while (!exit) {
             System.out.println(
-            "======== Main Menu ========\n" +
+            "\n======== Main Menu ========\n" +
             "1. Display Applicants\n" +
             "2. Change Sort Mode\n" +
             "3. Post Internship\n" +
@@ -535,7 +501,7 @@ public class UI {
 
     public void rateStudent() {
         String input;
-        System.out.println("-------- Rating a Student --------");
+        System.out.println("\n-------- Rating a Student --------");
         int rating = 0;
         Student rated = null;
 
@@ -546,7 +512,7 @@ public class UI {
             if(input.equalsIgnoreCase("q")) {
                 return;
             }
-            Account temp = app.searchAccount(input);
+            Account temp = app.searchAccount(input); //TODO this also threw one
             if(temp.getPermissions() == 0) {
                 rated = (Student)temp;
                 exit = true;

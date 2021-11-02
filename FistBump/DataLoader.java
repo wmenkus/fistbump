@@ -334,7 +334,7 @@ public class DataLoader {
             JSONObject internshipObj = (JSONObject) obj;
 
             ArrayList<String> applicantIds = new ArrayList<String>();
-            JSONArray applicantArray = internshipObj.get("applicantIds")
+            JSONArray applicantArray = (JSONArray) internshipObj.get("applicantIds");
 
 
             for (Object applicantObj : applicantArray) {
@@ -351,13 +351,11 @@ public class DataLoader {
             String skillRequirements = (String) internshipObj.get("skillRequirements");
             boolean onSite = (boolean) internshipObj.get("onSite");
             boolean available = (boolean) internshipObj.get("available");
-            //StudentSortBehavior sortBehavior = (StudentSortBehavior) internshipObj.get("sortBehavior"); //TODO Do we need this?
             UUID id;
             id = UUID.fromString((String) internshipObj.get("id"));
             String startDate = (String) internshipObj.get("startDate");
-            boolean visibility = (boolean) internshipObj.get("visibility");
 
-            Internship internship = new Internship(applicantIds, company, name, description, pay, timePeriod, skillRequirements, onSite, available/*, sortBehavior*/, id, startDate, visibility);
+            Internship internship = new Internship(applicantIds, company, name, description, pay, timePeriod, skillRequirements, onSite, available, id, startDate);
 
             internships.add(internship);
         }

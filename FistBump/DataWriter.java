@@ -191,7 +191,6 @@ public class DataWriter {
             map.put("onSite", internship.isOnSite());
             map.put("available", internship.isAvailable());
             map.put("startDate", internship.getStartDate());
-            map.put("visibility", internship.isVisible());
             map.put("sortBehavior", internship.getSortBehavior());
 
             JSONArray ratingArray = new JSONArray();
