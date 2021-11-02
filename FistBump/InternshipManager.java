@@ -23,6 +23,7 @@ public class InternshipManager {
     }
 
     public void addInternship(Employer employer, Internship internship) {
+        internships.add(internship);
         employer.addInternship(internship);
     }
 

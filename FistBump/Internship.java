@@ -24,6 +24,7 @@ public class Internship {
     private boolean visibility;
 
     public Internship(Employer poster, String name, double pay, int timePeriod, String skillRequirements, boolean onSite, String startDate) {
+        this.id = UUID.randomUUID();
         this.poster = poster;
         this.name = name;
         this.pay = pay;
@@ -34,9 +35,9 @@ public class Internship {
         applicants = new ArrayList<Student>();
     }
 
-    public Internship(ArrayList<Student> applicants, Employer poster, String company, String name, String description,
+    public Internship(ArrayList<Student> applicants, String company, String name, String description,
             double pay, int timePeriod, String skillRequirements, boolean onSite, boolean available,
-            StudentSortBehavior sortBehavior, UUID id, String startDate, boolean visibility) {
+            /*StudentSortBehavior sortBehavior, */UUID id, String startDate, boolean visibility) {
         this.applicants = applicants;
         this.poster = poster;
         this.company = company;
@@ -47,7 +48,7 @@ public class Internship {
         this.skillRequirements = skillRequirements;
         this.onSite = onSite;
         this.available = available;
-        this.sortBehavior = sortBehavior;
+        //this.sortBehavior = sortBehavior;
         this.id = id;
         this.startDate = startDate;
         this.visibility = visibility;
