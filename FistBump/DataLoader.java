@@ -65,7 +65,6 @@ public class DataLoader {
                 String email = (String) employerObj.get("email");
                 UUID id = (UUID) employerObj.get("id");
                 String password = (String) employerObj.get("password");
-                String company = (String) employerObj.get("company");
                 String bio = (String) employerObj.get("bio");
 
                 ArrayList<Internship> allInternships = loadInternships();
@@ -82,7 +81,7 @@ public class DataLoader {
 
                 ArrayList<Rating> ratings = (ArrayList<Rating>) employerObj.get("ratings");  //TODO fix
 
-                Employer employer = new Employer(id, name, email, password, company, bio, internships, ratings);
+                Employer employer = new Employer(id, name, email, password, bio, internships, ratings);
 
                 employers.add(employer);
             }
@@ -115,7 +114,7 @@ public class DataLoader {
             String password = (String) studentObj.get("password");
 
             ArrayList<Resume> resumes = (ArrayList<Resume>) studentObj.get("resumes"); //TODO fix
-            
+
             ArrayList<Rating> ratings = (ArrayList<Rating>) studentObj.get("ratings"); //TODO fix
 
             Student student = new Student(id, name, email, password, resumes, ratings);

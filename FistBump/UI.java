@@ -213,9 +213,6 @@ public class UI {
             else if(input.equals("2")) {
                 skills += addSkill() + " ";
             }
-            else if(input.equals("3")) {
-                references += addReference() + " ";
-            }
             else if(input.equals("4")) {
                 Employment fresh = addEmployment();
                 pastEmployment.add(fresh);
@@ -230,7 +227,7 @@ public class UI {
                 exit = true;
             }
             else if(input.equals("7")) {
-                Resume resume = new Resume(skills, references, gpa, pastEmployment, education);
+                Resume resume = new Resume(skills, gpa, pastEmployment, education);
                 app.addResume(resume);
                 exit = true;
             }
