@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Employer extends Account{
-    private String company;
     private String bio;
     private ArrayList<Internship> internships;
     private ArrayList<Rating> ratings;
@@ -47,14 +46,6 @@ public class Employer extends Account{
 
     public void setBio(String bio) {
         this.bio = bio;
-    }
-
-    public String getCompany() {
-        return company;
-    }
-
-    public void setCompany(String company) {
-        this.company = company;
     }
 
     public void rate(Student student, Rating rating) {

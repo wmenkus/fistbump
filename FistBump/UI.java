@@ -162,7 +162,7 @@ public class UI {
                 applyToInternship();
             }
             else if(input.equals("5")) {
-                displayInternship();
+                displayInternshipDetails();
             }
             else if(input.equals("6")) {
                 rateEmployer();
@@ -321,6 +321,7 @@ public class UI {
         }
     }
 
+    //TODO this needs to be able to search by keyword
     public void changeInternshipSortMode() {
         boolean exit = false;
         while(!exit) {
@@ -333,11 +334,11 @@ public class UI {
             );
             input = keyboard.nextLine();
             if(input.equals("1")) {
-                app.changeStudentSortMode("pay");
+                app.changeInternshipSortMode("pay");
                 exit = true;
             }
             else if(input.equals("2")) {
-                app.changeStudentSortMode("length");
+                app.changeInternshipSortMode("length");
                 exit = true;
             }
             else if(input.equals("3")) {
@@ -353,7 +354,7 @@ public class UI {
         //TODO how will we apply to internship? by name? company? both? id? index?
     }
 
-    public void displayInternship() {
+    public void displayInternshipDetails() {
         //TODO how we select internships to display is dependent on how we apply
     }
 
@@ -392,6 +393,111 @@ public class UI {
 
         Rating newRating = new Rating(rating, app.getUser(), rated);
         rated.addRating(newRating);
+    }
+
+    public void employerMenu() {
+        System.out.println(
+            "======== Main Menu ========\n" +
+            "1. Display Applicants\n" +
+            "2. Display Applicant Details\n" +
+            "3. Change Sort Mode\n" +
+            "4. Post Internship\n" +
+            "5. Rate Student\n" +
+            "6. Log Out\n"
+        );
+        boolean exit = false;
+        while(!exit) {
+            input = keyboard.nextLine();
+            if(input.equals("1")) {
+                displayApplicants();
+            }
+            else if(input.equals("2")) {
+                displayApplicantDetails();
+            }
+            else if(input.equals("3")) {
+                changeStudentSortMode();
+            }
+            else if(input.equals("4")) {
+                postInternship();
+            }
+            else if(input.equals("5")) {
+                exit = true;
+            }
+            else {
+                inputError();
+            }
+        }
+    }
+
+    public void displayApplicants() {
+        System.out.println("-------- Applicants --------");
+        ArrayList<Internship> myInternships = app.getMyInternships();
+        ArrayList<Student> applicants;
+        for(Internship internship : myInternships) {
+            System.out.println("For internship \"" + internship.getName() + "\":\n");
+            applicants = internship.getApplicants();
+            for(Student applicant : applicants) {
+                System.out.println(applicant.toString());
+            }
+        }
+    }
+
+    public void displayApplicantDetails() {
+        //TODO
+    }
+
+    public void changeStudentSortMode() {
+        boolean exit = false;
+        while(!exit) {
+            System.out.println(
+                "-------- Change Sort Mode --------\n" +
+                "Your current sort mode is: " + app.getStudentSortString() +
+                "1. Sort by rating\n" +
+                "2. Sort by GPA\n" +
+                "3. Cancel"
+            );
+            input = keyboard.nextLine();
+            if(input.equals("1")) {
+                app.changeStudentSortMode("pay");
+                exit = true;
+            }
+            else if(input.equals("2")) {
+                app.changeStudentSortMode("length");
+                exit = true;
+            }
+            else if(input.equals("3")) {
+                exit = true;
+            }
+            else {
+                inputError();
+            }
+        }
+    }
+
+    public void postInternship() {
+        String name = "";
+        double pay = 0;
+        String description = "";
+        int timePeriod = 0;
+        String skillRequirements = "";
+
+
+
+        boolean exit = false;
+
+        while(!exit) {
+            System.out.println(
+                "-------- Post an Internship --------\n" +
+                "Job Title: " + name + "\n" +
+                "Pay: " + pay + "\n" +
+                "Description: " + description + "\n" +
+                "Length (in months): " + timePeriod + "\n" +
+                "Skill Requirements: " + skillRequirements + "\n" +
+                ""
+                
+            );
+
+        }
     }
 
     
