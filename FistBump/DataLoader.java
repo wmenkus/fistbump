@@ -341,6 +341,17 @@ public class DataLoader {
                 String applicantId = (String) applicantObj;
                 applicantIds.add(applicantId);
             }
+            /**
+             * ArrayList<String> internshipIds = new ArrayList<String>();
+                JSONArray internshipList = (JSONArray) employerObj.get("internshipIds");
+
+                for (Object obj2 : internshipList) {
+                    JSONObject internshipIdObj = (JSONObject) obj2;
+                    String internshipId = internshipIdObj.get("internshipId").toString();
+                    System.out.println("DataLoader: "+internshipId);
+                    internshipIds.add(internshipId);
+                }
+             */
             
             //Employer poster = (Employer) internshipObj.get("poster");
             String company = (String) internshipObj.get("company");
@@ -355,7 +366,7 @@ public class DataLoader {
             id = UUID.fromString((String) internshipObj.get("id"));
             String startDate = (String) internshipObj.get("startDate");
 
-            Internship internship = new Internship(applicantIds, company, name, description, pay, timePeriod, skillRequirements, onSite, available, id, startDate);
+            Internship internship = new Internship(applicantIds, company, name, description, pay, timePeriod, skillRequirements, onSite, available/*, sortBehavior*/, id, startDate);
 
             internships.add(internship);
         }
