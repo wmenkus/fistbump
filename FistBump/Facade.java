@@ -20,6 +20,16 @@ public class Facade {
         studentSortString = "rating";
     }
 
+    public boolean login(String email, String password) {
+        if(verify(email, password)) {
+            this.user = accountManager.searchByEmail(email);
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+
     public boolean verify(String email, String password) {
         Account inspected = accountManager.searchByEmail(email); //This should return null if the account DNE
         if(inspected == null) {
@@ -79,7 +89,7 @@ public class Facade {
      */
     public void changeInternshipSortMode(String sortMode){
         //if sortMode == pay, internshipSortMode = paySort; internshipSortString = pay;
-        //TODO
+        internshipManager.setSortBehavior(sortMode);
     }
 
     public void changeStudentSortMode(String sortMode) {
@@ -92,11 +102,5 @@ public class Facade {
 
     public Account createAccount(){
         return null;
-    }
-
-    public void createInternship(Employer poster){
-        if(user.getPermissions() == 1) {
-            Internship internship = new Internship((Employer)user);
-        }
     }
 }

@@ -80,7 +80,7 @@ public class DataLoader {
                 }
 
                 ArrayList<Rating> ratings = new ArrayList<Rating>();
-                ArrayList<Student> allStudents = loadStudents();
+                ArrayList<Student> allStudents = loadStudentsNoRatings();
                 JSONArray ratingList = (JSONArray) employerObj.get("ratings");
 
                 for (Object rating : ratingList) {
@@ -111,6 +111,50 @@ public class DataLoader {
         return employers;
     }
     
+    public static ArrayList<Employer> loadEmployersNoRatings() {
+
+        ArrayList<Employer> employers = new ArrayList<Employer>();
+
+        JSONParser parser = new JSONParser();
+
+        try {
+
+            JSONArray array = (JSONArray) parser.parse(new FileReader("FistBump\\Employer.json"));
+
+            for (Object obj : array) {
+                JSONObject employerObj = (JSONObject) obj;
+
+                String name = (String) employerObj.get("name");
+                String email = (String) employerObj.get("email");
+                UUID id = (UUID) employerObj.get("id");
+                String password = (String) employerObj.get("password");
+                String bio = (String) employerObj.get("bio");
+
+                ArrayList<Internship> allInternships = loadInternships();
+                ArrayList<Internship> internships = new ArrayList<Internship>();
+                ArrayList<String> internshipIds = (ArrayList<String>) employerObj.get("internships");
+                
+                for (String internshipId : internshipIds) {
+                    for (Internship internship : allInternships) {
+                        if (internshipId.equals(internship.id.toString())) {
+                            internships.add(internship);
+                        }
+                    }
+                }
+
+                Employer employer = new Employer(id, name, email, password, bio, internships);
+
+                employers.add(employer);
+            }
+        } 
+        catch (FileNotFoundException e) {e.printStackTrace();}
+        catch (IOException e) {e.printStackTrace();}
+        catch (ParseException e) {e.printStackTrace();}
+        catch (Exception e) {e.printStackTrace();}
+
+        return employers;
+    }
+    
     public static ArrayList<Student> loadStudents() {
 
         ArrayList<Student> students = new ArrayList<Student>();
@@ -129,6 +173,7 @@ public class DataLoader {
             String name = (String) studentObj.get("name");
             String email = (String) studentObj.get("email");
             String password = (String) studentObj.get("password");
+            String phoneNumber = (String) studentObj.get("phoneNumber");
 
             ArrayList<Resume> resumes = new ArrayList<Resume>();
             JSONArray resumeList = (JSONArray) studentObj.get("resumes");
@@ -173,7 +218,7 @@ public class DataLoader {
 
 
             ArrayList<Rating> ratings = new ArrayList<Rating>();
-            ArrayList<Employer> allEmployers = loadEmployers();
+            ArrayList<Employer> allEmployers = loadEmployersNoRatings();
             JSONArray ratingList = (JSONArray) studentObj.get("ratings");
 
             for (Object rating : ratingList) {
@@ -191,7 +236,81 @@ public class DataLoader {
                 ratings.add(new Rating(ratingNum, rater, valid));
             }
 
-            Student student = new Student(id, name, email, password, resumes, ratings);
+            Student student = new Student(id, name, email, password, resumes, ratings, phoneNumber);
+
+            students.add(student);
+        }
+    }
+    catch (FileNotFoundException e) {e.printStackTrace();}
+    catch (IOException e) {e.printStackTrace();}
+    catch (ParseException e) {e.printStackTrace();}
+    catch (Exception e) {e.printStackTrace();}
+    
+    return students;
+    }
+    
+    public static ArrayList<Student> loadStudentsNoRatings() {
+
+        ArrayList<Student> students = new ArrayList<Student>();
+
+        JSONParser parser = new JSONParser();
+    
+    try{
+
+        JSONArray array = (JSONArray) parser.parse(new FileReader("FistBump\\Student.json"));
+
+        for (Object obj : array)
+        {
+            JSONObject studentObj = (JSONObject) obj;
+            
+            UUID id = (UUID) studentObj.get("id");
+            String name = (String) studentObj.get("name");
+            String email = (String) studentObj.get("email");
+            String password = (String) studentObj.get("password");
+            String phoneNumber = (String) studentObj.get("phoneNumber");
+
+            ArrayList<Resume> resumes = new ArrayList<Resume>();
+            JSONArray resumeList = (JSONArray) studentObj.get("resumes");
+
+            for (Object resume : resumeList) {
+                JSONObject resumeObj = (JSONObject) resume;
+
+                String skills = (String) resumeObj.get("skills");
+                double gpa = (double) resumeObj.get("gpa");
+
+                ArrayList<Employment> pastEmployment = new ArrayList<Employment>();
+                JSONArray employmentList = (JSONArray) resumeObj.get("employment");
+
+                for (Object employment : employmentList) {
+                    JSONObject employmentObj = (JSONObject) employment;
+
+                    String jobTitle = (String) employmentObj.get("jobTitle");
+                    String companyName = (String) employmentObj.get("companyName");
+                    String jobType = (String) employmentObj.get("jobType");
+                    String startDate = (String) employmentObj.get("startDate");
+                    String endDate = (String) employmentObj.get("endDate");
+                    String jobDescription = (String) employmentObj.get("jobDescription");
+                    
+                    pastEmployment.add(new Employment(jobTitle, companyName, jobType, startDate, endDate, jobDescription));
+                }
+                
+                ArrayList<Education> educations = new ArrayList<Education>();
+                JSONArray educationList = (JSONArray) resumeObj.get("education");
+
+                for (Object education : educationList) {
+                    JSONObject educationObj = (JSONObject) education;
+
+                    String institution = (String) educationObj.get("institution");
+                    String location = (String) educationObj.get("location");
+                    String degree = (String) educationObj.get("degree");
+                    String graduationDate = (String) educationObj.get("graduationDate");
+
+                    educations.add(new Education(institution, location, degree, graduationDate));
+                }
+                resumes.add(new Resume(skills, gpa, pastEmployment, educations));
+            }
+
+            Student student = new Student(id, name, email, password, resumes, phoneNumber);
 
             students.add(student);
         }

@@ -10,7 +10,6 @@ public class Employment {
     private String jobType; 
     private String startDate;
     private String endDate;
-    //private String contactInfo; //TODO This may not be needed
     private String jobDescription;
 
     public Employment() {
@@ -30,7 +29,6 @@ public class Employment {
         this.jobType = jobType;
         this.startDate = startDate;
         this.endDate = endDate;
-        //this.contactInfo = contactInfo;
         this.jobDescription = jobDescription;
     }
 
@@ -70,14 +68,16 @@ public class Employment {
         return jobType;
     }
 
+    public void setJobType(String jobType) {
+        this.jobType = jobType;
+    }
+
     public String getJobDescription() {
         return jobDescription;
     }
-    /*public String getContactInfo() {
-        return this.contactInfo;
+
+    public void setJobDescription(String jobDescription) {
+        this.jobDescription = jobDescription;
     }
-    public void setContactInfo(String contactInfo) {
-        this.contactInfo = contactInfo;
-    }
-    */
+    
 }

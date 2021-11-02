@@ -8,11 +8,9 @@ import java.util.ArrayList;
 import java.util.UUID;
 
 public class Student extends Account {
-    private double rating;
     private ArrayList<Resume> resumes;
-    private int ratingTotal;
-
     private ArrayList<Rating> ratings;
+    private String phoneNumber;
 
     /**
      * Parameterized constructor for Student. Passes name, email,
@@ -22,18 +20,24 @@ public class Student extends Account {
      * @param email The student's email
      * @param password The student's password
      */
-    
-    public Student(String name, String email, String password) {
+    public Student(String name, String email, String password, String phoneNumber) {
         super(name, email, password);
+        this.phoneNumber = phoneNumber;
         this.resumes = new ArrayList<Resume>();
         this.ratings = new ArrayList<Rating>();
     }
 
-    public Student(UUID id, String name, String email, String password, ArrayList<Resume> resumes,
-            ArrayList<Rating> ratings) {
+    public Student(UUID id, String name, String email, String password, ArrayList<Resume> resumes, ArrayList<Rating> ratings, String phoneNumber) {
         super(id, name, email, password);
+        this.phoneNumber = phoneNumber;
         this.resumes = resumes;
         this.ratings = ratings;
+    }
+
+    public Student(UUID id, String name, String email, String password, ArrayList<Resume> resumes, String phoneNumber) {
+        super(id, name, email, password);
+        this.phoneNumber = phoneNumber;
+        this.resumes = resumes;
     }
     
     /**
@@ -105,5 +109,9 @@ public class Student extends Account {
      */
     public void apply(Internship internship) {
         internship.addStudent(this);
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 }

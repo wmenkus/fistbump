@@ -51,16 +51,19 @@ public class UI {
     }
 
     public void verify() {
+        System.out.println("-------- Log In --------");
         boolean exit = false;
         while(!exit)
         {
-            System.out.println("Please enter your username: \n");
-            String username = keyboard.nextLine();
+            System.out.println("Please enter your email: \n");
+            String email = keyboard.nextLine();
             System.out.println("Please enter your password: \n");
             String password = keyboard.nextLine();
-            if(app.verify(username, password)) {
-                app.login(username, password);
+            if(app.login(email, password)) {
                 exit = true;
+            }
+            else {
+                System.out.println("Invalid credentials.");
             }
         }
         if(app.getPermissions() == 0) {
@@ -122,7 +125,9 @@ public class UI {
             }
         }
         if(accountType == 0) {
-            Student student = new Student(name, email, password);
+            System.out.println("Please enter your phone number: ");
+            String phoneNumber = keyboard.nextLine();
+            Student student = new Student(name, email, password, phoneNumber);
             app.addAccount(student);
             app.login(email, password);
             studentMenu();
@@ -450,7 +455,7 @@ public class UI {
                 postInternship();
             }
             else if(input.equals("4")) {
-                rateStudent(); //TODO
+                rateStudent();
             }
             else if(input.equals("5")) {
                 exit = true;
@@ -459,6 +464,43 @@ public class UI {
                 inputError();
             }
         }
+    }
+
+    public void rateStudent() {
+        System.out.println("-------- Rating a Student --------");
+        int rating = 0;
+        Student rated = null;
+
+        boolean exit = false;
+        while(!exit) {
+            System.out.println("Which student are you rating? Enter Q to cancel.");
+            input = keyboard.nextLine();
+            if(input.equalsIgnoreCase("q")) {
+                return;
+            }
+            Account temp = app.searchAccount(input);
+            if(temp.getPermissions() == 0) {
+                rated = (Student)temp;
+                exit = true;
+            }
+            else {
+                System.out.println("Could not find a student with that name.");
+            }
+        }
+        while(!exit) {
+            System.out.println("How would you rate this student on a scale of 1 to 5?");
+            rating = keyboard.nextInt();
+            keyboard.nextLine();
+            if(0 < rating && rating <= 5) {
+                exit = true;
+            }
+            else {
+                inputError();
+            }
+        }
+
+        Rating newRating = new Rating(rating, app.getUser());
+        rated.addRating(newRating);
     }
 
     public void displayApplicants() {

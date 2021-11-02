@@ -12,9 +12,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 
 public class DataWriter {
-    
+
     public static void saveAdmin(ArrayList<Admin> admins) {
-        
+
         JSONArray array = new JSONArray();
 
         for (Admin admin : admins) {
@@ -28,11 +28,12 @@ public class DataWriter {
             array.add(array.size(), obj);
         }
 
-        try(FileWriter file = new FileWriter("FistBump\\Admin.json")){
+        try (FileWriter file = new FileWriter("FistBump\\Admin.json")) {
             file.write(array.toJSONString());
             file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        catch(IOException e){e.printStackTrace();}
     }
 
     public static void saveEmployer(ArrayList<Employer> employers) {
@@ -47,7 +48,7 @@ public class DataWriter {
             map.put("password", employer.password);
             map.put("bio", employer.getBio());
 
-            JSONArray internshipArray = new JSONArray(); 
+            JSONArray internshipArray = new JSONArray();
             ArrayList<Internship> internships = employer.getInternships();
             for (Internship internship : internships) {
                 HashMap<String, String> internshipMap = new HashMap<String, String>();
@@ -59,7 +60,7 @@ public class DataWriter {
             }
             map.put("internships", internshipArray);
 
-            JSONArray ratingArray = new JSONArray(); 
+            JSONArray ratingArray = new JSONArray();
             ArrayList<Rating> ratings = employer.getRatings();
             for (Rating rating : ratings) {
                 HashMap<String, Object> ratingMap = new HashMap<String, Object>();
@@ -80,12 +81,13 @@ public class DataWriter {
         try (FileWriter file = new FileWriter("FistBump\\Employer.json")) {
             file.write(array.toJSONString());
             file.flush();
-        } catch (IOException e) {e.printStackTrace();}
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
-    
 
     public static void saveStudent(ArrayList<Student> students) {
-        
+
         JSONArray array = new JSONArray();
 
         for (Student student : students) {
@@ -94,8 +96,9 @@ public class DataWriter {
             map.put("name", student.name);
             map.put("email", student.email);
             map.put("password", student.password);
+            map.put("phoneNumber", student.getPhoneNumber());
 
-            JSONArray resumeArray = new JSONArray(); 
+            JSONArray resumeArray = new JSONArray();
             ArrayList<Resume> resumes = student.getResumes();
 
             for (Resume resume : resumes) {
@@ -121,7 +124,7 @@ public class DataWriter {
                     employmentArray.add(employmentObj);
                 }
                 resumeMap.put("pastEmployment", employmentArray);
-                
+
                 JSONArray educationArray = new JSONArray();
                 ArrayList<Education> educationList = resume.getEducation();
 
@@ -143,8 +146,7 @@ public class DataWriter {
             }
             map.put("resumes", resumeArray);
 
-
-            JSONArray ratingArray = new JSONArray(); 
+            JSONArray ratingArray = new JSONArray();
             ArrayList<Rating> ratings = student.getRatings();
             for (Rating rating : ratings) {
                 HashMap<String, Object> ratingMap = new HashMap<String, Object>();
@@ -162,18 +164,19 @@ public class DataWriter {
             array.add(array.size(), obj);
         }
 
-        try(FileWriter file = new FileWriter("FistBump\\Student.json")){
-            
+        try (FileWriter file = new FileWriter("FistBump\\Student.json")) {
+
             file.write(array.toJSONString());
             file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        catch(IOException e){e.printStackTrace();}
     }
 
     public static void saveInternship(ArrayList<Internship> internships) {
 
         JSONArray array = new JSONArray();
-        
+
         for (Internship internship : internships) {
             HashMap<String, Object> map = new HashMap<String, Object>();
 
@@ -191,7 +194,7 @@ public class DataWriter {
             map.put("visibility", internship.isVisible());
             map.put("sortBehavior", internship.getSortBehavior());
 
-            JSONArray ratingArray = new JSONArray(); 
+            JSONArray ratingArray = new JSONArray();
             ArrayList<Student> applicants = internship.getApplicants();
             for (Student applicant : applicants) {
                 HashMap<String, String> applicantMap = new HashMap<String, String>();
@@ -206,50 +209,15 @@ public class DataWriter {
             array.add(array.size(), obj);
         }
 
-        try(FileWriter file = new FileWriter("FistBump\\Internship.json")){
+        try (FileWriter file = new FileWriter("FistBump\\Internship.json")) {
             file.write(array.toJSONString());
             file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        catch(IOException e){e.printStackTrace();}
     }
-    
+
     public static void saveResume(Resume resume) {
-        
+
     }
-
-
-//TODO delete main
-public static void main(String[] args) {
-        
-        Employment employment1 = new Employment("jobTitle", "companyName", "jobType", "startDate", "endDate", "jobDescription");
-
-        ArrayList<Employment> employmentList = new ArrayList<Employment>();
-        employmentList.add(employment1);
-
-        Education education1 = new Education("institution", "location", "degree", "graduationDate");
-
-        ArrayList<Education> educationList = new ArrayList<Education>();
-        educationList.add(education1);
-
-        Resume resume1 = new Resume("skills", 2.5, employmentList, educationList);
-        Resume resume2 = new Resume("skills", 2.5, employmentList, educationList);
-
-        ArrayList<Resume> resumeList = new ArrayList<Resume>();
-        resumeList.add(resume1);
-        resumeList.add(resume2);
-        
-
-        Student student1 = new Student("Brian", "brian01white@gmail.com", "password", resumeList);
-        Student student2 = new Student("Kyle", "betteremail@mspaint.gov", "betterPassword", resumeList);
-
-        ArrayList<Student> students = new ArrayList<Student>();
-
-        students.add(student1);
-        students.add(student2);
-
-        saveStudent(students);
-
-        System.out.println(resume1.toString());
-    }
-
 }

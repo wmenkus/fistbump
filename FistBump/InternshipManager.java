@@ -33,8 +33,17 @@ public class InternshipManager {
     public Internship getInternship(Internship internship) {
         return internship;
     }
-    
+
     public void hideInternship(Employer employer, Internship internship) {
         employer.hideInternship(internship);
+    }
+
+    public void setSortBehavior(String sortMode) {
+        if(sortMode.equalsIgnoreCase("pay")) {
+            internSortBehavior = new PaySort();
+        }
+        else if(sortMode.equalsIgnoreCase("length")) {
+            internSortBehavior = new LengthSort();
+        }
     }
 }

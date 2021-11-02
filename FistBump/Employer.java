@@ -23,10 +23,17 @@ public class Employer extends Account{
         setBio("");
     }
     
-    public Employer(UUID id, String name, String email, String password, String bio, ArrayList<Internship> internships, ArrayList<Rating> ratings) {
+    public Employer(UUID id, String name, String email, String password, String bio, ArrayList<Internship> internships,
+            ArrayList<Rating> ratings) {
         super(id, name, email, password);
         this.internships = internships;
         this.ratings = ratings;
+        this.bio = bio;
+    }
+    
+    public Employer(UUID id, String name, String email, String password, String bio, ArrayList<Internship> internships) {
+        super(id, name, email, password);
+        this.internships = internships;
         this.bio = bio;
     }
 

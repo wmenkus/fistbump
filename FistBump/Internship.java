@@ -133,8 +133,13 @@ public class Internship {
         this.available = available;
     }
 
-    public void setSortBehavior(StudentSortBehavior sortBehavior) {
-        this.sortBehavior = sortBehavior;
+    public void setSortBehavior(String sortMode) {
+        if(sortMode.equalsIgnoreCase("gpa")) {
+            sortBehavior = new GPASort();
+        }
+        else if(sortMode.equalsIgnoreCase("rating")) {
+            sortBehavior = new RatingSort();
+        }
     }
 
     public String getStartDate() {
