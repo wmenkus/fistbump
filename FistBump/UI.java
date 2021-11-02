@@ -688,7 +688,7 @@ public class UI {
                 exit = true;
             }
             else if(input.equals("9")) {
-                Internship internship = new Internship((Employer)app.getUser(), name, pay, timePeriod, skillRequirements, onSite, startDate);
+                Internship internship = new Internship(((Employer)app.getUser()), name, pay, timePeriod, skillRequirements, onSite, startDate);
                 ((Employer)app.getUser()).addInternship(internship);
                 exit = true;
             }
