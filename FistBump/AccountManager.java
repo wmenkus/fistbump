@@ -19,20 +19,32 @@ public class AccountManager {
 
         for (Employer employer : employers) {
             for (String internshipId : employer.getInternshipIds()) {
-                System.out.println("AccountManager: "+internshipId);
+                System.out.println("AccountManager: " + internshipId);
                 for (Internship internship : InternshipManager.getInstance().getInternships()) {
                     if (internshipId.equals(internship.getId().toString())) {
                         System.out.println("true");
                         employer.addInternship(internship);
                         internship.setPoster(employer);
-                    }
-                    else {
+                    } else {
 
                         System.out.println(internship.getId().toString());
                         System.out.println(internshipId);
                     }
                 }
             }
+        }
+
+        for (Internship internship : InternshipManager.getInstance().getInternships()) {
+            ArrayList<Student> applicants = new ArrayList<Student>();
+            for (String applicantId : internship.getApplicantIds()) {
+                for (Student student : students) {
+                    if (applicantId.equals(student.getId().toString())) {
+                        applicants.add(student);
+                    }
+                }
+
+            }
+            internship.setApplicants(applicants);
         }
         accounts.addAll(admins);
         accounts.addAll(students);
@@ -50,6 +62,9 @@ public class AccountManager {
     }
     
     public Account searchByName(String name) {
+        if(accounts.size() == 0) {
+            return null;
+        }
         for(Account account : accounts) {
             if(account.getName().equalsIgnoreCase(name)) {
                 return account;
@@ -65,6 +80,7 @@ public class AccountManager {
         return accountManager; 
     }
     public void addAccount(Account account) {
+        accounts.add(account);
         if (account.getPermissions() == 2) {
             admins.add((Admin) account);
         }

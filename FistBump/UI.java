@@ -238,7 +238,7 @@ public class UI {
                 gpa = enterGPA();
             }
             else if(input.equals("2")) {
-                skills += addSkill() + " ";
+                skills += "\n\t" + addSkill();
             }
             else if(input.equals("3")) {
                 Employment fresh = addEmployment();
@@ -288,7 +288,7 @@ public class UI {
         String jobType;
         String startDate;
         String endDate;
-        String jobDescription;
+        ArrayList<String> descriptions = new ArrayList<String>();
         System.out.println("\n-------- Past Employment --------");
         System.out.println("Please enter your job title: ");
         jobTitle = keyboard.nextLine();
@@ -300,9 +300,27 @@ public class UI {
         startDate = keyboard.nextLine();
         System.out.println("Enter your end date in the form MM/DD/YYYY: ");
         endDate = keyboard.nextLine();
-        System.out.println("Enter the Job description: ");
-        jobDescription = keyboard.nextLine();
-        return new Employment(jobTitle, companyName, jobType, startDate, endDate, jobDescription);
+        boolean exit1 = false;
+        while(!exit1) {
+            System.out.println("Enter a description of what you did: ");
+            descriptions.add(keyboard.nextLine());
+            boolean exit2 = false;
+            while(!exit2) {
+                System.out.println("Would you like to add another description? (Y/N): ");
+                String input = keyboard.nextLine();
+                if(input.equalsIgnoreCase("y")) {
+                    exit2 = true;
+                }
+                else if(input.equalsIgnoreCase("N")) {
+                    exit1 = true;
+                    exit2 = true;
+                }
+                else {
+                    inputError();
+                }
+            }
+        }
+        return new Employment(jobTitle, companyName, jobType, startDate, endDate, descriptions);
     }
 
     private Education addEducation() {
@@ -338,13 +356,13 @@ public class UI {
         }
         for(int i = 0; i < internshipsShown.size(); i++) {
             System.out.println(
-                i + ". \n" +
-                "\t" + internshipsShown.get(i).toString() + "\n"
+                (i + 1) + ". \n" +
+                internshipsShown.get(i).toString() + "\n"
             );
         }
         boolean exit = false;
         while(!exit) {
-            System.out.println("\nWould you like to view internship details? (Y/N): ");
+            System.out.println("Would you like to view internship details? (Y/N): ");
             input = keyboard.nextLine();
             if(input.equalsIgnoreCase("y")) {
                 displayInternshipDetails(internshipsShown);
@@ -392,7 +410,8 @@ public class UI {
         boolean exit = false;
         while(!exit) {
             System.out.println("Enter the number of the internship you would like to view details of: ");
-            int index = keyboard.nextInt();
+            int index = keyboard.nextInt() - 1;
+            keyboard.nextLine();
             if(index < 0 || index >= internships.size()) {
                 inputError();
             }
@@ -440,8 +459,8 @@ public class UI {
             if(input.equalsIgnoreCase("q")) {
                 return;
             }
-            Account temp = app.searchAccount(input); //TODO this threw a null pointer i think
-            if(temp.getPermissions() == 1) {
+            Account temp = app.searchAccount(input);
+            if(temp != null && temp.getPermissions() == 1) {
                 rated = (Employer)temp;
                 exit = true;
             }
@@ -512,8 +531,8 @@ public class UI {
             if(input.equalsIgnoreCase("q")) {
                 return;
             }
-            Account temp = app.searchAccount(input); //TODO this also threw one
-            if(temp.getPermissions() == 0) {
+            Account temp = app.searchAccount(input);
+            if(temp != null && temp.getPermissions() == 0) {
                 rated = (Student)temp;
                 exit = true;
             }
@@ -540,7 +559,7 @@ public class UI {
     public void displayApplicants() {
         String input;
         
-        System.out.println("-------- Applicants --------");
+        System.out.println("\n-------- Applicants --------");
         ArrayList<Internship> myInternships = app.getMyInternships();
         ArrayList<Student> applicants;
         int count = 0;
@@ -553,16 +572,16 @@ public class UI {
                 System.out.println("\t" + applicants.get(j).toString());
             }
         }
-
+            //TODO
         boolean exit = false;
         while(!exit) {
             System.out.println("Would you like to display applicant details? (Y/N): ");
             input = keyboard.nextLine();
-            if(input.equals("Y")) {
+            if(input.equalsIgnoreCase("Y")) {
                 displayApplicantDetails(myInternships);
                 exit = true;
             }
-            else if(input.equals("N")) {
+            else if(input.equalsIgnoreCase("N")) {
                 exit = true;
             }
             else {

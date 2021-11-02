@@ -191,18 +191,17 @@ public class DataWriter {
             map.put("onSite", internship.isOnSite());
             map.put("available", internship.isAvailable());
             map.put("startDate", internship.getStartDate());
-            map.put("sortBehavior", internship.getSortBehavior());
 
-            JSONArray ratingArray = new JSONArray();
+            JSONArray applicantArray = new JSONArray();
             ArrayList<Student> applicants = internship.getApplicants();
             for (Student applicant : applicants) {
                 HashMap<String, String> applicantMap = new HashMap<String, String>();
 
                 applicantMap.put("applicantId", applicant.getId().toString());
                 JSONObject applicantObj = new JSONObject(applicantMap);
-                ratingArray.add(applicantObj);
+                applicantArray.add(applicantObj);
             }
-            map.put("applicantIds", applicants);
+            map.put("applicantIds", applicantArray);
 
             JSONObject obj = new JSONObject(map);
             array.add(array.size(), obj);
@@ -216,6 +215,11 @@ public class DataWriter {
         }
     }
 
+    /**
+    *@param resume
+    *Takes in a resume object and prints it to a text file named Resume.txt
+    *
+    */
     public static void saveResume(Resume resume) {
 
         File file = new File("FistBump\\Resume.txt");
@@ -228,16 +232,5 @@ public class DataWriter {
             e.printStackTrace();
         }
     }
-    /*public static void  main(String[] args){
-        
-        
-        Employer poster = new Employer("name", "email", "password");
-        Internship internship = new Internship(poster, "name", 15, 4, "skillRequirements", true, "startDate");
-        ArrayList<Internship> internships = new ArrayList<Internship>();
-
-        internships.add(internship);
-
-        saveInternship(internships);
-    }*/
 }
 

@@ -336,29 +336,18 @@ public class DataLoader {
             ArrayList<String> applicantIds = new ArrayList<String>();
             JSONArray applicantArray = (JSONArray) internshipObj.get("applicantIds");
 
-
             for (Object applicantObj : applicantArray) {
-                String applicantId = (String) applicantObj;
+
+                JSONObject jApplicantObj = (JSONObject) applicantObj;
+                String applicantId = jApplicantObj.get("applicantId").toString();
                 applicantIds.add(applicantId);
             }
-            /**
-             * ArrayList<String> internshipIds = new ArrayList<String>();
-                JSONArray internshipList = (JSONArray) employerObj.get("internshipIds");
-
-                for (Object obj2 : internshipList) {
-                    JSONObject internshipIdObj = (JSONObject) obj2;
-                    String internshipId = internshipIdObj.get("internshipId").toString();
-                    System.out.println("DataLoader: "+internshipId);
-                    internshipIds.add(internshipId);
-                }
-             */
             
-            //Employer poster = (Employer) internshipObj.get("poster");
             String company = (String) internshipObj.get("company");
             String name = (String) internshipObj.get("name");
             String description = (String) internshipObj.get("description");
             double pay = (double) internshipObj.get("pay");
-            int timePeriod = (int) internshipObj.get("timePeriod");
+            int timePeriod = ((Long)internshipObj.get("timePeriod")).intValue();
             String skillRequirements = (String) internshipObj.get("skillRequirements");
             boolean onSite = (boolean) internshipObj.get("onSite");
             boolean available = (boolean) internshipObj.get("available");
@@ -366,7 +355,7 @@ public class DataLoader {
             id = UUID.fromString((String) internshipObj.get("id"));
             String startDate = (String) internshipObj.get("startDate");
 
-            Internship internship = new Internship(applicantIds, company, name, description, pay, timePeriod, skillRequirements, onSite, available/*, sortBehavior*/, id, startDate);
+            Internship internship = new Internship(applicantIds, company, name, description, pay, timePeriod, skillRequirements, onSite, available, id, startDate);
 
             internships.add(internship);
         }
