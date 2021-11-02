@@ -53,8 +53,16 @@ public class Facade {
         return internshipSortString;
     }
 
+    public String getStudentSortString() {
+        return studentSortString;
+    }
+
     public ArrayList<Internship> getInternships() {
         return internshipManager.getInternships();
+    }
+
+    public ArrayList<Internship> getMyInternships() {
+        return ((Employer)user).getInternships();
     }
 
     public void addAccount(Account account) {
