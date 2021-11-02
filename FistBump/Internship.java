@@ -41,8 +41,7 @@ public class Internship {
     }
 
     public Internship(ArrayList<String> applicantIds, String company, String name, String description,
-            double pay, int timePeriod, String skillRequirements, boolean onSite, boolean available,
-            /*StudentSortBehavior sortBehavior, */UUID id, String startDate) {
+            double pay, int timePeriod, String skillRequirements, boolean onSite, boolean available, UUID id, String startDate) {
         this.applicantIds = applicantIds;
         this.applicants = new ArrayList<Student>();
         this.company = company;
@@ -53,7 +52,6 @@ public class Internship {
         this.skillRequirements = skillRequirements;
         this.onSite = onSite;
         this.available = available;
-        //this.sortBehavior = sortBehavior;
         this.id = id;
         this.startDate = startDate;
     }

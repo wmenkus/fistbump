@@ -18,24 +18,6 @@ public class Facade {
         user = null;
         internshipSortString = "pay";
         studentSortString = "rating";
-
-        for (Employer employer : AccountManager.getInstance().getEmployers()) {
-            for (String internshipId : employer.getInternshipIds()) {
-                System.out.println("Facade: "+internshipId);
-                for (Internship internship : InternshipManager.getInstance().getInternships()) {
-                    if (internshipId.equals(internship.getId().toString())) {
-                        System.out.println("true");
-                        employer.addInternship(internship);
-                        internship.setPoster(employer);
-                    }
-                    else {
-
-                        System.out.println(internship.getId().toString());
-                        System.out.println(internshipId);
-                    }
-                }
-            }
-        }
     }
 
     public boolean login(String email, String password) {

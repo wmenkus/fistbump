@@ -334,13 +334,24 @@ public class DataLoader {
             JSONObject internshipObj = (JSONObject) obj;
 
             ArrayList<String> applicantIds = new ArrayList<String>();
-            JSONArray applicantArray = internshipObj.get("applicantIds")
+            JSONArray applicantArray = (JSONArray) internshipObj.get("applicantIds");
 
 
             for (Object applicantObj : applicantArray) {
                 String applicantId = (String) applicantObj;
                 applicantIds.add(applicantId);
             }
+            /**
+             * ArrayList<String> internshipIds = new ArrayList<String>();
+                JSONArray internshipList = (JSONArray) employerObj.get("internshipIds");
+
+                for (Object obj2 : internshipList) {
+                    JSONObject internshipIdObj = (JSONObject) obj2;
+                    String internshipId = internshipIdObj.get("internshipId").toString();
+                    System.out.println("DataLoader: "+internshipId);
+                    internshipIds.add(internshipId);
+                }
+             */
             
             //Employer poster = (Employer) internshipObj.get("poster");
             String company = (String) internshipObj.get("company");
@@ -357,7 +368,7 @@ public class DataLoader {
             String startDate = (String) internshipObj.get("startDate");
             boolean visibility = (boolean) internshipObj.get("visibility");
 
-            Internship internship = new Internship(applicantIds, company, name, description, pay, timePeriod, skillRequirements, onSite, available/*, sortBehavior*/, id, startDate, visibility);
+            Internship internship = new Internship(applicantIds, company, name, description, pay, timePeriod, skillRequirements, onSite, available/*, sortBehavior*/, id, startDate);
 
             internships.add(internship);
         }

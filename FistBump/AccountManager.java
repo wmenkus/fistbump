@@ -17,6 +17,23 @@ public class AccountManager {
         students = DataLoader.loadStudents();
         employers = DataLoader.loadEmployers();
 
+        for (Employer employer : employers) {
+            for (String internshipId : employer.getInternshipIds()) {
+                System.out.println("AccountManager: "+internshipId);
+                for (Internship internship : InternshipManager.getInstance().getInternships()) {
+                    if (internshipId.equals(internship.getId().toString())) {
+                        System.out.println("true");
+                        employer.addInternship(internship);
+                        internship.setPoster(employer);
+                    }
+                    else {
+
+                        System.out.println(internship.getId().toString());
+                        System.out.println(internshipId);
+                    }
+                }
+            }
+        }
         accounts.addAll(admins);
         accounts.addAll(students);
         accounts.addAll(employers); 
