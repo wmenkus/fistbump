@@ -113,7 +113,18 @@ public class DataLoader {
             String email = (String) studentObj.get("email");
             String password = (String) studentObj.get("password");
 
-            ArrayList<Resume> resumes = (ArrayList<Resume>) studentObj.get("resumes"); //TODO fix
+            ArrayList<Resume> resumes = new ArrayList<Resume>();
+            JSONArray resumeList = (JSONArray) studentObj.get("resumes");
+
+            for (Object resume : resumeList) {
+                JSONObject resumeObj = (JSONObject) resume;
+
+                String skills = (String) resumeObj.get("skills");
+                double gpa = (double) resumeObj.get("gpa");
+
+                ArrayList<>
+            }
+
 
             ArrayList<Rating> ratings = (ArrayList<Rating>) studentObj.get("ratings"); //TODO fix
 

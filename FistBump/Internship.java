@@ -24,18 +24,14 @@ public class Internship {
     private boolean visibility;
 
     public Internship(Employer poster, String name, double pay, int timePeriod, String skillRequirements, boolean onSite, String startDate) {
-        this.applicants = new ArrayList<Student>();
-        setPoster(poster);
-        setCompany("");
-        setName("");
-        setDescription("");
-        setPay(0);
-        setTimePeriod(0);
-        setSkillRequirements("");
-        this.id = UUID.randomUUID();
-        setStartDate("");
-        setVisibility(true);
-        sortBehavior = new GPASort();
+        this.poster = poster;
+        this.name = name;
+        this.pay = pay;
+        this.timePeriod = timePeriod;
+        this.skillRequirements = skillRequirements;
+        this.onSite = onSite;
+        this.startDate = startDate;
+        applicants = new ArrayList<Student>();
     }
 
     public Internship(ArrayList<Student> applicants, Employer poster, String company, String name, String description,

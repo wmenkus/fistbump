@@ -83,4 +83,8 @@ public class Employer extends Account{
     public ArrayList<Rating> getRatings() {
         return ratings;
     }
+
+    public void addInternship(Internship internship) {
+        internships.add(internship);
+    }
 }
