@@ -524,9 +524,22 @@ public class UI {
                 addSkillRequirement();
             }
             else if(input.equals("6")) {
-
+                changeOnSite();
             }
-
+            else if(input.equals("7")) {
+                setStartDate();
+            }
+            else if(input.equals("8")) {
+                exit = true;
+            }
+            else if(input.equals("9")) {
+                Internship internship = new Internship((Employer)app.getUser(), name, pay, timePeriod, skillRequirements, onSite, startDate);
+                ((Employer)app.getUser()).addInternship(internship);
+                exit = true;
+            }
+            else {
+                inputError();
+            }
 
 
         }
