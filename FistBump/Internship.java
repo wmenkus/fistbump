@@ -23,7 +23,7 @@ public class Internship {
     private String startDate;
     private boolean visibility;
 
-    public Internship(Employer poster) {
+    public Internship(Employer poster, String name, double pay, int timePeriod, String skillRequirements, boolean onSite, String startDate) {
         this.applicants = new ArrayList<Student>();
         setPoster(poster);
         setCompany("");

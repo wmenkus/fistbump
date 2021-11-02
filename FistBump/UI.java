@@ -179,7 +179,7 @@ public class UI {
     public void createResume() {
         double gpa = 0;
         String skills = "";
-        String references = "";
+        String references = ""; //TODO remove
         ArrayList<Employment> pastEmployment = new ArrayList<Employment>();
         String employmentString = "";
         ArrayList<Education> education = new ArrayList<Education>();
@@ -475,6 +475,8 @@ public class UI {
         int timePeriod = 0;
         String skillRequirements = "";
         String onSiteString = "N/A";
+        String startDate = "";
+        boolean onSite = true;
 
 
 
@@ -489,9 +491,43 @@ public class UI {
                 "Description: " + description + "\n" +
                 "Length (in months): " + timePeriod + "\n" +
                 "Skill Requirements: " + skillRequirements + "\n" +
-                "On Site: " + onSiteString + 
-                
+                "On Site: " + onSiteString + "\n" +
+                "Start Date: " + startDate + "\n"
             );
+
+            System.out.println(
+                "1. Enter job title\n" +
+                "2. Enter pay\n" +
+                "3. Write description\n" +
+                "4. Enter length\n" +
+                "5. Add skill requirement\n" +
+                "6. Change if internship is on site\n" +
+                "7. Set start date\n" +
+                "8. Quit\n" +
+                "9. Save and quit\n"
+            );
+
+            input = keyboard.nextLine();
+            if(input.equals("1")) {
+                enterJobTitle();
+            }
+            else if(input.equals("2")) {
+                enterPay();
+            }
+            else if(input.equals("3")) {
+                writeDescription();
+            }
+            else if(input.equals("4")) {
+                enterLength();
+            }
+            else if(input.equals("5")) {
+                addSkillRequirement();
+            }
+            else if(input.equals("6")) {
+
+            }
+
+
 
         }
     }
