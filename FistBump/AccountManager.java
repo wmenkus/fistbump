@@ -3,15 +3,18 @@
  */
 package FistBump;
 import java.util.ArrayList;
-public class AccountManager{
+public class AccountManager {
 
     private ArrayList<Account> accounts;
-    private int idTotal;
-    private AccountManager accountManager;
+    private static AccountManager accountManager;
 
-    private AccountManager(){
-
+    private AccountManager() {
+        accounts = new ArrayList<Account>();
+        accounts.addAll(DataLoader.loadAdmins());
+        accounts.addAll(DataLoader.loadEmployers());
+        accounts.addAll(DataLoader.loadStudents());
     }
+    
 
     public Account searchByEmail(String email) {
         for(Account account : accounts) {
@@ -21,7 +24,7 @@ public class AccountManager{
         }
         return null;
     }
-
+    
     public Account searchByName(String name) {
         for(Account account : accounts) {
             if(account.getName().equalsIgnoreCase(name)) {
@@ -32,23 +35,16 @@ public class AccountManager{
     }
 
     public static AccountManager getInstance(){
-        return null; //TODO this is wrong
+        if (accountManager == null) {
+            accountManager = new AccountManager();
+        }
+        return accountManager; 
     }
-
     public void addAccount(Account account) {
-        accounts.add(account);
+        accounts.add(account);     
     }
 
-    public void addRating(Account rater, Account rated, int rating){
-
-    }
-
-    public Account getAccount(int id){
-
-        return null;
-    }
-
-    public void removeAccount(int id){
-    
+    public void removeAccount(Account account) {
+        accounts.remove(account);
     }
 }

@@ -65,7 +65,6 @@ public class DataWriter {
                 HashMap<String, Object> ratingMap = new HashMap<String, Object>();
 
                 ratingMap.put("raterId", rating.getRater().getId().toString());
-                ratingMap.put("ratedId", rating.getRated().getId().toString());
                 ratingMap.put("rating", rating.getRating());
                 ratingMap.put("valid", rating.isValid());
 
@@ -151,7 +150,6 @@ public class DataWriter {
                 HashMap<String, Object> ratingMap = new HashMap<String, Object>();
 
                 ratingMap.put("raterId", rating.getRater().getId().toString());
-                ratingMap.put("ratedId", rating.getRated().getId().toString());
                 ratingMap.put("rating", rating.getRating());
                 ratingMap.put("valid", rating.isValid());
 

@@ -8,29 +8,33 @@ public class InternshipManager {
 
     private InternshipManager() {
         internships = new ArrayList<Internship>();
-        listManager = new InternshipManager(); //TODO this may be wrong, does this create an infinite loop of creating InternshipManagers?
+        internSortBehavior = new PaySort();
     }
-    public static InternshipManager getInstance() {
-        return null; //TODO This is definitely wrong
-    }
-    public void displayInternships() {
 
+    public static InternshipManager getInstance() {
+        if (listManager == null) {
+            listManager = new InternshipManager();
+        }
+        return listManager;
     }
 
     public ArrayList<Internship> getInternships() {
         return this.internships;
     }
 
-    public void addInternship(Employer employer) {
-
+    public void addInternship(Employer employer, Internship internship) {
+        employer.addInternship(internship);
     }
+
     public void sort() {
+        internSortBehavior.sort(internships);
+    }
 
-    }
     public Internship getInternship(Internship internship) {
-        return null;
+        return internship;
     }
-    public void hideInternship(Internship internship) {
-        
+    
+    public void hideInternship(Employer employer, Internship internship) {
+        employer.hideInternship(internship);
     }
 }

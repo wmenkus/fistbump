@@ -141,33 +141,29 @@ public class UI {
             System.out.println (
                 "======== Main Menu =========\n" +
                 "1. Create Resume\n" +
-                "2. Display Internships\n" +
+                "2. Display all Internships\n" +
                 "3. Change Sort Mode\n" +
-                "4. Apply to Internship\n" +
-                "5. Display Internship Details\n" +
-                "6. Rate Employer\n" +
-                "7. Log Out\n"
+                "4. Search by Keyword\n" +
+                "5. Rate Employer\n" +
+                "6. Log Out\n"
             );
             input = keyboard.nextLine();
             if(input.equals("1")) {
                 createResume();
             }
             else if(input.equals("2")) {
-                displayInternships();
+                displayInternships("");
             }
             else if(input.equals("3")) {
                 changeInternshipSortMode();
             }
             else if(input.equals("4")) {
-                applyToInternship();
+                keywordSearch();
             }
             else if(input.equals("5")) {
-                displayInternshipDetails();
-            }
-            else if(input.equals("6")) {
                 rateEmployer();
             }
-            else if(input.equals("7")) {
+            else if(input.equals("6")) {
                 exit = true;
             }
             else {
@@ -179,7 +175,6 @@ public class UI {
     public void createResume() {
         double gpa = 0;
         String skills = "";
-        String references = ""; //TODO remove
         ArrayList<Employment> pastEmployment = new ArrayList<Employment>();
         String employmentString = "";
         ArrayList<Education> education = new ArrayList<Education>();
@@ -191,7 +186,6 @@ public class UI {
                 "-------- Create a Resume --------\n" +
                 "GPA: " + gpa + "\n" +
                 "Skills: " + skills + "\n" +
-                "References: " + references + "\n" +
                 "Past Employment: " + employmentString + "\n" +
                 "Education: " + educationString + "\n" +
                 "\n"
@@ -199,11 +193,10 @@ public class UI {
             System.out.println(
                 "1. Enter GPA\n" +
                 "2. Add a Skill\n" +
-                "3. Add a Reference\n" +
-                "4. Add an Employment\n" +
-                "5. Add an Education\n" +
-                "6. Quit\n" +
-                "7. Save and Quit"
+                "3. Add an Employment\n" +
+                "4. Add an Education\n" +
+                "5. Quit\n" +
+                "6. Save and Quit"
             );
 
             input = keyboard.nextLine();
@@ -213,20 +206,20 @@ public class UI {
             else if(input.equals("2")) {
                 skills += addSkill() + " ";
             }
-            else if(input.equals("4")) {
+            else if(input.equals("3")) {
                 Employment fresh = addEmployment();
                 pastEmployment.add(fresh);
                 employmentString += fresh.toString() + " "; 
             }
-            else if(input.equals("5")) {
+            else if(input.equals("4")) {
                 Education fresh = addEducation();
                 education.add(fresh);
                 educationString += fresh.toString() + " ";
             }
-            else if(input.equals("6")) {
+            else if(input.equals("5")) {
                 exit = true;
             }
-            else if(input.equals("7")) {
+            else if(input.equals("6")) {
                 Resume resume = new Resume(skills, gpa, pastEmployment, education);
                 app.addResume(resume);
                 exit = true;
@@ -255,6 +248,7 @@ public class UI {
         return keyboard.nextLine();
     }
 
+    //TODO fix this
     private Employment addEmployment() {
         String jobTitle;
         String companyName;
@@ -292,18 +286,34 @@ public class UI {
         return new Education(institution, location, degree, graduationDate);
     }
 
-    public void displayInternships() {
+    public void keywordSearch() {
+        System.out.println("-------- Keyword Search --------");
+        System.out.println("Please enter the keyword you would like to search for: ");
+        displayInternships(keyboard.nextLine());
+    }
+
+    public void displayInternships(String keyword) {
         System.out.println("-------- Internships --------");
-        ArrayList<Internship> internships = app.getInternships();
-        for(Internship internship : internships) {
-            System.out.println(internship.toString() + "\n");
+        app.sortInternships();
+        ArrayList<Internship> internshipsAll = app.getInternships();
+        ArrayList<Internship> internshipsShown = new ArrayList<Internship>();
+        for(Internship internship : internshipsAll) {
+            if(internship.isVisible() && internship.toString().toLowerCase().contains(keyword.toLowerCase())) {
+                internshipsShown.add(internship);
+            }
+        }
+        for(int i = 0; i < internshipsShown.size(); i++) {
+            System.out.println(
+                i + ". \n" +
+                "\t" + internshipsShown.get(i).toString() + "\n"
+            );
         }
         boolean exit = false;
         while(!exit) {
-            System.out.println("Would you like to apply to an internship? (Y/N): ");
+            System.out.println("Would you like to view internship details? (Y/N): ");
             input = keyboard.nextLine();
             if(input.equalsIgnoreCase("y")) {
-                applyToInternship();
+                displayInternshipDetails(internshipsShown);
                 exit = true;
             }
             else if(input.equalsIgnoreCase("n")) {
@@ -315,7 +325,6 @@ public class UI {
         }
     }
 
-    //TODO this needs to be able to search by keyword
     public void changeInternshipSortMode() {
         boolean exit = false;
         while(!exit) {
@@ -344,12 +353,42 @@ public class UI {
         }
     }
 
-    public void applyToInternship() {
-        //TODO how will we apply to internship? by name? company? both? id? index?
+    public void displayInternshipDetails(ArrayList<Internship> internships) {
+        boolean exit = false;
+        while(!exit) {
+            System.out.println("Enter the number of the internship you would like to view details of: ");
+            int index = keyboard.nextInt();
+            if(index < 0 || index >= internships.size()) {
+                inputError();
+            }
+            else {
+                applyToInternship(internships.get(index));
+                exit = true;
+            }
+        }
     }
 
-    public void displayInternshipDetails() {
-        //TODO how we select internships to display is dependent on how we apply
+    public void applyToInternship(Internship internship) {
+        System.out.println(
+            "-------- Details --------\n" +
+            internship.details()
+        );
+
+        boolean exit = false;
+        while(!exit) {
+            System.out.println("Would you like to apply to this internship? (Y/N): ");
+            input = keyboard.nextLine();
+            if(input.equalsIgnoreCase("Y")) {
+                ((Student)app.getUser()).apply(internship);
+                exit = true;
+            }
+            else if(input.equalsIgnoreCase("N")) {
+                exit = true;
+            }
+            else {
+                inputError();
+            }
+        }
     }
 
     public void rateEmployer() {
@@ -385,7 +424,7 @@ public class UI {
             }
         }
 
-        Rating newRating = new Rating(rating, app.getUser(), rated);
+        Rating newRating = new Rating(rating, app.getUser());
         rated.addRating(newRating);
     }
 
@@ -393,11 +432,10 @@ public class UI {
         System.out.println(
             "======== Main Menu ========\n" +
             "1. Display Applicants\n" +
-            "2. Display Applicant Details\n" +
-            "3. Change Sort Mode\n" +
-            "4. Post Internship\n" +
-            "5. Rate Student\n" +
-            "6. Log Out\n"
+            "2. Change Sort Mode\n" +
+            "3. Post Internship\n" +
+            "4. Rate Student\n" +
+            "5. Log Out\n"
         );
         boolean exit = false;
         while(!exit) {
@@ -406,13 +444,13 @@ public class UI {
                 displayApplicants();
             }
             else if(input.equals("2")) {
-                displayApplicantDetails();
-            }
-            else if(input.equals("3")) {
                 changeStudentSortMode();
             }
-            else if(input.equals("4")) {
+            else if(input.equals("3")) {
                 postInternship();
+            }
+            else if(input.equals("4")) {
+                rateStudent(); //TODO
             }
             else if(input.equals("5")) {
                 exit = true;
@@ -427,17 +465,65 @@ public class UI {
         System.out.println("-------- Applicants --------");
         ArrayList<Internship> myInternships = app.getMyInternships();
         ArrayList<Student> applicants;
-        for(Internship internship : myInternships) {
-            System.out.println("For internship \"" + internship.getName() + "\":\n");
-            applicants = internship.getApplicants();
-            for(Student applicant : applicants) {
-                System.out.println(applicant.toString());
+        int count = 0;
+        for(int i = 0; i < myInternships.size(); i++) {
+            System.out.println("For internship \"" + myInternships.get(i).getName() + "\":\n");
+            applicants = myInternships.get(i).getApplicants();
+            for(int j = 0; j < applicants.size(); j++) {
+                count++;
+                System.out.println(count + ". ");
+                System.out.println("\t" + applicants.get(j).toString());
+            }
+        }
+
+        boolean exit = false;
+        while(!exit) {
+            System.out.println("Would you like to display applicant details? (Y/N): ");
+            input = keyboard.nextLine();
+            if(input.equals("Y")) {
+                displayApplicantDetails(myInternships);
+                exit = true;
+            }
+            else if(input.equals("N")) {
+                exit = true;
+            }
+            else {
+                inputError();
             }
         }
     }
 
-    public void displayApplicantDetails() {
-        //TODO
+    public void displayApplicantDetails(ArrayList<Internship> internships) {
+        ArrayList<Student> applicants = new ArrayList<Student>();
+        for(Internship internship : internships) {
+            for(Student applicant : internship.getApplicants()) {
+                applicants.add(applicant);
+            }
+        }
+        boolean exit = false;
+        while(!exit) {
+            System.out.println("Please enter the number of the applicant you would like to view details of: ");
+            int index = keyboard.nextInt();
+            if(index < 0 || index >= applicants.size()) {
+                inputError();
+            }
+            else {
+                System.out.println(
+                    "-------- Details --------\n" +
+                    applicants.get(index).details()
+                );
+                while(!exit) {
+                    System.out.println("Type \"Q\" to exit");
+                    input = keyboard.nextLine();
+                    if(input.equalsIgnoreCase("Q")) {
+                        exit = true;
+                    }
+                    else {
+                        inputError();
+                    }
+                }
+            }
+        }
     }
 
     public void changeStudentSortMode() {
@@ -509,25 +595,31 @@ public class UI {
 
             input = keyboard.nextLine();
             if(input.equals("1")) {
-                enterJobTitle();
+                name = enterJobTitle();
             }
             else if(input.equals("2")) {
-                enterPay();
+                pay = enterPay();
             }
             else if(input.equals("3")) {
-                writeDescription();
+                description = writeDescription();
             }
             else if(input.equals("4")) {
-                enterLength();
+                timePeriod = enterLength();
             }
             else if(input.equals("5")) {
-                addSkillRequirement();
+                skillRequirements += addSkillRequirement();
             }
             else if(input.equals("6")) {
-                changeOnSite();
+                onSite = changeOnSite();
+                if(onSite) {
+                    onSiteString = "Yes";
+                }
+                else {
+                    onSiteString = "No";
+                }
             }
             else if(input.equals("7")) {
-                setStartDate();
+                startDate = setStartDate();
             }
             else if(input.equals("8")) {
                 exit = true;
@@ -540,10 +632,85 @@ public class UI {
             else {
                 inputError();
             }
-
-
         }
     }
 
+    public String enterJobTitle() {
+        System.out.println(
+            "-------- Enter a Job Title --------\n" +
+            "Please enter the job title: \n"
+        );
+        input = keyboard.nextLine();
+        return input;
+    }
+
+    public double enterPay() {
+        System.out.println(
+            "-------- Enter Pay --------\n" +
+            "Enter how much the position pays in dollars per hour: \n"
+        );
+        double result = keyboard.nextDouble();
+        keyboard.nextLine();
+        return result;
+    }
+
+    public String writeDescription() {
+        System.out.println(
+            "-------- Description --------\n" +
+            "Please write a brief description of the internship: "
+        );
+        return keyboard.nextLine();
+    }
+
+    public int enterLength() {
+        System.out.println(
+            "-------- Length of Internship --------\n" + 
+            "Please enter the length of the internship in months: "
+        );
+        int result = keyboard.nextInt();
+        keyboard.nextLine();
+        return result;
+    }
+
+    public String addSkillRequirement() {
+        System.out.println("-------- Skill Requirement --------\n" + "Please enter a skill requirement");
+
+        input = keyboard.nextLine();
+        return input;
+    }
+
+    public boolean changeOnSite() {
+        System.out.println(
+            "-------- Enter On-Site --------\n" +
+            "Please enter whether or not the job is on site (Y/N): "
+        );
+
+        boolean onSite = true;
+        boolean exit = false;
+        while (!exit) {
+            input = keyboard.nextLine();
+            if (input.equalsIgnoreCase("y")) {
+                onSite = true;
+                exit = true;
+            }
+            else if (input.equalsIgnoreCase("n")) {
+                onSite = false;
+                exit = true;
+            }
+            else {
+                inputError();
+            }
+        }
+        return onSite;
+    }
+
+    public String setStartDate(){
+        System.out.println(
+            "-------- Enter a Start Date --------\n" +
+            "Please enter the start date in the form MM/DD/YYYY: \n"
+        );
+        input = keyboard.nextLine();
+        return input;
+    }
     
 }

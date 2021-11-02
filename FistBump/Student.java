@@ -9,7 +9,7 @@ import java.util.UUID;
 
 public class Student extends Account {
     private double rating;
-    private ArrayList<Resume> resumes; //TODO discuss with team how we will implement UUIDs
+    private ArrayList<Resume> resumes;
     private int ratingTotal;
 
     private ArrayList<Rating> ratings;
@@ -36,13 +36,6 @@ public class Student extends Account {
         this.ratings = ratings;
     }
     
-    //TODO delete this
-    public Student(String name, String email, String password, ArrayList<Resume> resumes) {
-        super(name, email, password);
-        this.resumes = resumes;
-        this.ratings = new ArrayList<Rating>();
-    }
-
     /**
      * Accessor for the Student's ratings. Returns all ratings,
      * even those that are hidden.

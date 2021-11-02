@@ -16,7 +16,7 @@ import java.io.IOException;
 
 public class DataLoader {
 
-    public ArrayList<Admin> loadAdmins() {
+    public static ArrayList<Admin> loadAdmins() {
 
         ArrayList<Admin> admins = new ArrayList<Admin>();
 
@@ -48,7 +48,7 @@ public class DataLoader {
     return admins;
     }
     
-    public ArrayList<Employer> loadEmployers() {
+    public static ArrayList<Employer> loadEmployers() {
 
         ArrayList<Employer> employers = new ArrayList<Employer>();
 
@@ -73,13 +73,30 @@ public class DataLoader {
                 
                 for (String internshipId : internshipIds) {
                     for (Internship internship : allInternships) {
-                        if (internshipId == internship.id.toString()) {
+                        if (internshipId.equals(internship.id.toString())) {
                             internships.add(internship);
                         }
                     }
                 }
 
-                ArrayList<Rating> ratings = (ArrayList<Rating>) employerObj.get("ratings");  //TODO fix
+                ArrayList<Rating> ratings = new ArrayList<Rating>();
+                ArrayList<Student> allStudents = loadStudents();
+                JSONArray ratingList = (JSONArray) employerObj.get("ratings");
+
+                for (Object rating : ratingList) {
+                    JSONObject ratingObj = (JSONObject) rating;
+
+                    double ratingNum = (double) ratingObj.get("rating");
+                    Student rater = null;
+                    for (Student student : allStudents) {
+                        if (student.getId().toString().equals(ratingObj.get("raterId"))) {
+                            rater = student;
+                        }
+                    }
+                    boolean valid = (boolean) ratingObj.get("valid");
+
+                    ratings.add(new Rating(ratingNum, rater, valid));
+                }
 
                 Employer employer = new Employer(id, name, email, password, bio, internships, ratings);
 
@@ -94,7 +111,7 @@ public class DataLoader {
         return employers;
     }
     
-    public ArrayList<Student> loadStudents() {
+    public static ArrayList<Student> loadStudents() {
 
         ArrayList<Student> students = new ArrayList<Student>();
 
@@ -122,11 +139,57 @@ public class DataLoader {
                 String skills = (String) resumeObj.get("skills");
                 double gpa = (double) resumeObj.get("gpa");
 
-                ArrayList<>
+                ArrayList<Employment> pastEmployment = new ArrayList<Employment>();
+                JSONArray employmentList = (JSONArray) resumeObj.get("employment");
+
+                for (Object employment : employmentList) {
+                    JSONObject employmentObj = (JSONObject) employment;
+
+                    String jobTitle = (String) employmentObj.get("jobTitle");
+                    String companyName = (String) employmentObj.get("companyName");
+                    String jobType = (String) employmentObj.get("jobType");
+                    String startDate = (String) employmentObj.get("startDate");
+                    String endDate = (String) employmentObj.get("endDate");
+                    String jobDescription = (String) employmentObj.get("jobDescription");
+                    
+                    pastEmployment.add(new Employment(jobTitle, companyName, jobType, startDate, endDate, jobDescription));
+                }
+                
+                ArrayList<Education> educations = new ArrayList<Education>();
+                JSONArray educationList = (JSONArray) resumeObj.get("education");
+
+                for (Object education : educationList) {
+                    JSONObject educationObj = (JSONObject) education;
+
+                    String institution = (String) educationObj.get("institution");
+                    String location = (String) educationObj.get("location");
+                    String degree = (String) educationObj.get("degree");
+                    String graduationDate = (String) educationObj.get("graduationDate");
+
+                    educations.add(new Education(institution, location, degree, graduationDate));
+                }
+                resumes.add(new Resume(skills, gpa, pastEmployment, educations));
             }
 
 
-            ArrayList<Rating> ratings = (ArrayList<Rating>) studentObj.get("ratings"); //TODO fix
+            ArrayList<Rating> ratings = new ArrayList<Rating>();
+            ArrayList<Employer> allEmployers = loadEmployers();
+            JSONArray ratingList = (JSONArray) studentObj.get("ratings");
+
+            for (Object rating : ratingList) {
+                JSONObject ratingObj = (JSONObject) rating;
+
+                double ratingNum = (double) ratingObj.get("rating");
+                Employer rater = null;
+                for (Employer employer : allEmployers) {
+                    if (employer.getId().toString().equals(ratingObj.get("raterId"))) {
+                        rater = employer;
+                    }
+                }
+                boolean valid = (boolean) ratingObj.get("valid");
+
+                ratings.add(new Rating(ratingNum, rater, valid));
+            }
 
             Student student = new Student(id, name, email, password, resumes, ratings);
 
@@ -141,7 +204,7 @@ public class DataLoader {
     return students;
     }
     
-    public ArrayList<Internship> loadInternships(){
+    public static ArrayList<Internship> loadInternships(){
 
         ArrayList<Internship> internships = new ArrayList<Internship>();
 
@@ -155,7 +218,18 @@ public class DataLoader {
         {
             JSONObject internshipObj = (JSONObject) obj;
 
-            ArrayList<Student> applicants = (ArrayList<Student>) internshipObj.get("applicants"); //TODO fix
+            ArrayList<Student> applicants = new ArrayList<Student>();
+            ArrayList<String> applicantList = (ArrayList<String>) internshipObj.get("applicantId");
+            ArrayList<Student> allStudents = loadStudents();
+
+            for (String studentId : applicantList) {
+                for (Student student : allStudents) {
+                    if (studentId.equals(student.getId().toString())) {
+                        applicants.add(student);
+                    }
+                }
+            }
+
             Employer poster = (Employer) internshipObj.get("poster");
             String company = (String) internshipObj.get("company");
             String name = (String) internshipObj.get("name");

@@ -69,22 +69,6 @@ public class Facade {
         accountManager.addAccount(account);
     }
 
-    public void displayMenu(){
-
-    }
-
-    public void displayInternships(){
-
-    }
-
-    public void displayAccounts(){
-
-    }
-
-    public void displayApplicants(){
-
-    }
-
     /**
      * This is all wrong
      * 
@@ -102,66 +86,17 @@ public class Facade {
         //TODO
     }
 
+    public void sortInternships() {
+        internshipManager.sort();
+    }
+
     public Account createAccount(){
         return null;
-    }
-
-    public void login(String email, String password){
-
-    }
-
-    public void apply(int internshipId){
-
-    }
-
-
-    public void internshipDetails(int accountId){
-
-    }
-
-    public void accountDetails(int accountId){
-
-    }
-
-    public void createResume(){
-
-    }
-
-    public void rate(Account rated, Rating rating){
-        
-    }
-
-    public void hideInternship(int internshipId){
-
     }
 
     public void createInternship(Employer poster){
         if(user.getPermissions() == 1) {
             Internship internship = new Internship((Employer)user);
         }
-    }
-
-    public void removeAccount(int accountId){
-
-    }
-
-    public void hideRating(int accoundId, int ratingId){
-
-    }
-
-    public void reviseInternship(int internhipId){
-
-    }
-
-    public void removeInternship(int internshipId){
-
-    }
-
-    public Admin createAdminAccount(){
-        return null;
-    }
-
-    public void logout(){
-        
     }
 }

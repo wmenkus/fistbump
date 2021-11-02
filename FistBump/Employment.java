@@ -24,7 +24,7 @@ public class Employment {
         
     }
 
-    public Employment(String jobTitle, String companyName,String jobType, String startDate, String endDate/*, String contactInfo*/, String jobDescription) {
+    public Employment(String jobTitle, String companyName,String jobType, String startDate, String endDate, String jobDescription) {
         this.jobTitle = jobTitle;
         this.companyName = companyName;
         this.jobType = jobType;
