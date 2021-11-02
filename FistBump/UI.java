@@ -214,7 +214,7 @@ public class UI {
             else if(input.equals("3")) {
                 Employment fresh = addEmployment();
                 pastEmployment.add(fresh);
-                employmentString += fresh.toString() + " "; 
+                employmentString += fresh.toString() + " ";
             }
             else if(input.equals("4")) {
                 Education fresh = addEducation();
@@ -253,42 +253,41 @@ public class UI {
         return keyboard.nextLine();
     }
 
-    //TODO fix this
     private Employment addEmployment() {
         String jobTitle;
         String companyName;
+        String jobType;
         String startDate;
         String endDate;
-        String contactInfo;
+        String jobDescription;
         System.out.println("-------- Past Employment --------");
         System.out.println("Please enter your job title: ");
         jobTitle = keyboard.nextLine();
         System.out.println("Enter the company name: ");
         companyName = keyboard.nextLine();
+        System.out.println("Enter the job type: ");
+        jobType = keyboard.nextLine();
         System.out.println("Enter your start date in the form MM/DD/YYYY: ");
         startDate = keyboard.nextLine();
         System.out.println("Enter your end date in the form MM/DD/YYYY: ");
         endDate = keyboard.nextLine();
-        System.out.println("Enter the company's email: ");
-        contactInfo = keyboard.nextLine();
-        return new Employment(jobTitle, companyName, startDate, endDate, contactInfo);
+        System.out.println("Enter the Job description: ");
+        jobDescription = keyboard.nextLine();
+        return new Employment(jobTitle, companyName, jobType, startDate, endDate, jobDescription);
     }
 
     private Education addEducation() {
         String institution;
-        String location;
         String degree;
         String graduationDate;
         System.out.println("-------- Education --------");
         System.out.println("Please enter the name of the institution: ");
         institution = keyboard.nextLine();
-        System.out.println("Enter the location of the institution in the form \"City, State\": ");
-        location = keyboard.nextLine();
         System.out.println("Enter the name of your degree: ");
         degree = keyboard.nextLine();
         System.out.println("Please enter your graduation date in the form MM/DD/YYYY: ");
         graduationDate = keyboard.nextLine();
-        return new Education(institution, location, degree, graduationDate);
+        return new Education(institution, degree, graduationDate);
     }
 
     public void keywordSearch() {
@@ -755,4 +754,7 @@ public class UI {
         return input;
     }
     
+    public void adminMenu() {
+        //TODO
+    }
 }

@@ -58,4 +58,16 @@ public class Resume {
         education.add(ed);
     }
 
+    public String toString() {
+        String concat = "GPA: " + gpa + "\nSkills: " + skills + "\nPast Employment: ";
+        for(Employment employment : pastEmployment) {
+            concat += employment.toString();
+        }
+        concat += "\nEducation: ";
+        for(Education anEducation : education) {
+            concat += anEducation.toString();
+        }
+        return concat;
+    }
+
 }

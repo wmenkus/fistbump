@@ -114,4 +114,27 @@ public class Student extends Account {
     public String getPhoneNumber() {
         return phoneNumber;
     }
+
+    public double getGpa() {
+        if(resumes != null) {
+            return resumes.get(resumes.size() - 1).getGpa();
+        }
+        else {
+            return 0;
+        }
+    }
+
+    public String toString() {
+        return name + "\n" +
+        getGpa() + "\n" +
+        calcRating();
+    }
+
+    public String details() {
+        String details = "Name: " + name + "\nEmail: " + email + "\nPhone Number: " + phoneNumber;
+        for(Resume resume : resumes) {
+            details += resume.toString();
+        }
+        return details;
+    }
 }

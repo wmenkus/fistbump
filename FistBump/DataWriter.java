@@ -10,6 +10,7 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONArray;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.File;
 
 public class DataWriter {
 
@@ -132,7 +133,6 @@ public class DataWriter {
                     HashMap<String, Object> educationMap = new HashMap<String, Object>();
 
                     educationMap.put("institution", education.getInstitution());
-                    educationMap.put("location", education.getLocation());
                     educationMap.put("degree", education.getDegree());
                     educationMap.put("graduationDate", education.getGraduationDate());
 
@@ -219,5 +219,20 @@ public class DataWriter {
 
     public static void saveResume(Resume resume) {
 
+        File file = new File("FistBump\\Resume.txt");
+
+        try {
+            FileWriter fileWriter = new FileWriter("FistBump\\Resume.txt");
+            fileWriter.write(resume.toString());
+            fileWriter.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public static void main(String[] args) {
+        Resume resume = null;
+        saveResume(resume);
     }
 }

@@ -207,11 +207,10 @@ public class DataLoader {
                     JSONObject educationObj = (JSONObject) education;
 
                     String institution = (String) educationObj.get("institution");
-                    String location = (String) educationObj.get("location");
                     String degree = (String) educationObj.get("degree");
                     String graduationDate = (String) educationObj.get("graduationDate");
 
-                    educations.add(new Education(institution, location, degree, graduationDate));
+                    educations.add(new Education(institution, degree, graduationDate));
                 }
                 resumes.add(new Resume(skills, gpa, pastEmployment, educations));
             }
@@ -301,11 +300,10 @@ public class DataLoader {
                     JSONObject educationObj = (JSONObject) education;
 
                     String institution = (String) educationObj.get("institution");
-                    String location = (String) educationObj.get("location");
                     String degree = (String) educationObj.get("degree");
                     String graduationDate = (String) educationObj.get("graduationDate");
 
-                    educations.add(new Education(institution, location, degree, graduationDate));
+                    educations.add(new Education(institution, degree, graduationDate));
                 }
                 resumes.add(new Resume(skills, gpa, pastEmployment, educations));
             }

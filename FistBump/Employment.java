@@ -80,4 +80,14 @@ public class Employment {
         this.jobDescription = jobDescription;
     }
     
+    public String toString() {
+        return (
+            jobTitle + "\n" +
+            "\t" + companyName + "\n" +
+            "\t" + jobType + "\n" +
+            "\t" + startDate + " - " + endDate + "\n" +
+            "\t" + jobDescription
+        );
+    }
+
 }

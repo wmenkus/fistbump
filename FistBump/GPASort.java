@@ -28,14 +28,14 @@ public class GPASort implements StudentSortBehavior {
 
     private int partition (ArrayList<Student> students, int low, int high) {
         // pivot (Element to be placed at right position)
-        double pivot = getGpa(students.get(high));
+        double pivot = students.get(high).getGpa();
         int i = (low - 1);  // Index of smaller element and indicates the 
                     // right position of pivot found so far
 
         for (int j = low; j <= high - 1; j++)
         {
             // If current element is smaller than the pivot
-            if (getGpa(students.get(j)) < pivot)
+            if ((students.get(j).getGpa()) < pivot)
             {
                 i++;    // increment index of smaller element
                 //swap arr[i] and arr[j]
@@ -49,10 +49,5 @@ public class GPASort implements StudentSortBehavior {
         students.set(i + 1, students.get(high));
         students.set(high, temp);
         return i + 1;
-    }
-
-    private double getGpa(Student student) {
-        int index = student.getResumes().size() - 1;
-        return student.getResumes().get(index).getGpa();
     }
 }

@@ -169,4 +169,24 @@ public class Internship {
     public UUID getId() {
         return id;
     }
+
+    public String toString() {
+        return "Job title: " + name + "\nCompany: " + company +
+        "\nPay: " + pay + "\nLength of internship: " + timePeriod + " months";
+    }
+
+    public String details(){
+        String string = "";
+        string += "Company: "+company;
+        string += "\nJob Title: "+name;
+        string += "\nDescription: "+description;
+        string += "\nPay: " + pay;
+        string += "\nStart Date: "+startDate;
+        string += "\nTime Period: "+timePeriod+" weeks";
+        string += "\nSkill Requirements: "+skillRequirements;
+        string += "\nOn-Site: "+onSite;
+        string += "\nAvailability: "+available;
+
+        return string;
+    }
 }
