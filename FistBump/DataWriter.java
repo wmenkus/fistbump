@@ -45,7 +45,6 @@ public class DataWriter {
             map.put("name", employer.name);
             map.put("email", employer.email);
             map.put("password", employer.password);
-            map.put("company", employer.getCompany());
             map.put("bio", employer.getBio());
 
             JSONArray internshipArray = new JSONArray(); 

@@ -20,15 +20,13 @@ public class Employer extends Account{
         super(name, email, password);
         this.setInternships(new ArrayList<Internship>());
         this.ratings = new ArrayList<Rating>();
-        setCompany("");
         setBio("");
     }
     
-    public Employer(UUID id, String name, String email, String password, String company, String bio, ArrayList<Internship> internships, ArrayList<Rating> ratings) {
+    public Employer(UUID id, String name, String email, String password, String bio, ArrayList<Internship> internships, ArrayList<Rating> ratings) {
         super(id, name, email, password);
         this.internships = internships;
         this.ratings = ratings;
-        this.company = company;
         this.bio = bio;
     }
 
