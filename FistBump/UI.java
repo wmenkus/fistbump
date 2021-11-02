@@ -572,7 +572,7 @@ public class UI {
                 System.out.println("\t" + applicants.get(j).toString());
             }
         }
-            //TODO
+
         boolean exit = false;
         while(!exit) {
             System.out.println("Would you like to display applicant details? (Y/N): ");
@@ -608,7 +608,7 @@ public class UI {
             }
             else {
                 System.out.println(
-                    "-------- Details --------\n" +
+                    "\n-------- Details --------\n" +
                     applicants.get(index).details()
                 );
                 while(!exit) {
@@ -631,7 +631,7 @@ public class UI {
         boolean exit = false;
         while(!exit) {
             System.out.println(
-                "-------- Change Sort Mode --------\n" +
+                "\n-------- Change Sort Mode --------\n" +
                 "Your current sort mode is: " + app.getStudentSortString() +
                 "1. Sort by rating\n" +
                 "2. Sort by GPA\n" +
@@ -667,14 +667,10 @@ public class UI {
         String startDate = "";
         boolean onSite = true;
 
-
-
-
         boolean exit = false;
-
         while(!exit) {
             System.out.println(
-                "-------- Post an Internship --------\n" +
+                "\n-------- Post an Internship --------\n" +
                 "Job Title: " + name + "\n" +
                 "Pay: " + pay + "\n" +
                 "Description: " + description + "\n" +
@@ -741,7 +737,7 @@ public class UI {
     public String enterJobTitle() {
         String input;
         System.out.println(
-            "-------- Enter a Job Title --------\n" +
+            "\n-------- Enter a Job Title --------\n" +
             "Please enter the job title: \n"
         );
         input = keyboard.nextLine();
@@ -750,7 +746,7 @@ public class UI {
 
     public double enterPay() {
         System.out.println(
-            "-------- Enter Pay --------\n" +
+            "\n-------- Enter Pay --------\n" +
             "Enter how much the position pays in dollars per hour: \n"
         );
         double result = keyboard.nextDouble();
@@ -760,7 +756,7 @@ public class UI {
 
     public String writeDescription() {
         System.out.println(
-            "-------- Description --------\n" +
+            "\n-------- Description --------\n" +
             "Please write a brief description of the internship: "
         );
         return keyboard.nextLine();
@@ -769,7 +765,7 @@ public class UI {
     public int enterLength() {
 
         System.out.println(
-            "-------- Length of Internship --------\n" + 
+            "\n-------- Length of Internship --------\n" + 
             "Please enter the length of the internship in months: "
         );
         int result = keyboard.nextInt();
@@ -779,7 +775,7 @@ public class UI {
 
     public String addSkillRequirement() {
         String input;
-        System.out.println("-------- Skill Requirement --------\n" + "Please enter a skill requirement");
+        System.out.println("\n-------- Skill Requirements --------\n" + "Please enter a skill requirement");
 
         input = keyboard.nextLine();
         return input;
@@ -788,7 +784,7 @@ public class UI {
     public boolean changeOnSite() {
         String input;
         System.out.println(
-            "-------- Enter On-Site --------\n" +
+            "\n-------- Enter On-Site --------\n" +
             "Please enter whether or not the job is on site (Y/N): "
         );
 
@@ -814,7 +810,7 @@ public class UI {
     public String setStartDate() {
         String input;
         System.out.println(
-            "-------- Enter a Start Date --------\n" +
+            "\n-------- Enter a Start Date --------\n" +
             "Please enter the start date in the form MM/DD/YYYY: \n"
         );
         input = keyboard.nextLine();
@@ -826,7 +822,7 @@ public class UI {
         boolean exit = false;
         while(!exit) {
             System.out.println(
-                "======== Main Menu ========\n" +
+                "\n======== Main Menu ========\n" +
                 "1. Display all Accounts\n" +
                 "2. Display all Internships\n" +
                 "3. Filter Accounts by Keyword\n" +
@@ -900,7 +896,7 @@ public class UI {
             }
             else {
                 Account account = accounts.get(index);
-                System.out.println("-------- Details --------");
+                System.out.println("\n-------- Details --------");
                 System.out.println(account.details());
                 System.out.println("Would you like to remove this account? (Y/N): ");
                 String input = keyboard.nextLine();
@@ -959,7 +955,7 @@ public class UI {
             }
             else {
                 Internship internship = internships.get(index);
-                System.out.println("-------- Details --------");
+                System.out.println("\n-------- Details --------");
                 System.out.println(internship.details());
                 System.out.println("Would you like to remove this internship? (Y/N): ");
                 String input = keyboard.nextLine();
@@ -979,7 +975,7 @@ public class UI {
 
     public void accountKeywordSearch() {
         String input;
-        System.out.println("-------- Keyword Filter --------\n" +
+        System.out.println("\n-------- Keyword Filter --------\n" +
         "Please enter the keyword you would like to filter accounts by: ");
         input = keyboard.nextLine();
         displayAccounts(input);
@@ -987,7 +983,7 @@ public class UI {
 
     public void keywordSearchAdmin() {
         String input;
-        System.out.println("-------- Keyword Filter --------\n" +
+        System.out.println("\n-------- Keyword Filter --------\n" +
         "Please enter the keyword you would like to filter internships by: ");
         input = keyboard.nextLine();
         displayInternshipsAdmin(input);

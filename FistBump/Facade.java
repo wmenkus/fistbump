@@ -44,11 +44,8 @@ public class Facade {
         return accountManager.searchByName(name);
     }
 
-    //TODO is checking for the account type here going to make debugging harder?
     public void addResume(Resume resume) {
-        if(user.getPermissions() == 0) {
-            ((Student)user).addResume(resume);
-        }
+        ((Student)user).addResume(resume);
     }
 
     public Account getUser() {
@@ -109,7 +106,7 @@ public class Facade {
     }
 
     public void changeStudentSortMode(String sortMode) {
-        //TODO
+        ((Employer)user).setSortBehavior(sortMode);
     }
 
     public void sortInternships() {

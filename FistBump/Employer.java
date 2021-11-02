@@ -110,6 +110,12 @@ public class Employer extends Account{
         return internshipIds;
     }
 
+    public void setSortBehavior(String sortMode) {
+        for(Internship internship : internships) {
+            internship.setSortBehavior(sortMode);
+        }
+    }
+
     public String toString() {
         return name + "\n" + calcRating();
     }
