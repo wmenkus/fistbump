@@ -264,21 +264,18 @@ public class UI {
         String startDate;
         String endDate;
         String contactInfo;
-        String jobType;
         System.out.println("-------- Past Employment --------");
         System.out.println("Please enter your job title: ");
         jobTitle = keyboard.nextLine();
         System.out.println("Enter the company name: ");
         companyName = keyboard.nextLine();
-        System.out.println("Enter the type of job: ");
-        jobType = keyboard.nextLine();
         System.out.println("Enter your start date in the form MM/DD/YYYY: ");
         startDate = keyboard.nextLine();
         System.out.println("Enter your end date in the form MM/DD/YYYY: ");
         endDate = keyboard.nextLine();
         System.out.println("Enter the company's email: ");
         contactInfo = keyboard.nextLine();
-        return new Employment(jobTitle, companyName, jobType, startDate, endDate, contactInfo);
+        return new Employment(jobTitle, companyName, startDate, endDate, contactInfo);
     }
 
     private Education addEducation() {
@@ -484,6 +481,7 @@ public class UI {
 
 
 
+
         boolean exit = false;
 
         while(!exit) {
@@ -494,7 +492,7 @@ public class UI {
                 "Description: " + description + "\n" +
                 "Length (in months): " + timePeriod + "\n" +
                 "Skill Requirements: " + skillRequirements + "\n" +
-                "On Site: " + onSiteString
+                "On Site: " + onSiteString + 
                 
             );
 
