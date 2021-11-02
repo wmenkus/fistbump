@@ -1,1 +1,14 @@
-This is a test
+GPA: 3.2
+Skills: Python Java JavaScript HTML CSS 
+Past Employment: Software Developer
+	JP Morgan
+	Internship
+	05/1/2019 - 08/1/2019
+	Created a Python program to predict clients needs.Test Engineer
+	Bank of America
+	Internship
+	05/1/2020 - 08/1/2020
+	Created JUnit test cases to test new features of the back end of the bank's website
+Education: UofSC
+Bachelors in Computer Information Systems
+05/15/2023

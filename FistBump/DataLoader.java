@@ -32,7 +32,8 @@ public class DataLoader {
 
             String name = (String) adminObj.get("name");
             String email = (String) adminObj.get("email");
-            UUID id = (UUID) adminObj.get("id");
+            UUID id;
+            id = UUID.fromString((String) adminObj.get("id"));
             String password = (String) adminObj.get("password");
 
             Admin admin = new Admin(id, name, email, password);
@@ -63,7 +64,8 @@ public class DataLoader {
 
                 String name = (String) employerObj.get("name");
                 String email = (String) employerObj.get("email");
-                UUID id = (UUID) employerObj.get("id");
+                UUID id;
+                id = UUID.fromString((String) employerObj.get("id"));
                 String password = (String) employerObj.get("password");
                 String bio = (String) employerObj.get("bio");
 
@@ -126,7 +128,8 @@ public class DataLoader {
 
                 String name = (String) employerObj.get("name");
                 String email = (String) employerObj.get("email");
-                UUID id = (UUID) employerObj.get("id");
+                UUID id;
+                id = UUID.fromString((String) employerObj.get("id"));
                 String password = (String) employerObj.get("password");
                 String bio = (String) employerObj.get("bio");
 
@@ -169,7 +172,8 @@ public class DataLoader {
         {
             JSONObject studentObj = (JSONObject) obj;
             
-            UUID id = (UUID) studentObj.get("id");
+            UUID id;
+            id = UUID.fromString((String) studentObj.get("id"));
             String name = (String) studentObj.get("name");
             String email = (String) studentObj.get("email");
             String password = (String) studentObj.get("password");
@@ -185,7 +189,7 @@ public class DataLoader {
                 double gpa = (double) resumeObj.get("gpa");
 
                 ArrayList<Employment> pastEmployment = new ArrayList<Employment>();
-                JSONArray employmentList = (JSONArray) resumeObj.get("employment");
+                JSONArray employmentList = (JSONArray) resumeObj.get("pastEmployment");
 
                 for (Object employment : employmentList) {
                     JSONObject employmentObj = (JSONObject) employment;
@@ -262,7 +266,8 @@ public class DataLoader {
         {
             JSONObject studentObj = (JSONObject) obj;
             
-            UUID id = (UUID) studentObj.get("id");
+            UUID id;
+            id = UUID.fromString((String) studentObj.get("id"));
             String name = (String) studentObj.get("name");
             String email = (String) studentObj.get("email");
             String password = (String) studentObj.get("password");
@@ -357,7 +362,8 @@ public class DataLoader {
             boolean onSite = (boolean) internshipObj.get("onSite");
             boolean available = (boolean) internshipObj.get("available");
             StudentSortBehavior sortBehavior = (StudentSortBehavior) internshipObj.get("sortBehavior"); //TODO Do we need this?
-            UUID id = (UUID) internshipObj.get("id");
+            UUID id;
+            id = UUID.fromString((String) internshipObj.get("id"));
             String startDate = (String) internshipObj.get("startDate");
             boolean visibility = (boolean) internshipObj.get("visibility");
 

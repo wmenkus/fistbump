@@ -10,7 +10,6 @@ import java.util.Scanner;
 public class UI {
     private Facade app;
     private Scanner keyboard;
-    private String input;
 
     public UI(Facade app) {
         this.app = app;
@@ -22,6 +21,7 @@ public class UI {
     }
 
     public void start() {
+        String input;
         boolean exit = false;
         while (!exit) {
             loginScreen();
@@ -29,10 +29,10 @@ public class UI {
             if(input.equals("1")) {
                 verify();
             }
-            if(input.equals("2")) {
+            else if(input.equals("2")) {
                 createAccount();
             }
-            if(input.equals("3")) {
+            else if(input.equals("3")) {
                 exit = true;
             }
             else {
@@ -78,6 +78,7 @@ public class UI {
     }
 
     public void createAccount() {
+        String input;
         int accountType = -1; //Sentinel value
         boolean exit = false;
         while(!exit) {
@@ -141,6 +142,7 @@ public class UI {
     }
 
     public void studentMenu() {
+        String input;
         boolean exit = false;
         while (!exit) {
             System.out.println (
@@ -150,7 +152,8 @@ public class UI {
                 "3. Change Sort Mode\n" +
                 "4. Search by Keyword\n" +
                 "5. Rate Employer\n" +
-                "6. Log Out\n"
+                "6. Print Resume to Text File\n" +
+                "7. Log Out\n"
             );
             input = keyboard.nextLine();
             if(input.equals("1")) {
@@ -169,6 +172,10 @@ public class UI {
                 rateEmployer();
             }
             else if(input.equals("6")) {
+                app.printResume();
+                System.out.println("Resume printed!");
+            }
+            else if(input.equals("7")) {
                 exit = true;
             }
             else {
@@ -178,6 +185,7 @@ public class UI {
     }
 
     public void createResume() {
+        String input;
         double gpa = 0;
         String skills = "";
         ArrayList<Employment> pastEmployment = new ArrayList<Employment>();
@@ -297,6 +305,7 @@ public class UI {
     }
 
     public void displayInternships(String keyword) {
+        String input;
         System.out.println("-------- Internships --------");
         app.sortInternships();
         ArrayList<Internship> internshipsAll = app.getInternships();
@@ -330,6 +339,7 @@ public class UI {
     }
 
     public void changeInternshipSortMode() {
+        String input;
         boolean exit = false;
         while(!exit) {
             System.out.println(
@@ -373,6 +383,7 @@ public class UI {
     }
 
     public void applyToInternship(Internship internship) {
+        String input;
         System.out.println(
             "-------- Details --------\n" +
             internship.details()
@@ -396,6 +407,7 @@ public class UI {
     }
 
     public void rateEmployer() {
+        String input;
         System.out.println("-------- Rating an Employer --------");
         int rating = 0;
         Employer rated = null;
@@ -433,6 +445,7 @@ public class UI {
     }
 
     public void employerMenu() {
+        String input;
         System.out.println(
             "======== Main Menu ========\n" +
             "1. Display Applicants\n" +
@@ -466,6 +479,7 @@ public class UI {
     }
 
     public void rateStudent() {
+        String input;
         System.out.println("-------- Rating a Student --------");
         int rating = 0;
         Student rated = null;
@@ -503,6 +517,8 @@ public class UI {
     }
 
     public void displayApplicants() {
+        String input;
+        
         System.out.println("-------- Applicants --------");
         ArrayList<Internship> myInternships = app.getMyInternships();
         ArrayList<Student> applicants;
@@ -535,6 +551,8 @@ public class UI {
     }
 
     public void displayApplicantDetails(ArrayList<Internship> internships) {
+        String input;
+        
         ArrayList<Student> applicants = new ArrayList<Student>();
         for(Internship internship : internships) {
             for(Student applicant : internship.getApplicants()) {
@@ -568,6 +586,8 @@ public class UI {
     }
 
     public void changeStudentSortMode() {
+        String input;
+        
         boolean exit = false;
         while(!exit) {
             System.out.println(
@@ -596,6 +616,8 @@ public class UI {
     }
 
     public void postInternship() {
+        String input;
+
         String name = "";
         double pay = 0;
         String description = "";
@@ -677,6 +699,7 @@ public class UI {
     }
 
     public String enterJobTitle() {
+        String input;
         System.out.println(
             "-------- Enter a Job Title --------\n" +
             "Please enter the job title: \n"
@@ -704,6 +727,7 @@ public class UI {
     }
 
     public int enterLength() {
+
         System.out.println(
             "-------- Length of Internship --------\n" + 
             "Please enter the length of the internship in months: "
@@ -714,6 +738,7 @@ public class UI {
     }
 
     public String addSkillRequirement() {
+        String input;
         System.out.println("-------- Skill Requirement --------\n" + "Please enter a skill requirement");
 
         input = keyboard.nextLine();
@@ -721,6 +746,7 @@ public class UI {
     }
 
     public boolean changeOnSite() {
+        String input;
         System.out.println(
             "-------- Enter On-Site --------\n" +
             "Please enter whether or not the job is on site (Y/N): "
@@ -745,7 +771,8 @@ public class UI {
         return onSite;
     }
 
-    public String setStartDate(){
+    public String setStartDate() {
+        String input;
         System.out.println(
             "-------- Enter a Start Date --------\n" +
             "Please enter the start date in the form MM/DD/YYYY: \n"
@@ -757,4 +784,5 @@ public class UI {
     public void adminMenu() {
         //TODO
     }
+    
 }

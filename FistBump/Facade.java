@@ -100,7 +100,16 @@ public class Facade {
         internshipManager.sort();
     }
 
-    public Account createAccount(){
+    public Account createAccount() {
         return null;
+    }
+    
+    public void save() {
+        accountManager.save();
+        internshipManager.save();
+    }
+
+    public void printResume() {
+        DataWriter.saveResume(((Student)user).getResumes().get(((Student)user).getResumes().size()-1));
     }
 }

@@ -229,10 +229,4 @@ public class DataWriter {
             e.printStackTrace();
         }
     }
-
-
-    public static void main(String[] args) {
-        Resume resume = null;
-        saveResume(resume);
-    }
 }

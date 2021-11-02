@@ -6,13 +6,20 @@ import java.util.ArrayList;
 public class AccountManager {
 
     private ArrayList<Account> accounts;
+    private ArrayList<Admin> admins;
+    private ArrayList<Student> students;
+    private ArrayList<Employer> employers;
     private static AccountManager accountManager;
 
     private AccountManager() {
         accounts = new ArrayList<Account>();
-        accounts.addAll(DataLoader.loadAdmins());
-        accounts.addAll(DataLoader.loadEmployers());
-        accounts.addAll(DataLoader.loadStudents());
+        admins = DataLoader.loadAdmins();
+        students = DataLoader.loadStudents();
+        employers = DataLoader.loadEmployers();
+        accounts.addAll(admins);
+        accounts.addAll(students);
+        accounts.addAll(employers);
+
     }
     
 
@@ -41,10 +48,25 @@ public class AccountManager {
         return accountManager; 
     }
     public void addAccount(Account account) {
-        accounts.add(account);     
+        if (account.getPermissions() == 2) {
+            admins.add((Admin) account);
+        }
+        else if (account.getPermissions() == 1) {
+            employers.add((Employer) account);
+        } 
+        else if (account.getPermissions() == 0){
+            students.add((Student) account);
+        }
     }
 
     public void removeAccount(Account account) {
         accounts.remove(account);
     }
+
+    public void save() {
+        DataWriter.saveAdmin(admins);
+        DataWriter.saveEmployer(employers);
+        DataWriter.saveStudent(students);
+    }
+
 }

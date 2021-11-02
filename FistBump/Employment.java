@@ -18,12 +18,11 @@ public class Employment {
         jobType = "";
         startDate = "";
         endDate = "";
-        //contactInfo = "";
         jobDescription = "";
         
     }
 
-    public Employment(String jobTitle, String companyName,String jobType, String startDate, String endDate, String jobDescription) {
+    public Employment(String jobTitle, String companyName, String jobType, String startDate, String endDate, String jobDescription) {
         this.jobTitle = jobTitle;
         this.companyName = companyName;
         this.jobType = jobType;

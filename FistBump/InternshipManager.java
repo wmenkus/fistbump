@@ -39,11 +39,14 @@ public class InternshipManager {
     }
 
     public void setSortBehavior(String sortMode) {
-        if(sortMode.equalsIgnoreCase("pay")) {
+        if (sortMode.equalsIgnoreCase("pay")) {
             internSortBehavior = new PaySort();
-        }
-        else if(sortMode.equalsIgnoreCase("length")) {
+        } else if (sortMode.equalsIgnoreCase("length")) {
             internSortBehavior = new LengthSort();
         }
+    }
+
+    public void save() {
+        DataWriter.saveInternship(internships);
     }
 }

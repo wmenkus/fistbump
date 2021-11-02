@@ -5,5 +5,6 @@ public class FistBumpDriver {
         Facade fistBumpApplication = new Facade();
         UI fistBumpUI = new UI(fistBumpApplication);
         fistBumpUI.start();
+        fistBumpApplication.save();
     }
 }
