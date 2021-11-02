@@ -1,7 +1,5 @@
 package FistBump;
 
-import java.util.UUID;
-
 public class Rating {
     private double rating;
     private Account rater;
