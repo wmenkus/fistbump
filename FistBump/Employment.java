@@ -5,13 +5,15 @@
 
 package FistBump;
 
+import java.util.ArrayList;
+
 public class Employment {
     private String jobTitle;
     private String companyName;
     private String jobType; 
     private String startDate;
     private String endDate;
-    private String jobDescription;
+    private ArrayList<String> descriptions;
 
     /**
      * The default constructor for Employment.
@@ -23,20 +25,20 @@ public class Employment {
         jobType = "";
         startDate = "";
         endDate = "";
-        jobDescription = "";
+        descriptions = new ArrayList<String>();
         
     }
 
     /**
      * The parameterized constructor for Employment.
      */
-    public Employment(String jobTitle, String companyName, String jobType, String startDate, String endDate, String jobDescription) {
+    public Employment(String jobTitle, String companyName, String jobType, String startDate, String endDate, ArrayList<String> descriptions) {
         this.jobTitle = jobTitle;
         this.companyName = companyName;
         this.jobType = jobType;
         this.startDate = startDate;
         this.endDate = endDate;
-        this.jobDescription = jobDescription;
+        this.descriptions = descriptions;
     }
 
     /**
@@ -112,28 +114,30 @@ public class Employment {
     /**
      * The accessor for jobDescription.
      */
-    public String getJobDescription() {
-        return jobDescription;
+    public ArrayList<String> getJobDescription() {
+        return descriptions;
     }
 
     /**
      * The mutator for jobDescription.
      */
-    public void setJobDescription(String jobDescription) {
-        this.jobDescription = jobDescription;
+    public void setJobDescription(ArrayList<String> descriptions) {
+        this.descriptions = descriptions;
     }
     
     /**
      * The method that returns a String with each variable concatenated to it.
      */
     public String toString() {
-        return (
+        String string =
             jobTitle + "\n" +
             "\t" + companyName + "\n" +
             "\t" + jobType + "\n" +
-            "\t" + startDate + " - " + endDate + "\n" +
-            "\t" + jobDescription
-        );
+            "\t" + startDate + " - " + endDate;
+        for(int i = 0; i < descriptions.size(); i++) {
+            string += "\n\t" + descriptions.get(i);
+        }
+        return string;
     }
 
 }

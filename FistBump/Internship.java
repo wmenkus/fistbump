@@ -165,9 +165,17 @@ public class Internship {
         return id;
     }
 
+    public ArrayList<String> getApplicantIds() {
+        return applicantIds;
+    }
+
+    public void setApplicants(ArrayList<Student> applicants) {
+        this.applicants = applicants;
+    }
+
     public String toString() {
-        return "Job title: " + name + "\nCompany: " + company +
-        "\nPay: " + pay + "\nLength of internship: " + timePeriod + " months";
+        return "\tJob title: " + name + "\n\tCompany: " + company +
+        "\n\tPay: $" + pay + "per hour\n\tLength of internship: " + timePeriod + " months";
     }
 
     public String details(){
@@ -175,9 +183,9 @@ public class Internship {
         string += "Company: "+company;
         string += "\nJob Title: "+name;
         string += "\nDescription: "+description;
-        string += "\nPay: " + pay;
+        string += "\nPay: $" + pay + "per hour";
         string += "\nStart Date: "+startDate;
-        string += "\nTime Period: "+timePeriod+" weeks";
+        string += "\nTime Period: "+timePeriod+" months";
         string += "\nSkill Requirements: "+skillRequirements;
         string += "\nOn-Site: "+onSite;
         string += "\nAvailability: "+available;
