@@ -81,7 +81,11 @@ public class Employer extends Account{
 
     public void hideInternship(Internship internship) {
         if(internship.getPoster() == this)
-            internship.setVisibility(false);
+            internship.setAvailable(false);
+    }
+
+    public void removeInternship(Internship internship) {
+        internships.remove(internship);
     }
 
     /**
@@ -101,5 +105,17 @@ public class Employer extends Account{
 
     public ArrayList<String> getInternshipIds(){
         return internshipIds;
+    }
+
+    public String toString() {
+        return name + "\n" + calcRating();
+    }
+
+    public String details() {
+        String details = "Name: " + name + "\nEmail: " + email;
+        for(Internship internship : internships) {
+            details += internship.toString();
+        }
+        return details;
     }
 }

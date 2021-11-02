@@ -56,5 +56,8 @@ public abstract class Account {
      * @return 0 for Student, 1 for Employer, 2 for Admin
      */
     public abstract int getPermissions();
-    
+
+    public abstract String toString();
+
+    public abstract String details();
 }

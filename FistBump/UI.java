@@ -91,11 +91,11 @@ public class UI {
             );
             input = keyboard.nextLine();
             if(input.equals("1")) {
-                accountType = 0;
+                createStudentAccount();
                 exit = true;
             }
             else if(input.equals("2")) {
-                accountType = 1;
+                createEmployerAccount();
                 exit = true;
             }
             else if(input.equals("3")) {
@@ -139,6 +139,61 @@ public class UI {
             app.login(email, password);
             employerMenu();
         }
+    }
+
+    public void createStudentAccount() {
+        String name = "";
+        String email = "";
+        String phoneNumber = "";
+        String password = "";
+        System.out.println("Please enter your name: ");
+        name = keyboard.nextLine();
+        System.out.println("Please enter your email: ");
+        email = keyboard.nextLine();
+        System.out.println("Please enter your phone number: ");
+        phoneNumber = keyboard.nextLine();
+        boolean match = false;
+        while(!match) {
+            System.out.println("Please enter your password: ");
+            password = keyboard.nextLine();
+            System.out.println("Please confirm your password: ");
+            if(password.equals(keyboard.nextLine())) {
+                match = true;
+            }
+            else {
+                System.out.println("Password mismatch.");
+            }
+        }
+        Student student = new Student(name, email, password, phoneNumber);
+        app.addAccount(student);
+        app.login(email, password);
+        studentMenu();
+    }
+
+    public void createEmployerAccount() {
+        String name = "";
+        String email = "";
+        String password = "";
+        System.out.println("Please enter your name: ");
+        name = keyboard.nextLine();
+        System.out.println("Please enter your email: ");
+        email = keyboard.nextLine();
+        boolean match = false;
+        while(!match) {
+            System.out.println("Please enter your password: ");
+            password = keyboard.nextLine();
+            System.out.println("Please confirm your password: ");
+            if(password.equals(keyboard.nextLine())) {
+                match = true;
+            }
+            else {
+                System.out.println("Password mismatch.");
+            }
+        }
+        Employer employer = new Employer(name, email, password);
+        app.addAccount(employer);
+        app.login(email, password);
+        employerMenu();
     }
 
     public void studentMenu() {
@@ -311,7 +366,7 @@ public class UI {
         ArrayList<Internship> internshipsAll = app.getInternships();
         ArrayList<Internship> internshipsShown = new ArrayList<Internship>();
         for(Internship internship : internshipsAll) {
-            if(internship.isVisible() && internship.toString().toLowerCase().contains(keyword.toLowerCase())) {
+            if(internship.isAvailable() && internship.toString().toLowerCase().contains(keyword.toLowerCase())) {
                 internshipsShown.add(internship);
             }
         }
@@ -688,8 +743,8 @@ public class UI {
                 exit = true;
             }
             else if(input.equals("9")) {
-                Internship internship = new Internship((Employer)app.getUser(), name, pay, timePeriod, skillRequirements, onSite, startDate);
-                app.addInternship((Employer)app.getUser(), internship);
+                Internship internship = new Internship((Employer)app.getUser(), name, pay, description, timePeriod, skillRequirements, onSite, startDate);
+                app.addInternship(internship);
                 exit = true;
             }
             else {
@@ -782,7 +837,200 @@ public class UI {
     }
     
     public void adminMenu() {
-        //TODO
+        String input;
+        boolean exit = false;
+        while(!exit) {
+            System.out.println(
+                "======== Main Menu ========\n" +
+                "1. Display all Accounts\n" +
+                "2. Display all Internships\n" +
+                "3. Filter Accounts by Keyword\n" +
+                "4. Filter Internships by Keyword\n" +
+                "5. Create a New Admin Account\n" +
+                "6. Log Out"
+            );
+            input = keyboard.nextLine();
+            if(input.equals("1")) {
+                displayAccounts("");
+            }
+            else if(input.equals("2")) {
+                displayInternshipsAdmin("");
+            }
+            else if(input.equals("3")) {
+                accountKeywordSearch();
+            }
+            else if(input.equals("4")) {
+                keywordSearchAdmin();
+            }
+            else if(input.equals("5")) {
+                createAdminAccount();
+            }
+            else if(input.equals("6")) {
+                exit = true;
+            }
+            else {
+                inputError();
+            }
+        }
+    }
+
+    public void displayAccounts(String keyword) {
+        String input;
+        ArrayList<Account> accountsAll = app.getAccounts();
+        ArrayList<Account> accountsShown = new ArrayList<Account>();
+        for(Account account : accountsAll) {
+            if(account.details().toLowerCase().contains(keyword.toLowerCase())) {
+                accountsShown.add(account);
+            }
+        }
+        for(int i = 0; i < accountsShown.size(); i++) {
+            System.out.println(i + ".");
+            System.out.println(accountsShown.get(i).toString());
+        }
+        boolean exit = false;
+        while(!exit) {
+            System.out.println("Would you like to inspect account details? (Y/N): ");
+            input = keyboard.nextLine();
+            if(input.equalsIgnoreCase("y")) {
+                accountDetails(accountsShown);
+            }
+            else if(input.equalsIgnoreCase("n")) {
+                exit = true;
+            }
+            else {
+                inputError();
+            }
+        }
+    }
+
+    public void accountDetails(ArrayList<Account> accounts) {
+        int index;
+        boolean exit = false;
+        while(!exit) {
+            System.out.println("Please enter the number of the account you would like to inspect: ");
+            index = keyboard.nextInt();
+            keyboard.nextLine();
+            if(index < 0 || index >= accounts.size()) {
+                inputError();
+            }
+            else {
+                Account account = accounts.get(index);
+                System.out.println("-------- Details --------");
+                System.out.println(account.details());
+                System.out.println("Would you like to remove this account? (Y/N): ");
+                String input = keyboard.nextLine();
+                if(input.equalsIgnoreCase("y")) {
+                    app.removeAccount(account);
+                    exit = true;
+                }
+                else if(input.equalsIgnoreCase("n")) {
+                    exit = true;
+                }
+                else {
+                    inputError();
+                }
+            }
+        }
+    }
+
+    public void displayInternshipsAdmin(String keyword) {
+        String input;
+        ArrayList<Internship> internshipsAll = app.getInternships();
+        ArrayList<Internship> internshipsShown = new ArrayList<Internship>();
+        for(Internship internship : internshipsAll) {
+            if(internship.details().toLowerCase().contains(keyword.toLowerCase())) {
+                internshipsShown.add(internship);
+            }
+        }
+        for(int i = 0; i < internshipsShown.size(); i++) {
+            System.out.println(i + ".");
+            System.out.println(internshipsShown.get(i).toString());
+        }
+        boolean exit = false;
+        while(!exit) {
+            System.out.println("Would you like to inspect internship details? (Y/N): ");
+            input = keyboard.nextLine();
+            if(input.equalsIgnoreCase("y")) {
+                internshipDetailsAdmin(internshipsShown);
+            }
+            else if(input.equalsIgnoreCase("n")) {
+                exit = true;
+            }
+            else {
+                inputError();
+            }
+        }
+    }
+
+    public void internshipDetailsAdmin(ArrayList<Internship> internships) {
+        int index;
+        boolean exit = false;
+        while(!exit) {
+            System.out.println("Please enter the number of the internship you would like to inspect: ");
+            index = keyboard.nextInt();
+            keyboard.nextLine();
+            if(index < 0 || index >= internships.size()) {
+                inputError();
+            }
+            else {
+                Internship internship = internships.get(index);
+                System.out.println("-------- Details --------");
+                System.out.println(internship.details());
+                System.out.println("Would you like to remove this internship? (Y/N): ");
+                String input = keyboard.nextLine();
+                if(input.equalsIgnoreCase("y")) {
+                    app.removeInternship(internship);
+                    exit = true;
+                }
+                else if(input.equalsIgnoreCase("n")) {
+                    exit = true;
+                }
+                else {
+                    inputError();
+                }
+            }
+        }
+    }
+
+    public void accountKeywordSearch() {
+        String input;
+        System.out.println("-------- Keyword Filter --------\n" +
+        "Please enter the keyword you would like to filter accounts by: ");
+        input = keyboard.nextLine();
+        displayAccounts(input);
+    }
+
+    public void keywordSearchAdmin() {
+        String input;
+        System.out.println("-------- Keyword Filter --------\n" +
+        "Please enter the keyword you would like to filter internships by: ");
+        input = keyboard.nextLine();
+        displayInternshipsAdmin(input);
+    }
+
+    public void createAdminAccount() {
+        String name = "";
+        String email = "";
+        String password = "";
+        System.out.println("Please enter the new admin's name: ");
+        name = keyboard.nextLine();
+        System.out.println("Please enter the new admin's email: ");
+        email = keyboard.nextLine();
+        boolean match = false;
+        while(!match) {
+            System.out.println("Please enter the new admin's password: ");
+            password = keyboard.nextLine();
+            System.out.println("Please confirm the new admin's password: ");
+            if(password.equals(keyboard.nextLine())) {
+                match = true;
+            }
+            else {
+                System.out.println("Password mismatch.");
+            }
+        }
+        Admin admin = new Admin(name, email, password);
+        app.addAccount(admin);
+        System.out.println("Admin account created");
     }
     
 }

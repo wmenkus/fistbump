@@ -78,6 +78,10 @@ public class AccountManager {
         accounts.remove(account);
     }
 
+    public ArrayList<Account> getAccounts() {
+        return accounts;
+    }
+
     public void save() {
         DataWriter.saveAdmin(admins);
         DataWriter.saveEmployer(employers);

@@ -203,7 +203,7 @@ public class DataWriter {
                 JSONObject applicantObj = new JSONObject(applicantMap);
                 ratingArray.add(applicantObj);
             }
-            map.put("applicants", applicants);
+            map.put("applicantIds", applicants);
 
             JSONObject obj = new JSONObject(map);
             array.add(array.size(), obj);
@@ -229,7 +229,7 @@ public class DataWriter {
             e.printStackTrace();
         }
     }
-    public static void  main(String[] args){
+    /*public static void  main(String[] args){
         
         
         Employer poster = new Employer("name", "email", "password");
@@ -239,6 +239,6 @@ public class DataWriter {
         internships.add(internship);
 
         saveInternship(internships);
-    }
+    }*/
 }
 

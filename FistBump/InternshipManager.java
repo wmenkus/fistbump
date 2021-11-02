@@ -27,6 +27,11 @@ public class InternshipManager {
         employer.addInternship(internship);
     }
 
+    public void removeInternship(Employer employer, Internship internship) {
+        internships.remove(internship);
+        employer.removeInternship(internship);
+    }
+
     public void sort() {
         internSortBehavior.sort(internships);
     }
