@@ -105,7 +105,6 @@ public class DataWriter {
 
                 resumeMap.put("skills", resume.getSkills());
                 resumeMap.put("gpa", resume.getGpa());
-                resumeMap.put("references", resume.getReferences());
 
                 JSONArray employmentArray = new JSONArray();
                 ArrayList<Employment> pastEmployment = resume.getPastEmployment();
@@ -235,8 +234,8 @@ public static void main(String[] args) {
         ArrayList<Education> educationList = new ArrayList<Education>();
         educationList.add(education1);
 
-        Resume resume1 = new Resume("skills", "references", 2.5, employmentList, educationList);
-        Resume resume2 = new Resume("skills", "references", 2.5, employmentList, educationList);
+        Resume resume1 = new Resume("skills", 2.5, employmentList, educationList);
+        Resume resume2 = new Resume("skills", 2.5, employmentList, educationList);
 
         ArrayList<Resume> resumeList = new ArrayList<Resume>();
         resumeList.add(resume1);

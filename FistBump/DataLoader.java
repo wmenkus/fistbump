@@ -113,7 +113,9 @@ public class DataLoader {
             String name = (String) studentObj.get("name");
             String email = (String) studentObj.get("email");
             String password = (String) studentObj.get("password");
+
             ArrayList<Resume> resumes = (ArrayList<Resume>) studentObj.get("resumes"); //TODO fix
+            
             ArrayList<Rating> ratings = (ArrayList<Rating>) studentObj.get("ratings"); //TODO fix
 
             Student student = new Student(id, name, email, password, resumes, ratings);
