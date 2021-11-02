@@ -69,16 +69,12 @@ public class DataLoader {
                 String password = (String) employerObj.get("password");
                 String bio = (String) employerObj.get("bio");
 
-                ArrayList<Internship> allInternships = loadInternships();
-                ArrayList<Internship> internships = new ArrayList<Internship>();
-                ArrayList<String> internshipIds = (ArrayList<String>) employerObj.get("internships");
-                
-                for (String internshipId : internshipIds) {
-                    for (Internship internship : allInternships) {
-                        if (internshipId.equals(internship.id.toString())) {
-                            internships.add(internship);
-                        }
-                    }
+                ArrayList<String> internshipIds = new ArrayList<String>();
+                JSONArray internshipList = new JSONArray();
+
+                for (Object internshipIdObj : internshipList) {
+                    String internshipId = (String) internshipIdObj;
+                    internshipIds.add(internshipId);
                 }
 
                 ArrayList<Rating> ratings = new ArrayList<Rating>();
@@ -100,7 +96,7 @@ public class DataLoader {
                     ratings.add(new Rating(ratingNum, rater, valid));
                 }
 
-                Employer employer = new Employer(id, name, email, password, bio, internships, ratings);
+                Employer employer = new Employer(id, name, email, password, bio, internshipIds, ratings);
 
                 employers.add(employer);
             }
@@ -132,20 +128,15 @@ public class DataLoader {
                 id = UUID.fromString((String) employerObj.get("id"));
                 String password = (String) employerObj.get("password");
                 String bio = (String) employerObj.get("bio");
-
-                ArrayList<Internship> allInternships = loadInternships();
-                ArrayList<Internship> internships = new ArrayList<Internship>();
-                ArrayList<String> internshipIds = (ArrayList<String>) employerObj.get("internships");
                 
-                for (String internshipId : internshipIds) {
-                    for (Internship internship : allInternships) {
-                        if (internshipId.equals(internship.id.toString())) {
-                            internships.add(internship);
-                        }
-                    }
+                ArrayList<String> internshipIds = new ArrayList<String>();
+                JSONArray internshipList = new JSONArray();
+                for (Object internshipIdObj : internshipList) {
+                    String internshipId = (String) internshipIdObj;
+                    internshipIds.add(internshipId);
                 }
 
-                Employer employer = new Employer(id, name, email, password, bio, internships);
+                Employer employer = new Employer(id, name, email, password, bio, internshipIds);
 
                 employers.add(employer);
             }
@@ -283,7 +274,7 @@ public class DataLoader {
                 double gpa = (double) resumeObj.get("gpa");
 
                 ArrayList<Employment> pastEmployment = new ArrayList<Employment>();
-                JSONArray employmentList = (JSONArray) resumeObj.get("employment");
+                JSONArray employmentList = (JSONArray) resumeObj.get("pastEmployment");
 
                 for (Object employment : employmentList) {
                     JSONObject employmentObj = (JSONObject) employment;
@@ -341,18 +332,23 @@ public class DataLoader {
             JSONObject internshipObj = (JSONObject) obj;
 
             ArrayList<Student> applicants = new ArrayList<Student>();
-            ArrayList<String> applicantList = (ArrayList<String>) internshipObj.get("applicantId");
             ArrayList<Student> allStudents = loadStudents();
+            ArrayList<String> applicantIds = new ArrayList<String>();
+            JSONArray applicantArray = new JSONArray();
+            for (Object applicantObj : applicantArray) {
+                String applicantId = (String) applicantObj;
+                applicantIds.add(applicantId);
+            }
 
-            for (String studentId : applicantList) {
+            for (String studentId : applicantIds) {
                 for (Student student : allStudents) {
                     if (studentId.equals(student.getId().toString())) {
                         applicants.add(student);
                     }
                 }
             }
-
-            Employer poster = (Employer) internshipObj.get("poster");
+            
+            //Employer poster = (Employer) internshipObj.get("poster");
             String company = (String) internshipObj.get("company");
             String name = (String) internshipObj.get("name");
             String description = (String) internshipObj.get("description");
@@ -361,13 +357,13 @@ public class DataLoader {
             String skillRequirements = (String) internshipObj.get("skillRequirements");
             boolean onSite = (boolean) internshipObj.get("onSite");
             boolean available = (boolean) internshipObj.get("available");
-            StudentSortBehavior sortBehavior = (StudentSortBehavior) internshipObj.get("sortBehavior"); //TODO Do we need this?
+            //StudentSortBehavior sortBehavior = (StudentSortBehavior) internshipObj.get("sortBehavior"); //TODO Do we need this?
             UUID id;
             id = UUID.fromString((String) internshipObj.get("id"));
             String startDate = (String) internshipObj.get("startDate");
             boolean visibility = (boolean) internshipObj.get("visibility");
 
-            Internship internship = new Internship(applicants, poster, company, name, description, pay, timePeriod, skillRequirements, onSite, available, sortBehavior, id, startDate, visibility);
+            Internship internship = new Internship(applicants, company, name, description, pay, timePeriod, skillRequirements, onSite, available/*, sortBehavior*/, id, startDate, visibility);
 
             internships.add(internship);
         }

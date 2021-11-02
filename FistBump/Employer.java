@@ -7,6 +7,7 @@ public class Employer extends Account{
     private String bio;
     private ArrayList<Internship> internships;
     private ArrayList<Rating> ratings;
+    private ArrayList<String> internshipIds;
 
     /**
      * Parameterized constructor for Employer. Passes name, email,
@@ -21,19 +22,22 @@ public class Employer extends Account{
         this.setInternships(new ArrayList<Internship>());
         this.ratings = new ArrayList<Rating>();
         setBio("");
+        this.internshipIds = new ArrayList<String>();
     }
     
-    public Employer(UUID id, String name, String email, String password, String bio, ArrayList<Internship> internships,
+    public Employer(UUID id, String name, String email, String password, String bio, ArrayList<String> internshipIds,
             ArrayList<Rating> ratings) {
         super(id, name, email, password);
-        this.internships = internships;
+        this.internships = new ArrayList<Internship>();
+        this.internshipIds = internshipIds;
         this.ratings = ratings;
         this.bio = bio;
     }
     
-    public Employer(UUID id, String name, String email, String password, String bio, ArrayList<Internship> internships) {
+    public Employer(UUID id, String name, String email, String password, String bio, ArrayList<String> internshipIds) {
         super(id, name, email, password);
-        this.internships = internships;
+        this.internships = new ArrayList<Internship>();
+        this.internshipIds = internshipIds;
         this.bio = bio;
     }
 
@@ -93,5 +97,9 @@ public class Employer extends Account{
 
     public void addInternship(Internship internship) {
         internships.add(internship);
+    }
+
+    public ArrayList<String> getInternshipIds(){
+        return internshipIds;
     }
 }

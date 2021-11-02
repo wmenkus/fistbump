@@ -56,7 +56,7 @@ public class DataWriter {
 
                 internshipMap.put("internshipId", internship.getId().toString());
 
-                JSONObject internshipObj = new JSONObject(map);
+                JSONObject internshipObj = new JSONObject(internshipMap);
                 internshipArray.add(internshipObj);
             }
             map.put("internships", internshipArray);
@@ -181,7 +181,7 @@ public class DataWriter {
             HashMap<String, Object> map = new HashMap<String, Object>();
 
             map.put("id", internship.id.toString());
-            map.put("poster", internship.getPoster());
+            map.put("posterId", internship.getPoster().id.toString());
             map.put("company", internship.getCompany());
             map.put("name", internship.getName());
             map.put("description", internship.getDescription());
@@ -229,4 +229,16 @@ public class DataWriter {
             e.printStackTrace();
         }
     }
+    public static void  main(String[] args){
+        
+        
+        Employer poster = new Employer("name", "email", "password");
+        Internship internship = new Internship(poster, "name", 15, 4, "skillRequirements", true, "startDate");
+        ArrayList<Internship> internships = new ArrayList<Internship>();
+
+        internships.add(internship);
+
+        saveInternship(internships);
+    }
 }
+

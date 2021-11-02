@@ -446,16 +446,16 @@ public class UI {
 
     public void employerMenu() {
         String input;
-        System.out.println(
+        boolean exit = false;
+        while (!exit) {
+            System.out.println(
             "======== Main Menu ========\n" +
             "1. Display Applicants\n" +
             "2. Change Sort Mode\n" +
             "3. Post Internship\n" +
             "4. Rate Student\n" +
             "5. Log Out\n"
-        );
-        boolean exit = false;
-        while(!exit) {
+            );
             input = keyboard.nextLine();
             if(input.equals("1")) {
                 displayApplicants();
@@ -670,7 +670,7 @@ public class UI {
                 timePeriod = enterLength();
             }
             else if(input.equals("5")) {
-                skillRequirements += addSkillRequirement();
+                skillRequirements += " " +addSkillRequirement();
             }
             else if(input.equals("6")) {
                 onSite = changeOnSite();
@@ -689,7 +689,7 @@ public class UI {
             }
             else if(input.equals("9")) {
                 Internship internship = new Internship((Employer)app.getUser(), name, pay, timePeriod, skillRequirements, onSite, startDate);
-                ((Employer)app.getUser()).addInternship(internship);
+                app.addInternship((Employer)app.getUser(), internship);
                 exit = true;
             }
             else {

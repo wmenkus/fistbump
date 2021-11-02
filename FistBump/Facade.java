@@ -13,8 +13,8 @@ public class Facade {
     private String studentSortString;
 
     public Facade(){
-        accountManager = AccountManager.getInstance();
         internshipManager = InternshipManager.getInstance();
+        accountManager = AccountManager.getInstance();
         user = null;
         internshipSortString = "pay";
         studentSortString = "rating";
@@ -77,6 +77,10 @@ public class Facade {
 
     public void addAccount(Account account) {
         accountManager.addAccount(account);
+    }
+
+    public void addInternship(Employer employer, Internship internship){
+        internshipManager.addInternship(employer, internship);
     }
 
     /**

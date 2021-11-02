@@ -16,10 +16,25 @@ public class AccountManager {
         admins = DataLoader.loadAdmins();
         students = DataLoader.loadStudents();
         employers = DataLoader.loadEmployers();
+
+        ArrayList<Internship> internships = InternshipManager.getInstance().getInternships();
+
+        for (Employer employer : employers) {
+            for (String internshipId : employer.getInternshipIds()) {
+                for (Internship internship : internships) {
+                    if (internshipId.equals(internship.getId().toString())) {
+                        employer.addInternship(internship);
+                        internship.setPoster(employer);
+                    }
+                }
+            }
+        }
+
         accounts.addAll(admins);
         accounts.addAll(students);
         accounts.addAll(employers);
 
+        
     }
     
 
