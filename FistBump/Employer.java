@@ -30,9 +30,6 @@ public class Employer extends Account{
         super(id, name, email, password);
         this.internships = new ArrayList<Internship>();
         this.internshipIds = internshipIds;
-        for (String internshipId : internshipIds) {
-            System.out.println("Employer: "+internshipId);
-        }
         this.ratings = ratings;
         this.bio = bio;
     }

@@ -84,7 +84,6 @@ public class DataLoader {
                 for (Object obj2 : internshipList) {
                     JSONObject internshipIdObj = (JSONObject) obj2;
                     String internshipId = internshipIdObj.get("internshipId").toString();
-                    System.out.println("DataLoader: " + internshipId);
                     internshipIds.add(internshipId);
                 }
 
