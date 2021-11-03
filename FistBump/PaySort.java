@@ -35,7 +35,7 @@ public class PaySort implements InternshipSortBehavior {
         for (int j = low; j <= high - 1; j++)
         {
             // If current element is smaller than the pivot
-            if (getPay(internships.get(j)) < pivot)
+            if (getPay(internships.get(j)) > pivot)
             {
                 i++;    // increment index of smaller element
                 //swap arr[i] and arr[j]

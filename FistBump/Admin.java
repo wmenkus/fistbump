@@ -15,10 +15,6 @@ public class Admin extends Account{
         super(id, name, email, password);
     }
 
-    public void removeAccount(Account account){
-        account = null;
-    }
-
     public void hideRating(Rating rating){
         rating.setValid(false);
     }
@@ -29,14 +25,6 @@ public class Admin extends Account{
 
     public void reviseInternship(Internship oldInternship, Internship newInternship){
         oldInternship = newInternship;
-    }
-
-    public void removeInternship(Internship internship){
-        internship = null;
-    }
-
-    public static void createAdminAccount(String name, String email, String password){
-
     }
 
     public int getPermissions() {

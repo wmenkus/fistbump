@@ -354,7 +354,6 @@ public class UI {
     }
 
     /**
-     * TODO
      * @return
      */
     private Employment addEmployment() {
@@ -810,7 +809,7 @@ public class UI {
         }
     }
 
-    public String enterJobTitle() {
+    private String enterJobTitle() {
         String input;
         System.out.println(
             "\n-------- Enter a Job Title --------\n" +
@@ -820,7 +819,7 @@ public class UI {
         return input;
     }
 
-    public double enterPay() {
+    private double enterPay() {
         System.out.println(
             "\n-------- Enter Pay --------\n" +
             "Enter how much the position pays in dollars per hour: \n"
@@ -830,7 +829,7 @@ public class UI {
         return result;
     }
 
-    public String writeDescription() {
+    private String writeDescription() {
         System.out.println(
             "\n-------- Description --------\n" +
             "Please write a brief description of the internship: "
@@ -838,7 +837,7 @@ public class UI {
         return keyboard.nextLine();
     }
 
-    public int enterLength() {
+    private int enterLength() {
 
         System.out.println(
             "\n-------- Length of Internship --------\n" + 
@@ -849,7 +848,7 @@ public class UI {
         return result;
     }
 
-    public String addSkillRequirement() {
+    private String addSkillRequirement() {
         String input;
         System.out.println("\n-------- Skill Requirements --------\n" + "Please enter a skill requirement");
 
@@ -857,7 +856,7 @@ public class UI {
         return input;
     }
 
-    public boolean changeOnSite() {
+    private boolean changeOnSite() {
         String input;
         System.out.println(
             "\n-------- Enter On-Site --------\n" +
@@ -883,7 +882,7 @@ public class UI {
         return onSite;
     }
 
-    public String setStartDate() {
+    private String setStartDate() {
         String input;
         System.out.println(
             "\n-------- Enter a Start Date --------\n" +
