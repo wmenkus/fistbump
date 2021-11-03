@@ -1,1 +1,47 @@
-[{"available":true,"description":"Codes the backend of the CoffeeCo website","pay":20.0,"posterId":"37a433b9-5241-4b18-8df8-540258eb973c","name":"Coffee Website Designer","timePeriod":1,"onSite":false,"company":"CoffeeCo","applicantIds":[{"applicantId":"9d382e8c-d92a-46da-af1f-11864dbe3211"}],"id":"65206250-ca56-4eda-9c35-18fd78414899","skillRequirements":" HTML JavaScript","startDate":"12\/1\/2021"},{"available":true,"description":"Code deliverables for clients","pay":15.0,"posterId":"a904aad2-2571-4efe-b28d-174f4a5d7947","name":"Software Engineer","timePeriod":4,"onSite":true,"company":"Tech Inc.","applicantIds":[{"applicantId":"38638451-8a6a-4d22-82dd-29aa43f59248"}],"id":"19c906cb-6bad-4ea2-8fdf-8d3f8627031b","skillRequirements":" Java JavaScript","startDate":"11\/15\/2021"},{"available":true,"description":"Brings coffee to people","pay":7.5,"posterId":"37a433b9-5241-4b18-8df8-540258eb973c","name":"Coffee Bringer","timePeriod":3,"onSite":true,"company":"CoffeeCo","applicantIds":[{"applicantId":"38638451-8a6a-4d22-82dd-29aa43f59248"},{"applicantId":"8a3e97d9-3062-4a53-875a-2897897d0b63"}],"id":"076849ce-6484-4080-977d-22b3a73e5f65","skillRequirements":" Coffee Prep","startDate":"12\/1\/2021"}]
+[
+  {
+    "available": true,
+    "description": "Codes the backend of the CoffeeCo website",
+    "pay": 20.0,
+    "posterId": "37a433b9-5241-4b18-8df8-540258eb973c",
+    "name": "Coffee Website Designer",
+    "timePeriod": 1,
+    "onSite": false,
+    "company": "CoffeeCo",
+    "applicantIds": [],
+    "id": "65206250-ca56-4eda-9c35-18fd78414899",
+    "skillRequirements": " HTML JavaScript",
+    "startDate": "12/1/2021"
+  },
+  {
+    "available": true,
+    "description": "Code deliverables for clients",
+    "pay": 15.0,
+    "posterId": "a904aad2-2571-4efe-b28d-174f4a5d7947",
+    "name": "Software Engineer",
+    "timePeriod": 4,
+    "onSite": true,
+    "company": "Tech Inc.",
+    "applicantIds": [{ "applicantId": "38638451-8a6a-4d22-82dd-29aa43f59248" }],
+    "id": "19c906cb-6bad-4ea2-8fdf-8d3f8627031b",
+    "skillRequirements": " Java JavaScript",
+    "startDate": "11/15/2021"
+  },
+  {
+    "available": true,
+    "description": "Brings coffee to people",
+    "pay": 7.5,
+    "posterId": "37a433b9-5241-4b18-8df8-540258eb973c",
+    "name": "Coffee Bringer",
+    "timePeriod": 3,
+    "onSite": true,
+    "company": "CoffeeCo",
+    "applicantIds": [
+      { "applicantId": "38638451-8a6a-4d22-82dd-29aa43f59248" },
+      { "applicantId": "8a3e97d9-3062-4a53-875a-2897897d0b63" }
+    ],
+    "id": "076849ce-6484-4080-977d-22b3a73e5f65",
+    "skillRequirements": " Coffee Prep",
+    "startDate": "12/1/2021"
+  }
+]
