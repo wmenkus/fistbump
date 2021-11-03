@@ -1,1 +1,76 @@
-[{"password":"stinkymenky","phoneNumber":"(843)209-2234","ratings":[],"name":"Walker Menkus","id":"38638451-8a6a-4d22-82dd-29aa43f59248","resumes":[{"skills":"\n\tHula Hooping","gpa":2.0,"education":[{"degree":"Computer Science","institution":"UofSC","graduationDate":"05\/15\/2023"}],"pastEmployment":[{"endDate":"8\/1\/2020","jobTitle":"Coffee Master","companyName":"Coldbrew Inc.","jobType":"Internship","descriptions":[{"jobDescription":"did hard things"}],"startDate":"05\/1\/2020"},{"endDate":"5\/1\/2019","jobTitle":"JOB","companyName":"COMPANY","jobType":"HARD JOB","descriptions":[{"jobDescription":"did hard things"}],"startDate":"1\/1\/2019"}]}],"email":"wmenkus1@gmail.com"},{"password":"dragon32","phoneNumber":"(843)555-5555","ratings":[],"name":"Cameron Delk","id":"8a3e97d9-3062-4a53-875a-2897897d0b63","resumes":[{"skills":"\n\tJavaScript\n\tGitHub\n\tWorks well with others","gpa":3.8,"education":[{"degree":"Bachelor's of Computer Science","institution":"University of South Carolina","graduationDate":"05\/1\/2023"}],"pastEmployment":[{"endDate":"8\/1\/2021","jobTitle":"Cashier","companyName":"Zaxby's","jobType":"Part time","descriptions":[{"jobDescription":"Took orders"},{"jobDescription":"Cleaned store"},{"jobDescription":"Served food"}],"startDate":"7\/1\/2019"}]}],"email":"cdelk@gmail.com"}]
+[
+  {
+    "password": "stinkymenky",
+    "phoneNumber": "(843)209-2234",
+    "ratings": [],
+    "name": "Walker Menkus",
+    "id": "38638451-8a6a-4d22-82dd-29aa43f59248",
+    "resumes": [
+      {
+        "skills": "\n\tHula Hooping",
+        "gpa": 2.0,
+        "education": [
+          {
+            "degree": "Computer Science",
+            "institution": "UofSC",
+            "graduationDate": "05/15/2023"
+          }
+        ],
+        "pastEmployment": [
+          {
+            "endDate": "8/1/2020",
+            "jobTitle": "Coffee Master",
+            "companyName": "Coldbrew Inc.",
+            "jobType": "Internship",
+            "descriptions": [{ "jobDescription": "did hard things" }],
+            "startDate": "05/1/2020"
+          },
+          {
+            "endDate": "5/1/2019",
+            "jobTitle": "JOB",
+            "companyName": "COMPANY",
+            "jobType": "HARD JOB",
+            "descriptions": [{ "jobDescription": "did hard things" }],
+            "startDate": "1/1/2019"
+          }
+        ]
+      }
+    ],
+    "email": "wmenkus1@gmail.com"
+  },
+  {
+    "password": "dragon32",
+    "phoneNumber": "(843)555-5555",
+    "ratings": [],
+    "name": "Cameron Delk",
+    "id": "8a3e97d9-3062-4a53-875a-2897897d0b63",
+    "resumes": [
+      {
+        "skills": "\n\tJavaScript\n\tGitHub\n\tWorks well with others",
+        "gpa": 3.8,
+        "education": [
+          {
+            "degree": "Bachelor's of Computer Science",
+            "institution": "University of South Carolina",
+            "graduationDate": "05/1/2023"
+          }
+        ],
+        "pastEmployment": [
+          {
+            "endDate": "8/1/2021",
+            "jobTitle": "Cashier",
+            "companyName": "Zaxby's",
+            "jobType": "Part time",
+            "descriptions": [
+              { "jobDescription": "Took orders" },
+              { "jobDescription": "Cleaned store" },
+              { "jobDescription": "Served food" }
+            ],
+            "startDate": "7/1/2019"
+          }
+        ]
+      }
+    ],
+    "email": "cdelk@gmail.com"
+  }
+]
