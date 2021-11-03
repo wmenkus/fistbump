@@ -123,10 +123,7 @@ public class DataLoader {
         return employers;
     }
     
-    /**
-     * Creates an Employer array list and fills it with Employer objects created using objects stored in Employer.json
-     * This version of loanEmployers is helpful when using the loadStudents so that student ratings
-     */
+    
     public static ArrayList<Employer> loadEmployersNoRatings() {
 
         ArrayList<Employer> employers = new ArrayList<Employer>();
