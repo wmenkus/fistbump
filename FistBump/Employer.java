@@ -12,7 +12,7 @@ public class Employer extends Account{
     /**
      * Parameterized constructor for Employer. Passes name, email,
      * and password to the constructor for Account. Initializes Internships,
-     * rating, business, bio, and ratingTotal
+     * rating, business, bio, and ratingTotal.
      * @param name The name (or username?) of the employer
      * @param email The employer's email
      * @param password The employer's password

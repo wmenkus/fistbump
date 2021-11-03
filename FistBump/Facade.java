@@ -30,6 +30,10 @@ public class Facade {
         }
     }
 
+    public void logout() {
+        user = null;
+    }
+
     public boolean verify(String email, String password) {
         Account inspected = accountManager.searchByEmail(email); //This should return null if the account DNE
         if(inspected == null) {

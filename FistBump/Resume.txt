@@ -1,14 +1,18 @@
-GPA: 3.2
-Skills: Python Java JavaScript HTML CSS 
-Past Employment: Software Developer
-	JP Morgan
+GPA: 2.0
+Skills: 
+	Hula Hooping
+Past Employment: 
+Coffee Master
+	Coldbrew Inc.
 	Internship
-	05/1/2019 - 08/1/2019
-	Created a Python program to predict clients needs.Test Engineer
-	Bank of America
-	Internship
-	05/1/2020 - 08/1/2020
-	Created JUnit test cases to test new features of the back end of the bank's website
-Education: UofSC
-Bachelors in Computer Information Systems
-05/15/2023
+	05/1/2020 - 8/1/2020
+	did hard things
+JOB
+	COMPANY
+	HARD JOB
+	1/1/2019 - 5/1/2019
+	did hard things
+Education: 
+UofSC
+	Computer Science
+	Graduation 05/15/2023

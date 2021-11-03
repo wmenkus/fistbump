@@ -114,7 +114,7 @@ public class Employment {
     /**
      * The accessor for jobDescription.
      */
-    public ArrayList<String> getJobDescription() {
+    public ArrayList<String> getDescriptions() {
         return descriptions;
     }
 
@@ -130,7 +130,7 @@ public class Employment {
      */
     public String toString() {
         String string =
-            jobTitle + "\n" +
+            "\n" + jobTitle + "\n" +
             "\t" + companyName + "\n" +
             "\t" + jobType + "\n" +
             "\t" + startDate + " - " + endDate;

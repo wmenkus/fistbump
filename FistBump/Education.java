@@ -75,8 +75,8 @@ public class Education {
      * The method that returns a String with each variable concatenated to it.
      */
     public String toString() {
-        return institution + "\n" +
-        degree + "\n" +
-        graduationDate;
+        return "\n" + institution + "\n\t" +
+        degree + "\n\t" +
+        "Graduation " + graduationDate;
     }
 }

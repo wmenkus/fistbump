@@ -7,19 +7,40 @@ package FistBump;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * User Interface for FistBump. Also handles a lot of the program logic.
+ */
 public class UI {
     private Facade app;
     private Scanner keyboard;
 
+    /**
+     * In this implementation, UI is on a higher level than the Facade. Calls to the Facade
+     * go through the UI, so UI must have a Facade. This method is the only constructor for the UI;
+     * it gets its Facade from the parameter (passed directly from the Driver) and initializes the
+     * Scanner that will be used for user input.
+     * @param app
+     */
     public UI(Facade app) {
         this.app = app;
         keyboard = new Scanner(System.in);
     }
 
+    /**
+     * Displays a message to the user that their input is not what the program
+     * has asked of them. This is used in almost every method that calls for user
+     * input.
+     */
     private void inputError() {
         System.out.println("Incorrect input.");
     }
 
+    /**
+     * The main loop of FistBump. Uses the call stack to create the
+     * branching paths of the UI. Displays the initial screen and asks the user
+     * if they would like to log in, create an account, or exit. PROGRAM ONLY SAVES TO DATABASE ON EXIT
+     * THROUGH THIS METHOD.
+     */
     public void start() {
         String input;
         boolean exit = false;
@@ -27,7 +48,7 @@ public class UI {
             loginScreen();
             input = keyboard.nextLine();
             if(input.equals("1")) {
-                verify();
+                login();
             }
             else if(input.equals("2")) {
                 createAccount();
@@ -41,6 +62,9 @@ public class UI {
         }
     }
 
+    /**
+     * Method that shorthands the visual representation of the login screen.
+     */
     public void loginScreen() {
         System.out.println (
             "\n======== FistBump ========\n" + 
@@ -50,7 +74,13 @@ public class UI {
         );
     }
 
-    public void verify() {
+    /**
+     * Asks the user to enter their email and password, then passes that
+     * information to the Facade to verify. If correct, logs the user in.
+     * If incorrect, prompts them for email and password again. Once logged in,
+     * directs them to the correct menu based on their account type.
+     */
+    public void login() {
         System.out.println("\n-------- Log In --------");
         boolean exit = false;
         while(!exit)
@@ -69,14 +99,20 @@ public class UI {
         if(app.getPermissions() == 0) {
             studentMenu();
         }
-        if(app.getPermissions() == 1) {
+        else if(app.getPermissions() == 1) {
             employerMenu();
         }
-        if(app.getPermissions() == 2) {
+        else if(app.getPermissions() == 2) {
             adminMenu();
         }
     }
 
+    /**
+     * Asks the user what kind of account they are creating and directs them
+     * to the correct account creation method. Only keeps exit false if input is
+     * incorrect; this is not a screen the user should be able to get back to except through
+     * the login menu.
+     */
     public void createAccount() {
         String input;
         boolean exit = false;
@@ -106,6 +142,13 @@ public class UI {
         }
     }
 
+    /**
+     * Creates a Student account by first initializing all of the variables that make up
+     * a Student, then setting the values of those variables one by one. Double checks the
+     * user's password. Once all variables are set, passes them to Student's parameterized
+     * constructor, adds the Student to the app, and logs the Student in, taking them
+     * directly to the Student main menu.
+     */
     public void createStudentAccount() {
         String name = "";
         String email = "";
@@ -136,6 +179,13 @@ public class UI {
         studentMenu();
     }
 
+    /**
+     * Creates an Employer account by first initializing all of the variables that make up
+     * an Employer, then setting the values of those variables one by one. Double checks the
+     * user's password. Once all variables are set, passes them to Employer's parameterized
+     * constructor, adds the Employer to the app, and logs the Employer in, taking them
+     * directly to the Employer main menu.
+     */
     public void createEmployerAccount() {
         String name = "";
         String email = "";
@@ -163,6 +213,11 @@ public class UI {
         employerMenu();
     }
 
+    /**
+     * Gives the user the option to create a resume, display all internships,
+     * change how internships are sorted, search internships by a keyword, rate an employer,
+     * print their resume to a text file, or log out.
+     */
     public void studentMenu() {
         String input;
         boolean exit = false;
@@ -198,6 +253,7 @@ public class UI {
                 System.out.println("Resume printed!");
             }
             else if(input.equals("7")) {
+                app.logout();
                 exit = true;
             }
             else {
@@ -206,6 +262,12 @@ public class UI {
         }
     }
 
+    /**
+     * Creates a resume in a similar way to creating an account, by initializing all variables
+     * and setting them one by one. GPA is a single number, whereas skills will be concatenated
+     * every time a new skill is added. When the user selects save and quit, the Resume is created
+     * and then added to the user's Resume ArrayList.
+     */
     public void createResume() {
         String input;
         double gpa = 0;
@@ -230,7 +292,7 @@ public class UI {
                 "3. Add an Employment\n" +
                 "4. Add an Education\n" +
                 "5. Quit\n" +
-                "6. Save and Quit"
+                "6. Save and Quit\n"
             );
 
             input = keyboard.nextLine();
@@ -243,12 +305,12 @@ public class UI {
             else if(input.equals("3")) {
                 Employment fresh = addEmployment();
                 pastEmployment.add(fresh);
-                employmentString += fresh.toString() + " ";
+                employmentString += fresh.toString();
             }
             else if(input.equals("4")) {
                 Education fresh = addEducation();
                 education.add(fresh);
-                educationString += fresh.toString() + " ";
+                educationString += fresh.toString() + "\n";
             }
             else if(input.equals("5")) {
                 exit = true;
@@ -264,6 +326,11 @@ public class UI {
         }
     }
 
+    /**
+     * Prompts the user to enter their GPA. Will throw an exception if the
+     * user doesn't input a number. Does not error check GPA.
+     * @return the GPA, to set the gpa variable in createResume().
+     */
     private double enterGPA() {
         System.out.println(
             "\n-------- Entering your GPA --------\n" +
@@ -274,6 +341,10 @@ public class UI {
         return result;
     }
 
+    /**
+     * Prompts the user to add a skill to their list of skills.
+     * @return the String to be concatenated to the end of the list of skills
+     */
     private String addSkill() {
         System.out.println(
             "\n-------- Entering your Skills --------\n" +
@@ -282,6 +353,10 @@ public class UI {
         return keyboard.nextLine();
     }
 
+    /**
+     * TODO
+     * @return
+     */
     private Employment addEmployment() {
         String jobTitle;
         String companyName;
@@ -350,7 +425,7 @@ public class UI {
         ArrayList<Internship> internshipsAll = app.getInternships();
         ArrayList<Internship> internshipsShown = new ArrayList<Internship>();
         for(Internship internship : internshipsAll) {
-            if(internship.isAvailable() && internship.toString().toLowerCase().contains(keyword.toLowerCase())) {
+            if(internship.isAvailable() && internship.details().toLowerCase().contains(keyword.toLowerCase())) {
                 internshipsShown.add(internship);
             }
         }
@@ -564,12 +639,12 @@ public class UI {
         ArrayList<Student> applicants;
         int count = 0;
         for(int i = 0; i < myInternships.size(); i++) {
-            System.out.println("For internship \"" + myInternships.get(i).getName() + "\":\n");
+            System.out.println("For internship \"" + myInternships.get(i).getName() + "\":");
             applicants = myInternships.get(i).getApplicants();
             for(int j = 0; j < applicants.size(); j++) {
                 count++;
                 System.out.println(count + ". ");
-                System.out.println("\t" + applicants.get(j).toString());
+                System.out.println(applicants.get(j).toString());
             }
         }
 
@@ -602,7 +677,8 @@ public class UI {
         boolean exit = false;
         while(!exit) {
             System.out.println("Please enter the number of the applicant you would like to view details of: ");
-            int index = keyboard.nextInt();
+            int index = keyboard.nextInt() - 1;
+            keyboard.nextLine();
             if(index < 0 || index >= applicants.size()) {
                 inputError();
             }

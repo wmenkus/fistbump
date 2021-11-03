@@ -16,39 +16,48 @@ import java.io.IOException;
 
 public class DataLoader {
 
+    /**
+     * Creates an Admin array list and fills it with Admin objects created using objects stored in Admin.json
+     */
     public static ArrayList<Admin> loadAdmins() {
 
         ArrayList<Admin> admins = new ArrayList<Admin>();
 
         JSONParser parser = new JSONParser();
-    
-    try{
 
-        JSONArray array = (JSONArray) parser.parse(new FileReader("FistBump\\Admin.json"));
+        try {
 
-        for (Object obj : array)
-        {
-            JSONObject adminObj = (JSONObject) obj;
+            JSONArray array = (JSONArray) parser.parse(new FileReader("FistBump\\Admin.json"));
 
-            String name = (String) adminObj.get("name");
-            String email = (String) adminObj.get("email");
-            UUID id;
-            id = UUID.fromString((String) adminObj.get("id"));
-            String password = (String) adminObj.get("password");
+            for (Object obj : array) {
+                JSONObject adminObj = (JSONObject) obj;
 
-            Admin admin = new Admin(id, name, email, password);
+                String name = (String) adminObj.get("name");
+                String email = (String) adminObj.get("email");
+                UUID id;
+                id = UUID.fromString((String) adminObj.get("id"));
+                String password = (String) adminObj.get("password");
 
-            admins.add(admin);
+                Admin admin = new Admin(id, name, email, password);
+
+                admins.add(admin);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
-    }
-    catch (FileNotFoundException e) {e.printStackTrace();}
-    catch (IOException e) {e.printStackTrace();}
-    catch (ParseException e) {e.printStackTrace();}
-    catch (Exception e) {e.printStackTrace();}
-    
-    return admins;
+
+        return admins;
     }
     
+    /**
+     * Creates an Employer array list and fills it with Employer objects created using objects stored in Employer.json
+     */
     public static ArrayList<Employer> loadEmployers() {
 
         ArrayList<Employer> employers = new ArrayList<Employer>();
@@ -75,7 +84,7 @@ public class DataLoader {
                 for (Object obj2 : internshipList) {
                     JSONObject internshipIdObj = (JSONObject) obj2;
                     String internshipId = internshipIdObj.get("internshipId").toString();
-                    System.out.println("DataLoader: "+internshipId);
+                    System.out.println("DataLoader: " + internshipId);
                     internshipIds.add(internshipId);
                 }
 
@@ -102,15 +111,23 @@ public class DataLoader {
 
                 employers.add(employer);
             }
-        } 
-        catch (FileNotFoundException e) {e.printStackTrace();}
-        catch (IOException e) {e.printStackTrace();}
-        catch (ParseException e) {e.printStackTrace();}
-        catch (Exception e) {e.printStackTrace();}
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return employers;
     }
     
+    /**
+     * Creates an Employer array list and fills it with Employer objects created using objects stored in Employer.json
+     * This version of loanEmployers is helpful when using the loadStudents so that student ratings
+     */
     public static ArrayList<Employer> loadEmployersNoRatings() {
 
         ArrayList<Employer> employers = new ArrayList<Employer>();
@@ -194,8 +211,11 @@ public class DataLoader {
                     String endDate = (String) employmentObj.get("endDate");
 
                     ArrayList<String> descriptions = new ArrayList<String>();
-                    String jobDescription = (String) employmentObj.get("jobDescription");
-                    
+                    JSONArray descriptionList = (JSONArray) employmentObj.get("descriptions");
+                    for (Object descriptionObj : descriptionList) {
+                        JSONObject jsonDescription = (JSONObject) descriptionObj;
+                        descriptions.add((String) jsonDescription.get("jobDescription"));
+                    }
                     pastEmployment.add(new Employment(jobTitle, companyName, jobType, startDate, endDate, descriptions));
                 }
                 
@@ -288,12 +308,17 @@ public class DataLoader {
                     String jobType = (String) employmentObj.get("jobType");
                     String startDate = (String) employmentObj.get("startDate");
                     String endDate = (String) employmentObj.get("endDate");
-                    String jobDescription = (String) employmentObj.get("jobDescription");
                     
-                    pastEmployment.add(new Employment(jobTitle, companyName, jobType, startDate, endDate, jobDescription));
+                    ArrayList<String> descriptions = new ArrayList<String>();
+                    JSONArray descriptionList = (JSONArray) employmentObj.get("descriptions");
+                    for (Object descriptionObj : descriptionList) {
+                        JSONObject jsonDescription = (JSONObject) descriptionObj;
+                        descriptions.add((String) jsonDescription.get("jobDescription"));
+                    }
+                    pastEmployment.add(new Employment(jobTitle, companyName, jobType, startDate, endDate, descriptions));
                 }
                 
-                ArrayList<Education> educations = new ArrayList<Education>();
+               ArrayList<Education> educations = new ArrayList<Education>();
                 JSONArray educationList = (JSONArray) resumeObj.get("education");
 
                 for (Object education : educationList) {

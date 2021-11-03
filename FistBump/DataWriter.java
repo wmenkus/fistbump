@@ -14,6 +14,10 @@ import java.io.File;
 
 public class DataWriter {
 
+    /**
+     * @param admins
+     * Takes an array of admins and saves all of their variables to Admin.json so that the objects can be retrieved after the program is closed
+     */
     public static void saveAdmin(ArrayList<Admin> admins) {
 
         JSONArray array = new JSONArray();
@@ -37,6 +41,10 @@ public class DataWriter {
         }
     }
 
+    /**
+     * @param employers
+     * Takes an array of employers and saves all of their variables to Employer.json so that the objects can be retrieved after the program is closed
+     */
     public static void saveEmployer(ArrayList<Employer> employers) {
 
         JSONArray array = new JSONArray();
@@ -87,6 +95,10 @@ public class DataWriter {
         }
     }
 
+    /**
+     * @param students
+     * Takes an array of students and saves all of their variables, including their resumes, to Student.json so that the objects can be retrieved after the program is closed
+     */
     public static void saveStudent(ArrayList<Student> students) {
 
         JSONArray array = new JSONArray();
@@ -122,10 +134,13 @@ public class DataWriter {
 
                     ArrayList<String> descriptions = employment.getDescriptions();
                     JSONArray descriptionList = new JSONArray();
-                    for (String description : descriptions){
-                        descriptionList.add(description);
+                    for (String description : descriptions) {
+                        HashMap<String, Object> descriptionMap = new HashMap<String, Object>();
+                        descriptionMap.put("jobDescription", description);
+                        JSONObject descriptionObj = new JSONObject(descriptionMap);
+                        descriptionList.add(descriptionObj);
                     }
-                    map.put("descriptions", descriptionList);
+                    employmentMap.put("descriptions", descriptionList);
 
                     JSONObject employmentObj = new JSONObject(employmentMap);
                     employmentArray.add(employmentObj);
@@ -180,9 +195,8 @@ public class DataWriter {
     }
 
     /**
-     *@param internships
-     *
-     *
+     * @param internships
+     * Takes an array of internships and saves all of their variables to Internship.json so that the objects can be retrieved after the program is closed
      */
     public static void saveInternship(ArrayList<Internship> internships) {
 
@@ -228,7 +242,7 @@ public class DataWriter {
 
     /**
      *@param resume
-     *Takes in a resume object and prints it to a text file named Resume.txt
+     *Takes in a resume object and prints its toString to a text file named Resume.txt
      *
      */
     public static void saveResume(Resume resume) {

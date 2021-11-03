@@ -68,14 +68,16 @@ public class Student extends Account {
         double result = 0;
         int total = 0;
 
-        for(Rating rating : ratings) {
-            if(rating.isValid()) {
+        for (Rating rating : ratings) {
+            if (rating.isValid()) {
                 result += rating.getRating();
                 total++;
             }
         }
 
-        result /= total;
+        if (total != 0) {
+            result /= total;
+        }
 
         return result;
     }
@@ -125,8 +127,8 @@ public class Student extends Account {
     }
 
     public String toString() {
-        return name + "\n" +
-        getGpa() + "\n" +
+        return "\t" + name + "\n\t" +
+        getGpa() + "\n\t" +
         calcRating();
     }
 
