@@ -23,10 +23,6 @@ public class AccountManager {
                     if (internshipId.equals(internship.getId().toString())) {
                         employer.addInternship(internship);
                         internship.setPoster(employer);
-                    } else {
-
-                        System.out.println(internship.getId().toString());
-                        System.out.println(internshipId);
                     }
                 }
             }
