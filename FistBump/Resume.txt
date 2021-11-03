@@ -10,7 +10,7 @@ Software Developer
 	JP Morgan
 	Internship
 	05/1/2019 - 08/1/2019
-	Created a Python program to predict clients needs
+	Created JUnit test cases to test new features of the back end of the banks website
 	Managed incoming customers and future predictions
 Test Engineer
 	Bank of America
@@ -20,5 +20,5 @@ Test Engineer
 	Executed test cases and reported issues to engineering
 Education: 
 UofSC
-	Bachelor's in Computer Information Systems
+	Bachelor's of Computer Science
 	Graduation 05/1/2023
