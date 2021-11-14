@@ -84,7 +84,6 @@ public class DataLoader {
                 for (Object obj2 : internshipList) {
                     JSONObject internshipIdObj = (JSONObject) obj2;
                     String internshipId = internshipIdObj.get("internshipId").toString();
-                    System.out.println("DataLoader: " + internshipId);
                     internshipIds.add(internshipId);
                 }
 
@@ -124,10 +123,7 @@ public class DataLoader {
         return employers;
     }
     
-    /**
-     * Creates an Employer array list and fills it with Employer objects created using objects stored in Employer.json
-     * This version of loanEmployers is helpful when using the loadStudents so that student ratings
-     */
+    
     public static ArrayList<Employer> loadEmployersNoRatings() {
 
         ArrayList<Employer> employers = new ArrayList<Employer>();
