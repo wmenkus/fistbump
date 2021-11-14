@@ -82,11 +82,6 @@ public class Employer extends Account{
         return result;
     }
 
-    public void hideInternship(Internship internship) {
-        if(internship.getPoster() == this)
-            internship.setAvailable(false);
-    }
-
     public void removeInternship(Internship internship) {
         internships.remove(internship);
     }

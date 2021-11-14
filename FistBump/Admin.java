@@ -23,10 +23,6 @@ public class Admin extends Account{
         rating.setValid(true);
     }
 
-    public void reviseInternship(Internship oldInternship, Internship newInternship){
-        oldInternship = newInternship;
-    }
-
     public int getPermissions() {
         return 2;
     }

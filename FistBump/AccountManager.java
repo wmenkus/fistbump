@@ -106,8 +106,16 @@ public class AccountManager {
         DataWriter.saveStudent(students);
     }
 
-    public ArrayList<Employer> getEmployers(){
+    public ArrayList<Employer> getEmployers() {
         return employers;
+    }
+
+    public ArrayList<Student> getStudents() {
+        return students;
+    }
+    
+    public ArrayList<Admin> getAdmins(){
+        return admins;
     }
 
 }

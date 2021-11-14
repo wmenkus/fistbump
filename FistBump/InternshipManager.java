@@ -40,10 +40,6 @@ public class InternshipManager {
         return internship;
     }
 
-    public void hideInternship(Employer employer, Internship internship) {
-        employer.hideInternship(internship);
-    }
-
     public void setSortBehavior(String sortMode) {
         if (sortMode.equalsIgnoreCase("pay")) {
             internSortBehavior = new PaySort();

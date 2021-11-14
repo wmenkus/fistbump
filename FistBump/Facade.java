@@ -124,6 +124,6 @@ public class Facade {
     }
 
     public void printResume() {
-        DataWriter.saveResume(((Student)user).getResumes().get(((Student)user).getResumes().size()-1));
+        DataWriter.saveResume(((Student) user).getResumes().get(((Student) user).getResumes().size() - 1));
     }
 }
