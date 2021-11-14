@@ -111,4 +111,12 @@ class FacadeTest {
         assertFalse(isCreated);
     }
 
+    @Test
+    public void testChangeSortString() {
+        facade.changeInternshipSortMode("length");
+        assertEquals(facade.getInternshipSortString(), "length");
+    }
+
+    @Test
+    
 }
