@@ -22,6 +22,7 @@ class DataWriterTest {
         accountManager.getInstance().getEmployers().clear();
         accountManager.getInstance().getStudents().clear();
         accountManager.getInstance().getAdmins().clear();
+        internshipManager.getInstance().getInternships().clear();
         DataWriter.saveAdmin(adminList);
         DataWriter.saveEmployer(employerList);
         DataWriter.saveStudent(studentList);
@@ -33,6 +34,7 @@ class DataWriterTest {
 		accountManager.getInstance().getEmployers().clear();
         accountManager.getInstance().getStudents().clear();
         accountManager.getInstance().getAdmins().clear();
+        internshipManager.getInstance().getInternships().clear();
         DataWriter.saveAdmin(adminList);
         DataWriter.saveEmployer(employerList);
         DataWriter.saveStudent(studentList);
@@ -75,11 +77,53 @@ class DataWriterTest {
 	}
 	
 	@Test
-	void testWritingNullStudent() {
-		studentList.add(new Student(null, "", "", ""));
+    void testWritingNullStudent() {
+        studentList.add(new Student(null, "", "", ""));
         DataWriter.saveStudent(studentList);
         studentList = DataLoader.loadStudents();
-		assertEquals(null, studentList.get(0).getName());
+        assertEquals(null, studentList.get(0).getName());
+    }
+    
+    @Test
+	void testWritingZeroInternships() {
+		internshipList = DataLoader.loadInternships();
+		assertEquals(0, internshipList.size());
+	}
+
+	@Test
+    void testWritingOneInternship() {
+		Employer testEmployer = new Employer("Tech Inc.", "technology@tech.com", "techa");
+        internshipList.add(new Internship(testEmployer, "name", 0.5, "description", 3, "skillRequirements", true, "startDate"));
+        DataWriter.saveInternship(internshipList);
+        internshipList = DataLoader.loadInternships();
+		assertEquals("name", internshipList.get(0).getName());
+	}
+	
+	@Test
+	void testWritingTwoInternships() {
+		Employer testEmployer = new Employer("Tech Inc.", "technology@tech.com", "techa");
+        internshipList.add(new Internship(testEmployer, "name", 0.5, "description", 3, "skillRequirements", true, "startDate"));
+        internshipList.add(new Internship(testEmployer, "tech officer", 2.5, "does technology", 1200, "type 300 wpm", false, "02/30/2022"));
+        DataWriter.saveInternship(internshipList);
+        internshipList = DataLoader.loadInternships();
+		assertEquals("tech officer", internshipList.get(1).getName());
+	}
+	
+	@Test
+	void testWritingEmptyInternship() {
+        Employer testEmployer = new Employer("", "", "");
+        internshipList.add(new Internship(testEmployer, "", 0, "", 0, "", false, ""));
+        DataWriter.saveInternship(internshipList);
+        internshipList = DataLoader.loadInternships();
+		assertEquals("", internshipList.get(0).getName());
+	}
+	
+	@Test
+	void testWritingNullInternship() {
+        internshipList.add(new Internship(null, null, 0, null, 0, null, false, null));
+        DataWriter.saveInternship(internshipList);
+        internshipList = DataLoader.loadInternships();
+		assertEquals(null, internshipList.get(0).getName());
 	}
 	
 }

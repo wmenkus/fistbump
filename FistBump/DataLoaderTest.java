@@ -41,27 +41,55 @@ class DataLoaderTest {
 	
 	@AfterEach
 	public void tearDown() {
-		Users.getInstance().getUsers().clear();
-		DataWriter.saveUsers();
+		accountManager.getInstance().getEmployers().clear();
+        accountManager.getInstance().getStudents().clear();
+        accountManager.getInstance().getAdmins().clear();
+        internshipManager.getInstance().getInternships().clear();
+		DataWriter.saveAdmin(adminList);
+        DataWriter.saveEmployer(employerList);
+        DataWriter.saveStudent(studentList);
+        DataWriter.saveInternship(internshipList);
 	}
 	
 	
 	@Test
-	void testGetUsersSize() {
-		userList = DataLoader.getUsers();
-		assertEquals(2, userList.size());
+	void testGetStudentsSize() {
+		studentList = DataLoader.loadStudents();
+		assertEquals(2, studentList.size());
 	}
 
 	@Test
-	void testGetUsersSizeZero() {
-		Users.getInstance().getUsers().clear();
-		DataWriter.saveUsers();
-		assertEquals(0, userList.size());
+	void testGetStudentSizeZero() {
+		studentList.clear();
+        DataWriter.saveStudent(studentList);
+        studentList = DataLoader.loadStudents();
+		assertEquals(0, studentList.size());
 	}
 	
 	@Test
-	void testGetUserFirstUserName() {
-		userList = DataLoader.getUsers();
-		assertEquals("asmith", userList.get(0).getUserName());
+    void testGetStudentName() {
+        studentList = DataLoader.loadStudents();
+        assertEquals("Brian White", studentList.get(0).getName());
+    }
+
+    //
+    @Test
+	void testGetIntrnshipsSize() {
+		internshipList = DataLoader.loadInternships();
+		assertEquals(2, studentList.size());
+	}
+
+	@Test
+	void testGetInternshipSizeZero() {
+		internshipList.clear();
+        DataWriter.saveInternship(internshipList);
+        internshipList = DataLoader.loadInternships();
+		assertEquals(0, internshipList.size());
+	}
+	
+	@Test
+	void testGetInternshipName() {
+		internshipList = DataLoader.loadInternships();
+		assertEquals("name", internshipList.get(0).getName());
 	}
 }
