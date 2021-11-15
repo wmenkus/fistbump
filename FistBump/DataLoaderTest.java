@@ -41,10 +41,10 @@ class DataLoaderTest {
 	
 	@AfterEach
 	public void tearDown() {
-		accountManager.getInstance().getEmployers().clear();
-        accountManager.getInstance().getStudents().clear();
-        accountManager.getInstance().getAdmins().clear();
-        internshipManager.getInstance().getInternships().clear();
+		employerList.clear();
+        studentList.clear();
+        adminList.clear();
+        internshipList.clear();
 		DataWriter.saveAdmin(adminList);
         DataWriter.saveEmployer(employerList);
         DataWriter.saveStudent(studentList);
