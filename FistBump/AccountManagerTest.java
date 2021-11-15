@@ -27,14 +27,12 @@ class AccountManagerTest {
     public void testSearchByEmail(){
         Student student = new Student("jamison lee", "jlee@gmail.com", "pa$$word", "555-555-5555");
         accountManager.addAccount(student);
-        Student student2 = (Student)accountManager.searchByEmail("jlee@gmail.com");
-        assertTrue(student.email.equals(student.email));
+        assertTrue(student.equals((Student)accountManager.searchByEmail("jlee@gmail.com")));
     }
 
     public void testSearchByEmailInvalidEmail(){
         Student student = new Student("jamison lee", "jlee@gmail.com", "pa$$word", "555-555-5555");
         accountManager.addAccount(student);
-        Student student2 = (Student)accountManager.searchByEmail("jle@gmail.com");
-        assertFalse(student.email.equals(student.email));
+        assertTrue(student.equals((Student)accountManager.searchByEmail("jle@gmail.com")));
     }
 }

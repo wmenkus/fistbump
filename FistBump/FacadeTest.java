@@ -2,28 +2,39 @@ package FistBump;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 
-class FacadeTest {
+public class FacadeTest {
     private Facade facade = new Facade();
     private AccountManager accountManager = AccountManager.getInstance();
     private InternshipManager internshipManager = InternshipManager.getInstance();
 
     @BeforeEach
     public void setup() {
-        accountManager.getAccounts().clear();
-        accountManager.getStudents().clear();
-        accountManager.getEmployers().clear();
-        accountManager.getAdmins().clear();
-        internshipManager.getInternships().clear();
-        facade.save();
+        AccountManager.getInstance().getAccounts().clear();
+        AccountManager.getInstance().getStudents().clear();
+        AccountManager.getInstance().getEmployers().clear();
+        AccountManager.getInstance().getAdmins().clear();
+        InternshipManager.getInstance().getInternships().clear();
+        DataWriter.saveAdmin(AccountManager.getInstance().getAdmins());
+        DataWriter.saveEmployer(AccountManager.getInstance().getEmployers());
+        DataWriter.saveStudent(AccountManager.getInstance().getStudents());
+        DataWriter.saveInternship(InternshipManager.getInstance().getInternships());
     }
 
     @AfterEach
     public void tearDown() {
-        setup();
+        AccountManager.getInstance().getAccounts().clear();
+        AccountManager.getInstance().getStudents().clear();
+        AccountManager.getInstance().getEmployers().clear();
+        AccountManager.getInstance().getAdmins().clear();
+        InternshipManager.getInstance().getInternships().clear();
+        DataWriter.saveAdmin(AccountManager.getInstance().getAdmins());
+        DataWriter.saveEmployer(AccountManager.getInstance().getEmployers());
+        DataWriter.saveStudent(AccountManager.getInstance().getStudents());
+        DataWriter.saveInternship(InternshipManager.getInstance().getInternships());
     }
 
     @Test
@@ -33,6 +44,12 @@ class FacadeTest {
         facade.login("jlee@gmail.com", "pa$$word");
         Account currentUser = facade.getUser();
         assertEquals(student, currentUser);
+    }
+
+    @Test
+    public void testIsEmpty() {
+        int size = accountManager.getAccounts().size();
+        assertEquals(0, size);
     }
 
     @Test
@@ -117,6 +134,4 @@ class FacadeTest {
         assertEquals(facade.getInternshipSortString(), "length");
     }
 
-    @Test
-    
 }

@@ -113,10 +113,6 @@ public class Facade {
     public void sortInternships() {
         internshipManager.sort();
     }
-
-    public Account createAccount() {
-        return null;
-    }
     
     public void save() {
         accountManager.save();

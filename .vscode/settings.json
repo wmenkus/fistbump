@@ -8,5 +8,13 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  }
+  },
+
+
+    "java.test.config": {
+
+        "workingDirectory": "${workspaceFolder}"
+
+    }
+
 }
