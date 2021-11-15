@@ -48,6 +48,10 @@ public class InternshipManager {
         }
     }
 
+    public InternshipSortBehavior getSortBehavior() {
+        return this.internSortBehavior;
+    }
+
     public void save() {
         DataWriter.saveInternship(internships);
     }
