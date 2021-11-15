@@ -33,7 +33,7 @@ public class DataWriter {
             array.add(array.size(), obj);
         }
 
-        try (FileWriter file = new FileWriter("team-last-minute\\FistBump\\Admin.json")) {
+        try (FileWriter file = new FileWriter("FistBump\\Admin.json")) {
             file.write(array.toJSONString());
             file.flush();
         } catch (IOException e) {
@@ -87,7 +87,7 @@ public class DataWriter {
             array.add(array.size(), obj);
         }
 
-        try (FileWriter file = new FileWriter("team-last-minute\\FistBump\\Employer.json")) {
+        try (FileWriter file = new FileWriter("FistBump\\Employer.json")) {
             file.write(array.toJSONString());
             file.flush();
         } catch (IOException e) {
@@ -185,7 +185,7 @@ public class DataWriter {
             array.add(array.size(), obj);
         }
 
-        try (FileWriter file = new FileWriter("team-last-minute\\FistBump\\Student.json")) {
+        try (FileWriter file = new FileWriter("FistBump\\Student.json")) {
 
             file.write(array.toJSONString());
             file.flush();
@@ -232,7 +232,7 @@ public class DataWriter {
             array.add(array.size(), obj);
         }
 
-        try (FileWriter file = new FileWriter("team-last-minute\\FistBump\\Internship.json")) {
+        try (FileWriter file = new FileWriter("FistBump\\Internship.json")) {
             file.write(array.toJSONString());
             file.flush();
         } catch (IOException e) {
@@ -247,10 +247,10 @@ public class DataWriter {
      */
     public static void saveResume(Resume resume) {
 
-        File file = new File("team-last-minute\\FistBump\\Resume.txt");
+        File file = new File("FistBump\\Resume.txt");
 
         try {
-            FileWriter fileWriter = new FileWriter("team-last-minute\\FistBump\\Resume.txt");
+            FileWriter fileWriter = new FileWriter("FistBump\\Resume.txt");
             fileWriter.write(resume.toString());
             fileWriter.flush();
         } catch (IOException e) {

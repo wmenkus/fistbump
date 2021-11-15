@@ -1,9 +1,10 @@
 {
     "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "json-simple-1.1.1.jar",
-        "FistBump/json-simple-1.1.1.jar",
-        "FistBump/lib/json-simple-1.1.1.jar"
+      "lib/**/*.jar",
+      "json-simple-1.1.1.jar",
+      "FistBump/json-simple-1.1.1.jar",
+      "FistBump/lib/json-simple-1.1.1.jar",
+      "FistBump/lib/junit-platform-console-standalone-1.8.1.jar"
     ],
     "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {

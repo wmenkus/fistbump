@@ -27,7 +27,7 @@ public class DataLoader {
 
         try {
 
-            JSONArray array = (JSONArray) parser.parse(new FileReader("team-last-minute\\FistBump\\Admin.json"));
+            JSONArray array = (JSONArray) parser.parse(new FileReader("FistBump\\Admin.json"));
 
             for (Object obj : array) {
                 JSONObject adminObj = (JSONObject) obj;
@@ -66,7 +66,7 @@ public class DataLoader {
 
         try {
 
-            JSONArray array = (JSONArray) parser.parse(new FileReader("team-last-minute\\FistBump\\Employer.json"));
+            JSONArray array = (JSONArray) parser.parse(new FileReader("FistBump\\Employer.json"));
 
             for (Object obj : array) {
                 JSONObject employerObj = (JSONObject) obj;
@@ -132,7 +132,7 @@ public class DataLoader {
 
         try {
 
-            JSONArray array = (JSONArray) parser.parse(new FileReader("team-last-minute\\FistBump\\Employer.json"));
+            JSONArray array = (JSONArray) parser.parse(new FileReader("FistBump\\Employer.json"));
 
             for (Object obj : array) {
                 JSONObject employerObj = (JSONObject) obj;
@@ -172,7 +172,7 @@ public class DataLoader {
     
     try{
 
-        JSONArray array = (JSONArray) parser.parse(new FileReader("team-last-minute\\FistBump\\Student.json"));
+        JSONArray array = (JSONArray) parser.parse(new FileReader("FistBump\\Student.json"));
 
         for (Object obj : array)
         {
@@ -271,7 +271,7 @@ public class DataLoader {
     
     try{
 
-        JSONArray array = (JSONArray) parser.parse(new FileReader("team-last-minute\\FistBump\\Student.json"));
+        JSONArray array = (JSONArray) parser.parse(new FileReader("FistBump\\Student.json"));
 
         for (Object obj : array)
         {
@@ -350,7 +350,7 @@ public class DataLoader {
     
     try{
 
-        JSONArray array = (JSONArray) parser.parse(new FileReader("team-last-minute\\FistBump\\Internship.json"));
+        JSONArray array = (JSONArray) parser.parse(new FileReader("FistBump\\Internship.json"));
 
         for (Object obj : array)
         {
