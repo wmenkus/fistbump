@@ -82,7 +82,7 @@ public class InternshipManagerTest {
         }
         internshipManager.setSortBehavior("pay");
         internshipManager.sort();
-        assertEquals(10, internships.get(0));
+        assertEquals(9, internships.get(0).getPay());
     }
 
     @Test
@@ -93,7 +93,7 @@ public class InternshipManagerTest {
         }
         internshipManager.setSortBehavior("length");
         internshipManager.sort();
-        assertEquals(0, internships.get(0));
+        assertEquals(0, internships.get(0).getTimePeriod());
     }
 
 }
