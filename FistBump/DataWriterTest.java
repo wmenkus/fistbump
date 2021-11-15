@@ -19,10 +19,10 @@ class DataWriterTest {
 	
 	@BeforeEach
 	public void setup() {
-        accountManager.getInstance().getEmployers().clear();
-        accountManager.getInstance().getStudents().clear();
-        accountManager.getInstance().getAdmins().clear();
-        internshipManager.getInstance().getInternships().clear();
+        AccountManager.getInstance().getEmployers().clear();
+        AccountManager.getInstance().getStudents().clear();
+        AccountManager.getInstance().getAdmins().clear();
+        InternshipManager.getInstance().getInternships().clear();
         DataWriter.saveAdmin(adminList);
         DataWriter.saveEmployer(employerList);
         DataWriter.saveStudent(studentList);
@@ -31,10 +31,10 @@ class DataWriterTest {
 	
 	@AfterEach
 	public void tearDown() {
-		accountManager.getInstance().getEmployers().clear();
-        accountManager.getInstance().getStudents().clear();
-        accountManager.getInstance().getAdmins().clear();
-        internshipManager.getInstance().getInternships().clear();
+		employerList.clear();
+        studentList.clear();
+        adminList.clear();
+        internshipList.clear();
         DataWriter.saveAdmin(adminList);
         DataWriter.saveEmployer(employerList);
         DataWriter.saveStudent(studentList);
@@ -53,7 +53,7 @@ class DataWriterTest {
 		studentList.add(new Student("Brian White", "brian01white@gmail.com", "123456", "704-519-9114"));
         DataWriter.saveStudent(studentList);
         studentList = DataLoader.loadStudents();
-		assertEquals("Brian", studentList.get(0).getName());
+		assertEquals("Brian White", studentList.get(0).getName());
 	}
 	
 	@Test
